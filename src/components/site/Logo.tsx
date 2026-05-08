@@ -9,7 +9,7 @@ export function Logo({ variant = "dark", className = "" }: Props) {
     <img
       src={src}
       alt="U-Dental Clinic"
-      className={`h-9 lg:h-10 w-auto ${className}`}
+      className={`h-14 sm:h-16 lg:h-[88px] w-auto ${className}`}
     />
   );
 }
