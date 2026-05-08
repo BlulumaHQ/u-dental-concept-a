@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight, Stethoscope, Sparkles, Smile, Layers, Crosshair, Scissors,
-  HeartPulse, Crown, Activity, AlertTriangle, Wrench, Syringe, Gem, ScanLine,
+  Crown, AlertTriangle, Wrench, Syringe, Gem, ScanLine,
 } from "lucide-react";
 import type { ServiceItem } from "@/lib/site";
 
