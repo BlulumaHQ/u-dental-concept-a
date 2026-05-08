@@ -23,6 +23,9 @@ const ICONS: Record<string, React.ComponentType<LucideProps>> = {
   "root-canal-treatment": ScanLine,
   "denture": Gem,
   "botox": Syringe,
+  "microscopic-dentistry": ScanLine,
+  "bioclear": Sparkles,
+  "galvosurge-for-peri-implantitis-treatment": Wrench,
 };
 
 function ServiceIcon({ slug, size = 36 }: { slug: string; size?: number }) {
