@@ -5,7 +5,9 @@ import {
 } from "lucide-react";
 import type { ServiceItem } from "@/lib/site";
 
-const ICONS: Record<string, React.ComponentType<{ className?: string; strokeWidth?: number }>> = {
+import type { LucideProps } from "lucide-react";
+
+const ICONS: Record<string, React.ComponentType<LucideProps>> = {
   "dental-implants": Layers,
   "all-on-4": Layers,
   "invisalign": Smile,
@@ -25,7 +27,7 @@ const ICONS: Record<string, React.ComponentType<{ className?: string; strokeWidt
 
 function ServiceIcon({ slug, size = 36 }: { slug: string; size?: number }) {
   const Icon = ICONS[slug] ?? Stethoscope;
-  return <Icon className="text-primary" strokeWidth={1.75} style={{ width: size, height: size }} />;
+  return <Icon className="text-primary" strokeWidth={1.75} size={size} />;
 }
 
 export function ServiceCard({ service, variant = "horizontal" }: { service: ServiceItem; variant?: "horizontal" | "stacked" }) {
