@@ -130,8 +130,12 @@ export function Footer() {
           </Link>
         </div>
       </div>
-      <div className="container-x mt-14 pt-6 border-t border-white/10 text-xs opacity-70 hidden md:flex flex-col sm:flex-row gap-3 sm:gap-5 items-center justify-center text-center">
+      <div className="container-x mt-14 pt-6 border-t border-white/10 text-xs opacity-70 hidden md:flex flex-col sm:flex-row flex-wrap gap-x-5 gap-y-2 items-center justify-center text-center">
         <span>© {year} {t("foot.copyright", locale)}</span>
+        <span className="hidden sm:inline opacity-40">|</span>
+        <Link to={lp("/privacy-policy")} className="hover:text-primary">{t("foot.privacy", locale)}</Link>
+        <span className="hidden sm:inline opacity-40">|</span>
+        <Link to={lp("/term-of-service")} className="hover:text-primary">{t("foot.terms", locale)}</Link>
         <span className="hidden sm:inline opacity-40">|</span>
         <span>{t("foot.webby", locale)}{" "}
           <a href="https://bluluma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Bluluma</a>
