@@ -5,16 +5,7 @@ import { SITE } from "@/lib/site";
 export function StickyCTA() {
   return (
     <>
-      {/* Desktop: slim vertical right-edge tab — upper area, aligned with chatbot margin */}
-      <Link
-        to="/contact-us"
-        aria-label="Book Appointment"
-        className="hidden lg:flex fixed right-6 top-32 z-30 items-center gap-2 bg-primary text-primary-foreground px-3 py-5 rounded-xl shadow-elevated hover:bg-charcoal transition-colors"
-        style={{ writingMode: "vertical-rl" as const }}
-      >
-        <Calendar className="h-4 w-4 rotate-90" />
-        <span className="text-xs font-bold uppercase tracking-widest">Book Appointment</span>
-      </Link>
+      {/* Desktop sticky CTA removed — Book Appointment now lives in the header */}
 
       {/* Mobile: compact bottom bar */}
       <div className="lg:hidden fixed bottom-0 inset-x-0 z-30 grid grid-cols-2 gap-2 p-2.5 bg-background/95 backdrop-blur border-t border-border">
