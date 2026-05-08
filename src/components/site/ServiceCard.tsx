@@ -12,7 +12,7 @@ export function ServiceCard({ service, variant = "horizontal" }: { service: Serv
       >
         <div className="aspect-[4/3] bg-soft overflow-hidden">
           {service.image ? (
-            <img src={service.image} alt={service.name} className="h-full w-full object-cover object-left scale-110 group-hover:scale-125 transition duration-500" style={{ objectPosition: "0% 50%" }} />
+            <img src={service.image} alt={service.name} className="h-full w-full object-cover group-hover:scale-105 transition duration-500" style={{ objectPosition: "0% 50%" }} />
           ) : (
             <Stethoscope className="h-14 w-14 text-primary/40" />
           )}
