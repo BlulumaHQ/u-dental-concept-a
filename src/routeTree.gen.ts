@@ -19,9 +19,21 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as AboutUsRouteImport } from './routes/about-us'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ZhHantIndexRouteImport } from './routes/zh-hant/index'
+import { Route as ZhHantTermOfServiceRouteImport } from './routes/zh-hant/term-of-service'
+import { Route as ZhHantTechnologyRouteImport } from './routes/zh-hant/technology'
+import { Route as ZhHantServicesRouteImport } from './routes/zh-hant/services'
+import { Route as ZhHantPrivacyPolicyRouteImport } from './routes/zh-hant/privacy-policy'
+import { Route as ZhHantInsightsRouteImport } from './routes/zh-hant/insights'
+import { Route as ZhHantFaqRouteImport } from './routes/zh-hant/faq'
+import { Route as ZhHantContactUsRouteImport } from './routes/zh-hant/contact-us'
+import { Route as ZhHantAboutUsRouteImport } from './routes/zh-hant/about-us'
 import { Route as ServiceSlugRouteImport } from './routes/service.$slug'
 import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
 import { Route as DoctorSlugRouteImport } from './routes/doctor.$slug'
+import { Route as ZhHantServiceSlugRouteImport } from './routes/zh-hant/service.$slug'
+import { Route as ZhHantInsightsSlugRouteImport } from './routes/zh-hant/insights.$slug'
+import { Route as ZhHantDoctorSlugRouteImport } from './routes/zh-hant/doctor.$slug'
 
 const TermOfServiceRoute = TermOfServiceRouteImport.update({
   id: '/term-of-service',
@@ -73,6 +85,51 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZhHantIndexRoute = ZhHantIndexRouteImport.update({
+  id: '/zh-hant/',
+  path: '/zh-hant/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhHantTermOfServiceRoute = ZhHantTermOfServiceRouteImport.update({
+  id: '/zh-hant/term-of-service',
+  path: '/zh-hant/term-of-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhHantTechnologyRoute = ZhHantTechnologyRouteImport.update({
+  id: '/zh-hant/technology',
+  path: '/zh-hant/technology',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhHantServicesRoute = ZhHantServicesRouteImport.update({
+  id: '/zh-hant/services',
+  path: '/zh-hant/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhHantPrivacyPolicyRoute = ZhHantPrivacyPolicyRouteImport.update({
+  id: '/zh-hant/privacy-policy',
+  path: '/zh-hant/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhHantInsightsRoute = ZhHantInsightsRouteImport.update({
+  id: '/zh-hant/insights',
+  path: '/zh-hant/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhHantFaqRoute = ZhHantFaqRouteImport.update({
+  id: '/zh-hant/faq',
+  path: '/zh-hant/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhHantContactUsRoute = ZhHantContactUsRouteImport.update({
+  id: '/zh-hant/contact-us',
+  path: '/zh-hant/contact-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhHantAboutUsRoute = ZhHantAboutUsRouteImport.update({
+  id: '/zh-hant/about-us',
+  path: '/zh-hant/about-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServiceSlugRoute = ServiceSlugRouteImport.update({
   id: '/service/$slug',
   path: '/service/$slug',
@@ -86,6 +143,21 @@ const InsightsSlugRoute = InsightsSlugRouteImport.update({
 const DoctorSlugRoute = DoctorSlugRouteImport.update({
   id: '/doctor/$slug',
   path: '/doctor/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhHantServiceSlugRoute = ZhHantServiceSlugRouteImport.update({
+  id: '/zh-hant/service/$slug',
+  path: '/zh-hant/service/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhHantInsightsSlugRoute = ZhHantInsightsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ZhHantInsightsRoute,
+} as any)
+const ZhHantDoctorSlugRoute = ZhHantDoctorSlugRouteImport.update({
+  id: '/zh-hant/doctor/$slug',
+  path: '/zh-hant/doctor/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -103,6 +175,18 @@ export interface FileRoutesByFullPath {
   '/doctor/$slug': typeof DoctorSlugRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/service/$slug': typeof ServiceSlugRoute
+  '/zh-hant/about-us': typeof ZhHantAboutUsRoute
+  '/zh-hant/contact-us': typeof ZhHantContactUsRoute
+  '/zh-hant/faq': typeof ZhHantFaqRoute
+  '/zh-hant/insights': typeof ZhHantInsightsRouteWithChildren
+  '/zh-hant/privacy-policy': typeof ZhHantPrivacyPolicyRoute
+  '/zh-hant/services': typeof ZhHantServicesRoute
+  '/zh-hant/technology': typeof ZhHantTechnologyRoute
+  '/zh-hant/term-of-service': typeof ZhHantTermOfServiceRoute
+  '/zh-hant/': typeof ZhHantIndexRoute
+  '/zh-hant/doctor/$slug': typeof ZhHantDoctorSlugRoute
+  '/zh-hant/insights/$slug': typeof ZhHantInsightsSlugRoute
+  '/zh-hant/service/$slug': typeof ZhHantServiceSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -118,6 +202,18 @@ export interface FileRoutesByTo {
   '/doctor/$slug': typeof DoctorSlugRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/service/$slug': typeof ServiceSlugRoute
+  '/zh-hant/about-us': typeof ZhHantAboutUsRoute
+  '/zh-hant/contact-us': typeof ZhHantContactUsRoute
+  '/zh-hant/faq': typeof ZhHantFaqRoute
+  '/zh-hant/insights': typeof ZhHantInsightsRouteWithChildren
+  '/zh-hant/privacy-policy': typeof ZhHantPrivacyPolicyRoute
+  '/zh-hant/services': typeof ZhHantServicesRoute
+  '/zh-hant/technology': typeof ZhHantTechnologyRoute
+  '/zh-hant/term-of-service': typeof ZhHantTermOfServiceRoute
+  '/zh-hant': typeof ZhHantIndexRoute
+  '/zh-hant/doctor/$slug': typeof ZhHantDoctorSlugRoute
+  '/zh-hant/insights/$slug': typeof ZhHantInsightsSlugRoute
+  '/zh-hant/service/$slug': typeof ZhHantServiceSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -134,6 +230,18 @@ export interface FileRoutesById {
   '/doctor/$slug': typeof DoctorSlugRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/service/$slug': typeof ServiceSlugRoute
+  '/zh-hant/about-us': typeof ZhHantAboutUsRoute
+  '/zh-hant/contact-us': typeof ZhHantContactUsRoute
+  '/zh-hant/faq': typeof ZhHantFaqRoute
+  '/zh-hant/insights': typeof ZhHantInsightsRouteWithChildren
+  '/zh-hant/privacy-policy': typeof ZhHantPrivacyPolicyRoute
+  '/zh-hant/services': typeof ZhHantServicesRoute
+  '/zh-hant/technology': typeof ZhHantTechnologyRoute
+  '/zh-hant/term-of-service': typeof ZhHantTermOfServiceRoute
+  '/zh-hant/': typeof ZhHantIndexRoute
+  '/zh-hant/doctor/$slug': typeof ZhHantDoctorSlugRoute
+  '/zh-hant/insights/$slug': typeof ZhHantInsightsSlugRoute
+  '/zh-hant/service/$slug': typeof ZhHantServiceSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,6 +259,18 @@ export interface FileRouteTypes {
     | '/doctor/$slug'
     | '/insights/$slug'
     | '/service/$slug'
+    | '/zh-hant/about-us'
+    | '/zh-hant/contact-us'
+    | '/zh-hant/faq'
+    | '/zh-hant/insights'
+    | '/zh-hant/privacy-policy'
+    | '/zh-hant/services'
+    | '/zh-hant/technology'
+    | '/zh-hant/term-of-service'
+    | '/zh-hant/'
+    | '/zh-hant/doctor/$slug'
+    | '/zh-hant/insights/$slug'
+    | '/zh-hant/service/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -166,6 +286,18 @@ export interface FileRouteTypes {
     | '/doctor/$slug'
     | '/insights/$slug'
     | '/service/$slug'
+    | '/zh-hant/about-us'
+    | '/zh-hant/contact-us'
+    | '/zh-hant/faq'
+    | '/zh-hant/insights'
+    | '/zh-hant/privacy-policy'
+    | '/zh-hant/services'
+    | '/zh-hant/technology'
+    | '/zh-hant/term-of-service'
+    | '/zh-hant'
+    | '/zh-hant/doctor/$slug'
+    | '/zh-hant/insights/$slug'
+    | '/zh-hant/service/$slug'
   id:
     | '__root__'
     | '/'
@@ -181,6 +313,18 @@ export interface FileRouteTypes {
     | '/doctor/$slug'
     | '/insights/$slug'
     | '/service/$slug'
+    | '/zh-hant/about-us'
+    | '/zh-hant/contact-us'
+    | '/zh-hant/faq'
+    | '/zh-hant/insights'
+    | '/zh-hant/privacy-policy'
+    | '/zh-hant/services'
+    | '/zh-hant/technology'
+    | '/zh-hant/term-of-service'
+    | '/zh-hant/'
+    | '/zh-hant/doctor/$slug'
+    | '/zh-hant/insights/$slug'
+    | '/zh-hant/service/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -196,6 +340,17 @@ export interface RootRouteChildren {
   TermOfServiceRoute: typeof TermOfServiceRoute
   DoctorSlugRoute: typeof DoctorSlugRoute
   ServiceSlugRoute: typeof ServiceSlugRoute
+  ZhHantAboutUsRoute: typeof ZhHantAboutUsRoute
+  ZhHantContactUsRoute: typeof ZhHantContactUsRoute
+  ZhHantFaqRoute: typeof ZhHantFaqRoute
+  ZhHantInsightsRoute: typeof ZhHantInsightsRouteWithChildren
+  ZhHantPrivacyPolicyRoute: typeof ZhHantPrivacyPolicyRoute
+  ZhHantServicesRoute: typeof ZhHantServicesRoute
+  ZhHantTechnologyRoute: typeof ZhHantTechnologyRoute
+  ZhHantTermOfServiceRoute: typeof ZhHantTermOfServiceRoute
+  ZhHantIndexRoute: typeof ZhHantIndexRoute
+  ZhHantDoctorSlugRoute: typeof ZhHantDoctorSlugRoute
+  ZhHantServiceSlugRoute: typeof ZhHantServiceSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -270,6 +425,69 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zh-hant/': {
+      id: '/zh-hant/'
+      path: '/zh-hant'
+      fullPath: '/zh-hant/'
+      preLoaderRoute: typeof ZhHantIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-hant/term-of-service': {
+      id: '/zh-hant/term-of-service'
+      path: '/zh-hant/term-of-service'
+      fullPath: '/zh-hant/term-of-service'
+      preLoaderRoute: typeof ZhHantTermOfServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-hant/technology': {
+      id: '/zh-hant/technology'
+      path: '/zh-hant/technology'
+      fullPath: '/zh-hant/technology'
+      preLoaderRoute: typeof ZhHantTechnologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-hant/services': {
+      id: '/zh-hant/services'
+      path: '/zh-hant/services'
+      fullPath: '/zh-hant/services'
+      preLoaderRoute: typeof ZhHantServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-hant/privacy-policy': {
+      id: '/zh-hant/privacy-policy'
+      path: '/zh-hant/privacy-policy'
+      fullPath: '/zh-hant/privacy-policy'
+      preLoaderRoute: typeof ZhHantPrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-hant/insights': {
+      id: '/zh-hant/insights'
+      path: '/zh-hant/insights'
+      fullPath: '/zh-hant/insights'
+      preLoaderRoute: typeof ZhHantInsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-hant/faq': {
+      id: '/zh-hant/faq'
+      path: '/zh-hant/faq'
+      fullPath: '/zh-hant/faq'
+      preLoaderRoute: typeof ZhHantFaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-hant/contact-us': {
+      id: '/zh-hant/contact-us'
+      path: '/zh-hant/contact-us'
+      fullPath: '/zh-hant/contact-us'
+      preLoaderRoute: typeof ZhHantContactUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-hant/about-us': {
+      id: '/zh-hant/about-us'
+      path: '/zh-hant/about-us'
+      fullPath: '/zh-hant/about-us'
+      preLoaderRoute: typeof ZhHantAboutUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/service/$slug': {
       id: '/service/$slug'
       path: '/service/$slug'
@@ -291,6 +509,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DoctorSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zh-hant/service/$slug': {
+      id: '/zh-hant/service/$slug'
+      path: '/zh-hant/service/$slug'
+      fullPath: '/zh-hant/service/$slug'
+      preLoaderRoute: typeof ZhHantServiceSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-hant/insights/$slug': {
+      id: '/zh-hant/insights/$slug'
+      path: '/$slug'
+      fullPath: '/zh-hant/insights/$slug'
+      preLoaderRoute: typeof ZhHantInsightsSlugRouteImport
+      parentRoute: typeof ZhHantInsightsRoute
+    }
+    '/zh-hant/doctor/$slug': {
+      id: '/zh-hant/doctor/$slug'
+      path: '/zh-hant/doctor/$slug'
+      fullPath: '/zh-hant/doctor/$slug'
+      preLoaderRoute: typeof ZhHantDoctorSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -306,6 +545,18 @@ const InsightsRouteWithChildren = InsightsRoute._addFileChildren(
   InsightsRouteChildren,
 )
 
+interface ZhHantInsightsRouteChildren {
+  ZhHantInsightsSlugRoute: typeof ZhHantInsightsSlugRoute
+}
+
+const ZhHantInsightsRouteChildren: ZhHantInsightsRouteChildren = {
+  ZhHantInsightsSlugRoute: ZhHantInsightsSlugRoute,
+}
+
+const ZhHantInsightsRouteWithChildren = ZhHantInsightsRoute._addFileChildren(
+  ZhHantInsightsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutUsRoute: AboutUsRoute,
@@ -319,6 +570,17 @@ const rootRouteChildren: RootRouteChildren = {
   TermOfServiceRoute: TermOfServiceRoute,
   DoctorSlugRoute: DoctorSlugRoute,
   ServiceSlugRoute: ServiceSlugRoute,
+  ZhHantAboutUsRoute: ZhHantAboutUsRoute,
+  ZhHantContactUsRoute: ZhHantContactUsRoute,
+  ZhHantFaqRoute: ZhHantFaqRoute,
+  ZhHantInsightsRoute: ZhHantInsightsRouteWithChildren,
+  ZhHantPrivacyPolicyRoute: ZhHantPrivacyPolicyRoute,
+  ZhHantServicesRoute: ZhHantServicesRoute,
+  ZhHantTechnologyRoute: ZhHantTechnologyRoute,
+  ZhHantTermOfServiceRoute: ZhHantTermOfServiceRoute,
+  ZhHantIndexRoute: ZhHantIndexRoute,
+  ZhHantDoctorSlugRoute: ZhHantDoctorSlugRoute,
+  ZhHantServiceSlugRoute: ZhHantServiceSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
