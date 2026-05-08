@@ -1,7 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, Phone, Calendar, Sparkles } from "lucide-react";
-import { SERVICES, SITE, HERO_IMAGES } from "@/lib/site";
+import { SERVICES, HERO_IMAGES } from "@/lib/site";
 import { ServiceCard } from "@/components/site/ServiceCard";
+import { useLocale, getServices, getSite, localePath, t } from "@/lib/i18n";
 
 export const Route = createFileRoute("/service/$slug")({
   loader: ({ params }) => {
@@ -23,17 +24,24 @@ export const Route = createFileRoute("/service/$slug")({
     };
   },
   component: ServicePage,
-  notFoundComponent: () => (
-    <div className="container-x section-y text-center">
-      <h1 className="text-4xl font-extrabold">Service not found</h1>
-      <Link to="/services" className="mt-6 inline-block text-primary font-semibold">Back to all services</Link>
-    </div>
-  ),
+  notFoundComponent: () => {
+    return (
+      <div className="container-x section-y text-center">
+        <h1 className="text-4xl font-extrabold">Service not found</h1>
+        <Link to="/services" className="mt-6 inline-block text-primary font-semibold">Back to all services</Link>
+      </div>
+    );
+  },
 });
 
 export function ServicePage() {
-  const { service } = Route.useLoaderData();
-  const related = SERVICES.filter((s) => s.category === service.category && s.slug !== service.slug).slice(0, 3);
+  const { service: enService } = Route.useLoaderData();
+  const locale = useLocale();
+  const site = getSite(locale);
+  const services = getServices(locale);
+  const service = services.find((s) => s.slug === enService.slug) ?? enService;
+  const related = services.filter((s) => s.category === service.category && s.slug !== service.slug).slice(0, 3);
+  const lp = (p: string) => localePath(p, locale) as string;
 
   return (
     <>
@@ -41,18 +49,18 @@ export function ServicePage() {
         <img src={HERO_IMAGES[service.slug.length % HERO_IMAGES.length]} alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal/95 via-charcoal/75 to-charcoal/40" />
         <div className="container-x relative py-20 lg:py-28">
-          <Link to="/services" className="text-sm text-white/70 hover:text-white inline-flex items-center gap-1.5 mb-6">
-            ← All services
+          <Link to={lp("/services")} className="text-sm text-white/70 hover:text-white inline-flex items-center gap-1.5 mb-6">
+            {t("cta.backServices", locale)}
           </Link>
-          <p className="text-primary font-bold uppercase text-sm tracking-[0.25em]">U-Dental Clinic</p>
+          <p className="text-primary font-bold uppercase text-sm tracking-[0.25em]">U-Dental {locale === "zh-Hant" ? "牙醫診所" : "Clinic"}</p>
           <h1 className="mt-3 text-4xl lg:text-6xl font-extrabold leading-[1.05] max-w-4xl">{service.name}</h1>
           <p className="mt-6 text-lg lg:text-xl text-white/85 max-w-2xl">{service.short}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/contact-us" className="rounded-full bg-primary text-primary-foreground px-6 py-3 font-semibold inline-flex items-center gap-2 hover:bg-white hover:text-primary transition">
-              <Calendar className="h-4 w-4" /> Book an Appointment
+            <Link to={lp("/contact-us")} className="rounded-full bg-primary text-primary-foreground px-6 py-3 font-semibold inline-flex items-center gap-2 hover:bg-white hover:text-primary transition">
+              <Calendar className="h-4 w-4" /> {t("cta.bookLong", locale)}
             </Link>
-            <a href={SITE.phoneHref} className="rounded-full border border-white/30 px-6 py-3 font-semibold inline-flex items-center gap-2 hover:bg-white/10">
-              <Phone className="h-4 w-4" /> {SITE.phone}
+            <a href={site.phoneHref} className="rounded-full border border-white/30 px-6 py-3 font-semibold inline-flex items-center gap-2 hover:bg-white/10">
+              <Phone className="h-4 w-4" /> {site.phone}
             </a>
           </div>
         </div>
@@ -62,12 +70,12 @@ export function ServicePage() {
         <div className="container-x grid lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2 space-y-12">
             <div>
-              <h2 className="text-3xl font-extrabold">About this treatment</h2>
+              <h2 className="text-3xl font-extrabold">{t("svc.about", locale)}</h2>
               <p className="mt-5 text-lg text-muted-foreground leading-relaxed">{service.intro}</p>
             </div>
 
             <div>
-              <h2 className="text-3xl font-extrabold">Patient-focused benefits</h2>
+              <h2 className="text-3xl font-extrabold">{t("svc.benefits", locale)}</h2>
               <ul className="mt-6 grid sm:grid-cols-2 gap-3">
                 {service.benefits.map((b: string) => (
                   <li key={b} className="flex gap-3 rounded-xl bg-cream border border-border p-4">
@@ -79,7 +87,7 @@ export function ServicePage() {
             </div>
 
             <div>
-              <h2 className="text-3xl font-extrabold">When this may be needed</h2>
+              <h2 className="text-3xl font-extrabold">{t("svc.when", locale)}</h2>
               <ul className="mt-6 space-y-3">
                 {service.when.map((w: string) => (
                   <li key={w} className="flex gap-3 text-foreground/90">
@@ -92,33 +100,31 @@ export function ServicePage() {
             {service.tech && (
               <div className="rounded-2xl gradient-hero text-white p-8">
                 <div className="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
-                  <Sparkles className="h-4 w-4" /> Technology &amp; Comfort
+                  <Sparkles className="h-4 w-4" /> {t("svc.tech", locale)}
                 </div>
                 <p className="mt-3 text-lg leading-relaxed text-white/90">{service.tech}</p>
               </div>
             )}
 
-            <p className="text-sm text-muted-foreground italic">
-              Treatment recommendations depend on individual needs. Speak with the clinic to understand your options.
-            </p>
+            <p className="text-sm text-muted-foreground italic">{t("svc.disclaimer", locale)}</p>
           </div>
 
           <aside className="lg:col-span-1">
             <div className="sticky top-28 space-y-5">
               <div className="rounded-2xl bg-card border border-border shadow-elevated p-6">
-                <h3 className="text-xl font-bold">Schedule a consultation</h3>
-                <p className="mt-2 text-sm text-muted-foreground">English & Mandarin support. We'll help you understand your options.</p>
-                <Link to="/contact-us" className="mt-5 w-full rounded-full bg-primary text-primary-foreground px-5 py-3 font-semibold inline-flex items-center justify-center gap-2 shadow-glow">
-                  <Calendar className="h-4 w-4" /> Book Appointment
+                <h3 className="text-xl font-bold">{t("svc.scheduleConsult", locale)}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{t("svc.scheduleSub", locale)}</p>
+                <Link to={lp("/contact-us")} className="mt-5 w-full rounded-full bg-primary text-primary-foreground px-5 py-3 font-semibold inline-flex items-center justify-center gap-2 shadow-glow">
+                  <Calendar className="h-4 w-4" /> {t("cta.book", locale)}
                 </Link>
-                <a href={SITE.phoneHref} className="mt-2 w-full rounded-full border border-border px-5 py-3 font-semibold inline-flex items-center justify-center gap-2">
-                  <Phone className="h-4 w-4" /> {SITE.phone}
+                <a href={site.phoneHref} className="mt-2 w-full rounded-full border border-border px-5 py-3 font-semibold inline-flex items-center justify-center gap-2">
+                  <Phone className="h-4 w-4" /> {site.phone}
                 </a>
               </div>
               <div className="rounded-2xl bg-cream border border-border p-6">
-                <p className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Visit Us</p>
-                <p className="text-sm font-semibold">{SITE.address}</p>
-                <p className="mt-2 text-xs text-muted-foreground">Mon–Wed & Fri: 9:30am–5:30pm · Sat: 9am–5pm</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-primary mb-3">{t("sec.visit", locale)}</p>
+                <p className="text-sm font-semibold">{site.address}</p>
+                <p className="mt-2 text-xs text-muted-foreground">{site.hours.map((h) => `${h.d}: ${h.t}`).join(" · ")}</p>
               </div>
             </div>
           </aside>
@@ -128,7 +134,7 @@ export function ServicePage() {
       {related.length > 0 && (
         <section className="section-y bg-cream">
           <div className="container-x">
-            <h2 className="text-3xl lg:text-4xl font-extrabold">Related services</h2>
+            <h2 className="text-3xl lg:text-4xl font-extrabold">{t("sec.related", locale)}</h2>
             <div className="mt-8 grid md:grid-cols-3 gap-5">
               {related.map((r) => (
                 <ServiceCard key={r.slug} service={r} variant="horizontal" />
@@ -141,11 +147,11 @@ export function ServicePage() {
       <section className="section-y">
         <div className="container-x">
           <div className="rounded-3xl gradient-accent text-primary-foreground p-10 lg:p-16 text-center shadow-elevated">
-            <h2 className="text-3xl lg:text-5xl font-extrabold max-w-3xl mx-auto">Ready to talk about {service.name.toLowerCase()}?</h2>
-            <p className="mt-4 text-lg opacity-90">Book a visit to U-Dental Clinic in Kitsilano Vancouver.</p>
+            <h2 className="text-3xl lg:text-5xl font-extrabold max-w-3xl mx-auto">{t("svc.readyTalk", locale)} {service.name}{locale === "zh-Hant" ? "嗎？" : "?"}</h2>
+            <p className="mt-4 text-lg opacity-90">{t("svc.bookVisit", locale)}</p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
-              <Link to="/contact-us" className="rounded-full bg-white text-primary px-7 py-4 font-bold inline-flex items-center gap-2"><Calendar className="h-5 w-5" /> Book an Appointment</Link>
-              <a href={SITE.phoneHref} className="rounded-full border-2 border-white/40 px-7 py-4 font-bold inline-flex items-center gap-2"><Phone className="h-5 w-5" /> {SITE.phone}</a>
+              <Link to={lp("/contact-us")} className="rounded-full bg-white text-primary px-7 py-4 font-bold inline-flex items-center gap-2"><Calendar className="h-5 w-5" /> {t("cta.bookLong", locale)}</Link>
+              <a href={site.phoneHref} className="rounded-full border-2 border-white/40 px-7 py-4 font-bold inline-flex items-center gap-2"><Phone className="h-5 w-5" /> {site.phone}</a>
             </div>
           </div>
         </div>
