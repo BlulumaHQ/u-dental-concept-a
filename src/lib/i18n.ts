@@ -252,6 +252,127 @@ export const UI: Dict = {
   "foot.bookSub": { en: "Schedule your visit with our bilingual team in Kitsilano Vancouver.", zh: "歡迎透過電話或線上預約，與我們的中英雙語團隊聯繫。" },
   "foot.copyright": { en: "U-Dental Clinic. All rights reserved.", zh: "U-Dental Clinic 牙醫診所。版權所有。" },
   "foot.webby": { en: "Web Design by", zh: "網站設計：" },
+  // tech list intro
+  "tech.completeLabel": { en: "Our Equipment", zh: "我們的設備" },
+};
+
+// ============= Tech page localized lists =============
+export const TECH_STACK = {
+  en: [
+    { key: "cbct", title: "3D Cone Beam CT (CBCT)", body: "High-resolution 3D imaging that supports accurate diagnosis and digital implant planning." },
+    { key: "xguide", title: "X-Guide™ Real-time 3D Surgery", body: "Real-time 3D navigation during implant placement for greater positional accuracy." },
+    { key: "scanner", title: "Medit i500 Intra-oral Scanner", body: "Comfortable digital impressions for crowns, Invisalign®, and full digital workflows." },
+    { key: "surgery", title: "Exclusive Surgical Room", body: "A dedicated surgical environment designed for medical center-class asepsis quality." },
+    { key: "microscope", title: "Leica M320D Dental Microscope", body: "Advanced visualization for restorative, cosmetic and root canal treatment in fine detail." },
+    { key: "laser", title: "Sirona Diode LASER", body: "Precision soft-tissue laser used in modern periodontal and surgical procedures." },
+  ],
+  "zh-Hant": [
+    { key: "cbct", title: "3D 錐形束電腦斷層 (CBCT)", body: "高解析度 3D 影像，協助精準診斷與數位植牙規劃。" },
+    { key: "xguide", title: "X-Guide™ 即時 3D 導航植牙", body: "植牙手術中即時 3D 導航，大幅提升植體定位精準度。" },
+    { key: "scanner", title: "Medit i500 口內 3D 掃描機", body: "舒適的數位印模，支援牙冠、Invisalign 與全數位流程。" },
+    { key: "surgery", title: "獨立專屬手術室", body: "達醫學中心等級無菌標準的專屬手術空間。" },
+    { key: "microscope", title: "Leica M320D 牙科顯微鏡", body: "為修復、美學與根管治療提供高倍精細視野。" },
+    { key: "laser", title: "Sirona 二極體雷射", body: "現代牙周與口腔外科手術常用的精準軟組織雷射。" },
+  ],
+};
+
+export const TECH_EQUIPMENT = {
+  en: [
+    "3D Cone Beam Computed Tomography (CBCT)", "Medit i500 intra-oral scanner",
+    "X-Guide™ real-time 3D surgical navigator", "Full digital implant workflow",
+    "Immediate implants with provisional crowns", "All-on-4 full mouth reconstruction",
+    "Invisalign® orthodontic treatment", "German DR.MACH surgical light",
+    "Sirona Diode LASER", "Versah crestal sinus lift drill",
+    "COLTENE Perfect TSC II electrosurgery system", "Nobel Biocare OsseoSet 200 dental implant system",
+    "A-dec / W&H electronic motor handpieces", "GalvoSurge® implant surface care",
+    "Bioclear™ matrix restorations", "Leica M320D dental microscope", "BOTOX® clinical treatment",
+  ],
+  "zh-Hant": [
+    "3D 錐形束電腦斷層 (CBCT)", "Medit i500 口內 3D 掃描機",
+    "X-Guide™ 即時 3D 導航植牙系統", "全數位植牙流程",
+    "即拔即植暨臨時假牙", "All-on-4 全口重建",
+    "Invisalign 隱形矯正", "德國 DR.MACH 手術無影燈",
+    "Sirona 二極體雷射", "Versah 上顎竇微創提升鑽針",
+    "COLTENE Perfect TSC II 電燒系統", "Nobel Biocare OsseoSet 200 植體系統",
+    "A-dec / W&H 電動手機系統", "GalvoSurge 植體表面清潔系統",
+    "Bioclear 美學樹脂修復", "Leica M320D 牙科顯微鏡", "BOTOX 醫療美容療程",
+  ],
+};
+
+export const TECH_HIGHER_LIST = {
+  en: [
+    "Dedicated surgical room separated from general treatment areas",
+    "Modern sterilization and infection-control workflows",
+    "Designed to support a calm, controlled surgical experience",
+    "Advanced imaging and digital planning integrated into every case",
+  ],
+  "zh-Hant": [
+    "獨立於一般診療區的專屬手術房",
+    "現代化的消毒與感染控制流程",
+    "為病患打造平靜、可控的手術體驗",
+    "每個個案皆整合先進影像與數位規劃",
+  ],
+};
+
+// ============= Legal pages =============
+export const PRIVACY_CONTENT = {
+  en: {
+    updated: "Last updated: January 2025",
+    sections: [
+      { h: "1. Introduction", p: 'U-Dental Clinic ("we", "our", "us") is committed to protecting the privacy and confidentiality of personal information collected from our patients and website visitors. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information.' },
+      { h: "2. Information We Collect", p: "We may collect personal information including your name, contact details, date of birth, dental and medical history, insurance information, and any other information you choose to provide when scheduling an appointment, completing forms, or communicating with us." },
+      { h: "3. How We Use Your Information", p: "Your information is used to provide dental care, communicate appointment reminders, process insurance claims, comply with legal and regulatory requirements, and to improve our services. We do not sell your personal information." },
+      { h: "4. Disclosure of Information", p: "Personal information may be disclosed to dental specialists involved in your care, insurance providers (with consent), or as required by law. All third parties are expected to maintain confidentiality consistent with applicable privacy legislation." },
+      { h: "5. Safeguards", p: "We use physical, organizational, and technological safeguards to protect personal information against loss, theft, unauthorized access, disclosure, copying, use, or modification." },
+      { h: "6. Your Rights", p: "You have the right to access and request corrections to your personal information held by U-Dental Clinic. To make a request, please contact our office." },
+      { h: "7. Website & Cookies", p: "Our website may use cookies and analytics tools to understand how visitors use the site and to improve user experience. You may disable cookies in your browser settings." },
+      { h: "8. Contact Us", p: "For questions or concerns about this Privacy Policy, please contact U-Dental Clinic at info@u-dental.ca or 604-423-3839." },
+    ],
+  },
+  "zh-Hant": {
+    updated: "最後更新：2025 年 1 月",
+    sections: [
+      { h: "1. 前言", p: "U-Dental 牙醫診所（以下稱「我們」）致力於保護病患與網站訪客個人資料的隱私與機密性。本隱私權政策說明我們如何蒐集、使用、揭露與保護您的個人資料。" },
+      { h: "2. 我們蒐集的資料", p: "我們可能蒐集的個人資料包含：姓名、聯絡方式、出生日期、牙科與健康病史、保險資訊，以及您於預約、填寫表單或與我們聯繫時主動提供的其他資訊。" },
+      { h: "3. 資料的使用方式", p: "您的個人資料將用於提供牙科照護、發送預約提醒、處理保險申請、遵循相關法規，以及改善我們的服務。我們不會出售您的個人資料。" },
+      { h: "4. 資料揭露", p: "個人資料可能於必要時揭露給參與您治療的牙科專科醫師、經您同意的保險公司，或依法律要求的對象。所有第三方皆須依適用之隱私法規維護保密義務。" },
+      { h: "5. 資料保護措施", p: "我們採取實體、組織與技術上的保護措施，防止個人資料遭遺失、盜竊、未授權存取、揭露、複製、使用或修改。" },
+      { h: "6. 您的權利", p: "您有權存取並要求更正 U-Dental 所持有的您個人資料。如需提出申請，請與我們聯繫。" },
+      { h: "7. 網站與 Cookies", p: "本網站可能使用 Cookies 與分析工具，以了解訪客的使用情況並改善使用體驗。您可於瀏覽器設定中停用 Cookies。" },
+      { h: "8. 聯繫我們", p: "如對本隱私權政策有任何疑問，請來信 info@u-dental.ca 或致電 604-423-3839 與 U-Dental 聯繫。" },
+    ],
+  },
+};
+
+export const TERMS_CONTENT = {
+  en: {
+    updated: "Last updated: January 2025",
+    sections: [
+      { h: "1. Acceptance of Terms", p: "By accessing and using the U-Dental Clinic website, you accept and agree to be bound by these Terms of Service and our Privacy Policy." },
+      { h: "2. Use of Website", p: "The content on this website is provided for general information about our dental services. It does not constitute medical or dental advice. Please consult with one of our dentists for diagnosis or treatment recommendations." },
+      { h: "3. Intellectual Property", p: "All content on this website, including text, images, logos, and graphics, is the property of U-Dental Clinic or its licensors and is protected by copyright and trademark laws. You may not reproduce, distribute, or modify any content without prior written consent." },
+      { h: "4. Appointments & Communications", p: "Appointment requests submitted through this website are not confirmed until our team contacts you directly. Please do not include sensitive medical information in online forms or unsecured email." },
+      { h: "5. Third-Party Links", p: "Our website may contain links to third-party websites. U-Dental Clinic is not responsible for the content or practices of those external sites." },
+      { h: '6. Disclaimer of Warranties', p: 'This website is provided "as is" without warranties of any kind, either express or implied. We do not guarantee that the website will be uninterrupted, error-free, or free of viruses.' },
+      { h: "7. Limitation of Liability", p: "U-Dental Clinic shall not be liable for any damages arising from the use of, or the inability to use, this website." },
+      { h: "8. Changes to Terms", p: "We reserve the right to update or modify these Terms of Service at any time without prior notice. Continued use of the website constitutes acceptance of any changes." },
+      { h: "9. Contact", p: "For questions regarding these terms, please contact U-Dental Clinic at info@u-dental.ca or 604-423-3839." },
+    ],
+  },
+  "zh-Hant": {
+    updated: "最後更新：2025 年 1 月",
+    sections: [
+      { h: "1. 條款同意", p: "當您使用 U-Dental 牙醫診所網站時，即表示您同意並遵守本服務條款及隱私權政策。" },
+      { h: "2. 網站使用", p: "本網站內容僅提供 U-Dental 牙科服務之一般資訊，並不構成醫療或牙科診斷建議。實際治療建議請於診所與醫師諮詢。" },
+      { h: "3. 智慧財產權", p: "本網站所有內容（包含文字、圖片、商標與圖形）皆為 U-Dental 或授權方所有，受著作權與商標法保護。未經事先書面同意，不得重製、散布或修改任何內容。" },
+      { h: "4. 預約與聯繫", p: "透過本網站送出的預約申請，須經本院團隊主動聯繫後始為確認。請勿於線上表單或未加密電郵中提供敏感醫療資訊。" },
+      { h: "5. 第三方連結", p: "本網站可能包含第三方網站連結。U-Dental 不對外部網站之內容或作為負責。" },
+      { h: "6. 免責聲明", p: "本網站以「現狀」提供，不附帶任何明示或默示保證。我們不保證本網站不中斷、不出現錯誤或不含病毒。" },
+      { h: "7. 責任限制", p: "U-Dental 對於因使用或無法使用本網站所引起之任何損害，概不負責。" },
+      { h: "8. 條款變更", p: "我們保留隨時修改本服務條款之權利，恕不另行通知。您持續使用本網站即視為同意任何變更。" },
+      { h: "9. 聯繫我們", p: "如對本條款有任何疑問，請來信 info@u-dental.ca 或致電 604-423-3839 與 U-Dental 聯繫。" },
+    ],
+  },
 };
 
 export function t(key: keyof typeof UI | string, locale: Locale): string {
