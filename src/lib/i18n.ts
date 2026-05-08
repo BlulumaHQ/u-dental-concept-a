@@ -61,12 +61,6 @@ export function getInsights(locale: Locale): Insight[] {
   return locale === "zh-Hant" ? INSIGHTS_ZH : INSIGHTS;
 }
 
-// ============= LocaleLink =============
-type LocaleLinkProps = Omit<LinkProps, "to"> & {
-  to: string;
-  params?: Record<string, string>;
-  className?: string;
-  activeProps?: { className?: string };
 // ============= UI Dictionary =============
 type Dict = Record<string, { en: string; zh: string }>;
 
