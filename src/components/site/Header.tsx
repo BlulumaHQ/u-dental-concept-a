@@ -37,12 +37,21 @@ export function Header() {
       )}
     >
       <div className="relative flex min-h-[80px] items-stretch lg:min-h-[96px]">
-        <div className="container-x flex items-stretch gap-6 pr-5 min-[1180px]:pr-[196px]">
+        <div className="container-x flex items-stretch gap-6 pr-5">
           <Link to="/" aria-label="U-Dental Clinic home" className="flex shrink-0 items-center">
             <Logo variant="dark" />
           </Link>
 
-          <nav className="hidden min-w-0 flex-1 items-center justify-end gap-0.5 pl-10 min-[1180px]:flex min-[1280px]:pl-16">
+          <button
+            aria-label="Open menu"
+            className="ml-auto self-center p-2 text-foreground min-[1180px]:hidden"
+            onClick={() => setOpen(true)}
+          >
+            <Menu className="h-6 w-6" />
+          </button>
+        </div>
+
+          <nav className="absolute inset-y-0 right-[184px] hidden items-center justify-end gap-0 min-[1180px]:flex">
             {NAV.map((item) =>
               item.hasMenu ? (
                 <div
@@ -53,10 +62,10 @@ export function Header() {
                 >
                   <Link
                     to={item.to}
-                    className="flex items-center gap-1 rounded-md px-2 py-2 text-[13px] font-semibold text-foreground transition-colors hover:text-primary min-[1280px]:px-3 min-[1320px]:text-sm"
+                    className="flex items-center gap-1 rounded-md px-1.5 py-2 text-xs font-semibold text-foreground transition-colors hover:text-primary min-[1360px]:px-3 min-[1360px]:text-sm"
                     activeProps={{
                       className:
-                        "flex items-center gap-1 rounded-md px-2 py-2 text-[13px] font-semibold text-primary min-[1280px]:px-3 min-[1320px]:text-sm",
+                        "flex items-center gap-1 rounded-md px-1.5 py-2 text-xs font-semibold text-primary min-[1360px]:px-3 min-[1360px]:text-sm",
                     }}
                   >
                     {item.label}
@@ -95,10 +104,10 @@ export function Header() {
                 <Link
                   key={item.to}
                   to={item.to}
-                  className="whitespace-nowrap rounded-md px-2 py-2 text-[13px] font-semibold text-foreground transition-colors hover:text-primary min-[1280px]:px-3 min-[1320px]:text-sm"
+                  className="whitespace-nowrap rounded-md px-1.5 py-2 text-xs font-semibold text-foreground transition-colors hover:text-primary min-[1360px]:px-3 min-[1360px]:text-sm"
                   activeProps={{
                     className:
-                      "whitespace-nowrap rounded-md px-2 py-2 text-[13px] font-semibold text-primary min-[1280px]:px-3 min-[1320px]:text-sm",
+                      "whitespace-nowrap rounded-md px-1.5 py-2 text-xs font-semibold text-primary min-[1360px]:px-3 min-[1360px]:text-sm",
                   }}
                   activeOptions={{ exact: item.to === "/" }}
                 >
@@ -107,7 +116,7 @@ export function Header() {
               ),
             )}
 
-            <div className="flex shrink-0 items-center gap-1.5 px-2 text-[13px] font-semibold whitespace-nowrap min-[1280px]:px-3 min-[1320px]:text-sm">
+            <div className="flex shrink-0 items-center gap-1.5 px-1.5 text-xs font-semibold whitespace-nowrap min-[1360px]:px-3 min-[1360px]:text-sm">
               <button type="button" aria-current="true" className="text-primary">
                 EN
               </button>
@@ -123,21 +132,12 @@ export function Header() {
 
             <a
               href={SITE.phoneHref}
-              className="flex shrink-0 items-center gap-2 whitespace-nowrap px-2 text-[13px] font-semibold text-foreground transition-colors hover:text-primary min-[1280px]:px-3 min-[1320px]:text-sm"
+              className="flex shrink-0 items-center gap-2 whitespace-nowrap px-2.5 text-xs font-semibold text-foreground transition-colors hover:text-primary min-[1360px]:px-3 min-[1360px]:text-sm"
             >
               <Phone className="h-4 w-4 shrink-0" />
               <span>{SITE.phone}</span>
             </a>
           </nav>
-
-          <button
-            aria-label="Open menu"
-            className="ml-auto self-center p-2 text-foreground min-[1180px]:hidden"
-            onClick={() => setOpen(true)}
-          >
-            <Menu className="h-6 w-6" />
-          </button>
-        </div>
 
         <Link
           to="/contact-us"
