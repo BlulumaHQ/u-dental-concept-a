@@ -10,7 +10,7 @@ export const Route = createFileRoute("/technology")({
       { name: "description", content: "3D Cone Beam CT, X-Guide™ real-time guided implant surgery, Medit i500 scanner, Leica microscope, and an exclusive surgical room at U-Dental Clinic." },
       { property: "og:title", content: "Technology & Equipment | U-Dental Clinic" },
       { property: "og:description", content: "Modern digital dentistry, 3D-guided surgery, and an exclusive surgical room in Kitsilano Vancouver." },
-      { property: "og:image", content: "https://u-dental.ca/wp-content/uploads/2025/05/fig0.jpg" },
+      { property: "og:image", content: "/equipment/clinic-4.jpg" },
     ],
   }),
   component: TechPage,
