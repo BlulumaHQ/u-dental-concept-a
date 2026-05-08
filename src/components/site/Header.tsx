@@ -36,7 +36,7 @@ export function Header() {
           : "bg-background/60 backdrop-blur",
       )}
     >
-      <div className="relative flex min-h-[80px] items-stretch lg:min-h-[96px]">
+      <div className="relative flex min-h-[80px] items-stretch overflow-hidden lg:min-h-[96px]">
         <div className="container-x flex items-stretch gap-6 pr-5">
           <Link to="/" aria-label="U-Dental Clinic home" className="flex shrink-0 items-center">
             <Logo variant="dark" />
@@ -51,7 +51,7 @@ export function Header() {
           </button>
         </div>
 
-        <nav className="absolute inset-y-0 right-[184px] hidden items-center justify-end gap-0 min-[1180px]:flex">
+        <nav className="absolute inset-y-0 right-[184px] hidden items-center justify-end gap-0 min-[1180px]:flex min-[1180px]:max-w-[760px] min-[1360px]:max-w-none">
           {NAV.map((item) =>
             item.hasMenu ? (
               <div
