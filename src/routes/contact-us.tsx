@@ -16,7 +16,7 @@ export const Route = createFileRoute("/contact-us")({
   component: ContactPage,
 });
 
-function ContactPage() {
+export function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   return (
     <>

@@ -16,7 +16,7 @@ export const Route = createFileRoute("/insights")({
   component: InsightsPage,
 });
 
-function InsightsPage() {
+export function InsightsPage() {
   return (
     <>
       <PageHero

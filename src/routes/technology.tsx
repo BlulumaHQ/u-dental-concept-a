@@ -44,7 +44,7 @@ const equipment = [
   "BOTOX® clinical treatment",
 ];
 
-function TechPage() {
+export function TechPage() {
   return (
     <>
       <PageHero

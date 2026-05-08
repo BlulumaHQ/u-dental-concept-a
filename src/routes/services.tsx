@@ -16,7 +16,7 @@ export const Route = createFileRoute("/services")({
   component: ServicesPage,
 });
 
-function ServicesPage() {
+export function ServicesPage() {
   const cats = Object.keys(SERVICE_CATEGORIES) as Array<keyof typeof SERVICE_CATEGORIES>;
   return (
     <>
