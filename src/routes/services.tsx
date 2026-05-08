@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SERVICES, SERVICE_CATEGORIES, HERO_IMAGES } from "@/lib/site";
+import { HERO_IMAGES } from "@/lib/site";
+import { useLocale, getServices, getServiceCategories, t } from "@/lib/i18n";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import { PageHero } from "@/components/site/PageHero";
 
@@ -17,25 +18,28 @@ export const Route = createFileRoute("/services")({
 });
 
 export function ServicesPage() {
-  const cats = Object.keys(SERVICE_CATEGORIES) as Array<keyof typeof SERVICE_CATEGORIES>;
+  const locale = useLocale();
+  const services = getServices(locale);
+  const categories = getServiceCategories(locale);
+  const cats = Object.keys(categories) as Array<keyof typeof categories>;
   return (
     <>
       <PageHero
-        eyebrow="Services"
-        title="Complete dental care, in one premium clinic."
-        subtitle="From routine cleanings to advanced implant and orthodontic treatments — explore the services available at U-Dental Clinic."
+        eyebrow={t("page.services.eyebrow", locale)}
+        title={t("page.services.title", locale)}
+        subtitle={t("page.services.sub", locale)}
         image={HERO_IMAGES[1]}
       />
 
       {cats.map((cat, idx) => (
-        <section key={cat} className={idx % 2 ? "section-y bg-cream" : "section-y"}>
+        <section key={cat as string} className={idx % 2 ? "section-y bg-cream" : "section-y"}>
           <div className="container-x">
             <div className="mb-10">
-              <p className="text-primary font-bold text-sm uppercase tracking-wider">Category</p>
-              <h2 className="mt-2 text-3xl lg:text-4xl font-extrabold">{SERVICE_CATEGORIES[cat]}</h2>
+              <p className="text-primary font-bold text-sm uppercase tracking-wider">{t("categoryLabel", locale)}</p>
+              <h2 className="mt-2 text-3xl lg:text-4xl font-extrabold">{categories[cat]}</h2>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {SERVICES.filter((s) => s.category === cat).map((s) => (
+              {services.filter((s) => s.category === cat).map((s) => (
                 <ServiceCard key={s.slug} service={s} variant="horizontal" />
               ))}
             </div>
