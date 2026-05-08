@@ -3,7 +3,7 @@ import {
   ArrowRight, Phone, Calendar, ShieldCheck, Languages, Stethoscope,
   Microscope, Cpu, Building2, Heart, MapPin, Clock, Mail, CheckCircle2,
 } from "lucide-react";
-import { SERVICES, HIGH_VALUE_SLUGS, SITE, HERO_IMAGES, DOCTORS } from "@/lib/site";
+import { SERVICES, SITE, HERO_IMAGES, DOCTORS, FEATURED_TREATMENTS } from "@/lib/site";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { ServiceCard } from "@/components/site/ServiceCard";
 
