@@ -107,7 +107,7 @@ export function Header() {
               ),
             )}
 
-            <div className="flex shrink-0 items-center gap-1.5 px-3 text-sm font-semibold whitespace-nowrap">
+            <div className="flex shrink-0 items-center gap-1.5 px-2 text-[13px] font-semibold whitespace-nowrap min-[1280px]:px-3 min-[1320px]:text-sm">
               <button type="button" aria-current="true" className="text-primary">
                 EN
               </button>
@@ -123,7 +123,7 @@ export function Header() {
 
             <a
               href={SITE.phoneHref}
-              className="flex shrink-0 items-center gap-2 whitespace-nowrap px-3 text-sm font-semibold text-foreground transition-colors hover:text-primary min-[1280px]:px-4"
+              className="flex shrink-0 items-center gap-2 whitespace-nowrap px-2 text-[13px] font-semibold text-foreground transition-colors hover:text-primary min-[1280px]:px-3 min-[1320px]:text-sm"
             >
               <Phone className="h-4 w-4 shrink-0" />
               <span>{SITE.phone}</span>
