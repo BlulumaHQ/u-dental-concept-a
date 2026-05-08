@@ -1,18 +1,33 @@
 import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
 
+const SESSION_KEY = "udental_loader_shown";
+
 export function PageLoader() {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(() => {
+    if (typeof window === "undefined") return true;
+    try {
+      return !sessionStorage.getItem(SESSION_KEY);
+    } catch {
+      return true;
+    }
+  });
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
+    if (!visible) return;
+    try {
+      sessionStorage.setItem(SESSION_KEY, "1");
+    } catch {
+      /* ignore */
+    }
     const fadeT = setTimeout(() => setFading(true), 2200);
     const hideT = setTimeout(() => setVisible(false), 2500);
     return () => {
       clearTimeout(fadeT);
       clearTimeout(hideT);
     };
-  }, []);
+  }, [visible]);
 
   if (!visible) return null;
 
