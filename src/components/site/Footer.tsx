@@ -73,13 +73,20 @@ export function Footer() {
         <div>
           <Logo variant="light" className="h-10 mb-4" />
           <p className="text-sm opacity-75 leading-relaxed">{t("foot.intro", locale)}</p>
-          <ul className="mt-5 space-y-2 text-sm opacity-80">
-            <li className="flex gap-2"><MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary" /> {site.address}</li>
-            <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 shrink-0 text-primary" /> <a href={site.phoneHref} className="hover:text-primary">{site.phone}</a></li>
-            <li className="flex gap-2"><Clock className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
-              <div>{site.hours.map((h) => (<div key={h.d}>{h.d}: {h.t}</div>))}</div>
-            </li>
-          </ul>
+          <div className="mt-5 flex items-center gap-3">
+            {SOCIAL_LINKS.map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-charcoal-foreground/80 transition-colors hover:border-primary hover:text-primary"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
         </div>
 
         <div>
