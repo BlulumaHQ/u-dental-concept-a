@@ -52,7 +52,7 @@ function TechPage() {
         eyebrow="Technology & Equipment"
         title="Digital dentistry, designed for precision."
         subtitle="U-Dental invests in the same technology used by leading dental medical centers — from 3D imaging to real-time guided implant surgery and microscopic dentistry."
-        image="https://u-dental.ca/wp-content/uploads/2025/05/fig0.jpg"
+        image="/equipment/clinic-4.jpg"
       />
 
       <section className="section-y">
