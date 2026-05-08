@@ -1,7 +1,20 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { MapPin, Phone, Mail, Clock, ArrowRight, Calendar } from "lucide-react";
+import { Phone, Mail, ArrowRight, Calendar, Facebook, MapPin } from "lucide-react";
 import { Logo } from "./Logo";
 import { detectLocale, getSite, localePath, t } from "@/lib/i18n";
+
+const SOCIAL_LINKS = [
+  {
+    href: "https://www.facebook.com/profile.php?id=100057379632650",
+    label: "Facebook",
+    Icon: Facebook,
+  },
+  {
+    href: "https://www.google.com/maps/place/U-Dental/@49.2642655,-123.1707699,15z/data=!4m6!3m5!1s0x5486735fc5f25775:0xae72798eeb46d504!8m2!3d49.2642655!4d-123.1707699!16s%2Fg%2F11frsrmkq_",
+    label: "Google Maps",
+    Icon: MapPin,
+  },
+];
 
 const FEATURED_EN = [
   { slug: "dental-implants", name: "Dental Implants" },
@@ -60,13 +73,20 @@ export function Footer() {
         <div>
           <Logo variant="light" className="h-10 mb-4" />
           <p className="text-sm opacity-75 leading-relaxed">{t("foot.intro", locale)}</p>
-          <ul className="mt-5 space-y-2 text-sm opacity-80">
-            <li className="flex gap-2"><MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary" /> {site.address}</li>
-            <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 shrink-0 text-primary" /> <a href={site.phoneHref} className="hover:text-primary">{site.phone}</a></li>
-            <li className="flex gap-2"><Clock className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
-              <div>{site.hours.map((h) => (<div key={h.d}>{h.d}: {h.t}</div>))}</div>
-            </li>
-          </ul>
+          <div className="mt-5 flex items-center gap-3">
+            {SOCIAL_LINKS.map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-charcoal-foreground/80 transition-colors hover:border-primary hover:text-primary"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
         </div>
 
         <div>
@@ -93,8 +113,6 @@ export function Footer() {
             <li><Link to={lp("/faq")} className="hover:text-primary">{t("nav.faq", locale)}</Link></li>
             <li><Link to={lp("/insights")} className="hover:text-primary">{t("nav.insights", locale)}</Link></li>
             <li><Link to={lp("/contact-us")} className="hover:text-primary">{t("nav.contact", locale)}</Link></li>
-            <li><Link to={lp("/privacy-policy")} className="hover:text-primary">{t("foot.privacy", locale)}</Link></li>
-            <li><Link to={lp("/term-of-service")} className="hover:text-primary">{t("foot.terms", locale)}</Link></li>
           </ul>
         </div>
 
@@ -112,8 +130,12 @@ export function Footer() {
           </Link>
         </div>
       </div>
-      <div className="container-x mt-14 pt-6 border-t border-white/10 text-xs opacity-70 hidden md:flex flex-col sm:flex-row gap-3 sm:gap-5 items-center justify-center text-center">
+      <div className="container-x mt-14 pt-6 border-t border-white/10 text-xs opacity-70 hidden md:flex flex-col sm:flex-row flex-wrap gap-x-5 gap-y-2 items-center justify-center text-center">
         <span>© {year} {t("foot.copyright", locale)}</span>
+        <span className="hidden sm:inline opacity-40">|</span>
+        <Link to={lp("/privacy-policy")} className="hover:text-primary">{t("foot.privacy", locale)}</Link>
+        <span className="hidden sm:inline opacity-40">|</span>
+        <Link to={lp("/term-of-service")} className="hover:text-primary">{t("foot.terms", locale)}</Link>
         <span className="hidden sm:inline opacity-40">|</span>
         <span>{t("foot.webby", locale)}{" "}
           <a href="https://bluluma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Bluluma</a>

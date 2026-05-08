@@ -67,7 +67,8 @@ export function Header() {
           </div>
         </div>
 
-        <nav className="absolute inset-y-0 left-[330px] right-[184px] hidden items-center justify-end gap-0 overflow-hidden min-[1180px]:flex min-[1360px]:left-[360px]">
+        <nav className="absolute inset-y-0 left-[260px] right-[184px] hidden items-center justify-end gap-0 overflow-hidden min-[1180px]:flex min-[1360px]:left-[290px]">
+          <div className="mr-auto flex items-center gap-0">
           {NAV.map((item) =>
             item.hasMenu ? (
               <div
@@ -128,6 +129,8 @@ export function Header() {
               </Link>
             ),
           )}
+          </div>
+
 
           <div className="flex shrink-0 items-center gap-1.5 px-1.5 text-xs font-semibold whitespace-nowrap min-[1360px]:px-3 min-[1360px]:text-sm">
             <Link to={enHref as string} className={locale === "en" ? "text-primary" : "text-foreground hover:text-primary transition-colors"}>EN</Link>
