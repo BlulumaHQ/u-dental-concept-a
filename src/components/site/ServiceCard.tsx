@@ -76,5 +76,3 @@ export function ServiceCard({ service, variant = "horizontal" }: { service: Serv
   );
 }
 
-// Activity, HeartPulse imports kept unused-friendly via re-export to avoid TS pruning warnings in some setups.
-export const _icons = { Activity, HeartPulse };
