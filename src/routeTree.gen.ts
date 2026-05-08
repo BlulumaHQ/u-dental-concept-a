@@ -14,10 +14,13 @@ import { Route as TechnologyRouteImport } from './routes/technology'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PrivacyPolicy2RouteImport } from './routes/privacy-policy-2'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as InsightsRouteImport } from './routes/insights'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as AboutUsRouteImport } from './routes/about-us'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServiceSlugRouteImport } from './routes/service.$slug'
+import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
 import { Route as DoctorSlugRouteImport } from './routes/doctor.$slug'
 
 const TermOfServiceRoute = TermOfServiceRouteImport.update({
@@ -45,6 +48,16 @@ const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactUsRoute = ContactUsRouteImport.update({
   id: '/contact-us',
   path: '/contact-us',
@@ -65,6 +78,11 @@ const ServiceSlugRoute = ServiceSlugRouteImport.update({
   path: '/service/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InsightsSlugRoute = InsightsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => InsightsRoute,
+} as any)
 const DoctorSlugRoute = DoctorSlugRouteImport.update({
   id: '/doctor/$slug',
   path: '/doctor/$slug',
@@ -75,24 +93,30 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/contact-us': typeof ContactUsRoute
+  '/faq': typeof FaqRoute
+  '/insights': typeof InsightsRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/privacy-policy-2': typeof PrivacyPolicy2Route
   '/services': typeof ServicesRoute
   '/technology': typeof TechnologyRoute
   '/term-of-service': typeof TermOfServiceRoute
   '/doctor/$slug': typeof DoctorSlugRoute
+  '/insights/$slug': typeof InsightsSlugRoute
   '/service/$slug': typeof ServiceSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/contact-us': typeof ContactUsRoute
+  '/faq': typeof FaqRoute
+  '/insights': typeof InsightsRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/privacy-policy-2': typeof PrivacyPolicy2Route
   '/services': typeof ServicesRoute
   '/technology': typeof TechnologyRoute
   '/term-of-service': typeof TermOfServiceRoute
   '/doctor/$slug': typeof DoctorSlugRoute
+  '/insights/$slug': typeof InsightsSlugRoute
   '/service/$slug': typeof ServiceSlugRoute
 }
 export interface FileRoutesById {
@@ -100,12 +124,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/contact-us': typeof ContactUsRoute
+  '/faq': typeof FaqRoute
+  '/insights': typeof InsightsRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/privacy-policy-2': typeof PrivacyPolicy2Route
   '/services': typeof ServicesRoute
   '/technology': typeof TechnologyRoute
   '/term-of-service': typeof TermOfServiceRoute
   '/doctor/$slug': typeof DoctorSlugRoute
+  '/insights/$slug': typeof InsightsSlugRoute
   '/service/$slug': typeof ServiceSlugRoute
 }
 export interface FileRouteTypes {
@@ -114,36 +141,45 @@ export interface FileRouteTypes {
     | '/'
     | '/about-us'
     | '/contact-us'
+    | '/faq'
+    | '/insights'
     | '/privacy-policy'
     | '/privacy-policy-2'
     | '/services'
     | '/technology'
     | '/term-of-service'
     | '/doctor/$slug'
+    | '/insights/$slug'
     | '/service/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about-us'
     | '/contact-us'
+    | '/faq'
+    | '/insights'
     | '/privacy-policy'
     | '/privacy-policy-2'
     | '/services'
     | '/technology'
     | '/term-of-service'
     | '/doctor/$slug'
+    | '/insights/$slug'
     | '/service/$slug'
   id:
     | '__root__'
     | '/'
     | '/about-us'
     | '/contact-us'
+    | '/faq'
+    | '/insights'
     | '/privacy-policy'
     | '/privacy-policy-2'
     | '/services'
     | '/technology'
     | '/term-of-service'
     | '/doctor/$slug'
+    | '/insights/$slug'
     | '/service/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -151,6 +187,8 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutUsRoute: typeof AboutUsRoute
   ContactUsRoute: typeof ContactUsRoute
+  FaqRoute: typeof FaqRoute
+  InsightsRoute: typeof InsightsRouteWithChildren
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   PrivacyPolicy2Route: typeof PrivacyPolicy2Route
   ServicesRoute: typeof ServicesRoute
@@ -197,6 +235,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact-us': {
       id: '/contact-us'
       path: '/contact-us'
@@ -225,6 +277,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiceSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/insights/$slug': {
+      id: '/insights/$slug'
+      path: '/$slug'
+      fullPath: '/insights/$slug'
+      preLoaderRoute: typeof InsightsSlugRouteImport
+      parentRoute: typeof InsightsRoute
+    }
     '/doctor/$slug': {
       id: '/doctor/$slug'
       path: '/doctor/$slug'
@@ -235,10 +294,24 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface InsightsRouteChildren {
+  InsightsSlugRoute: typeof InsightsSlugRoute
+}
+
+const InsightsRouteChildren: InsightsRouteChildren = {
+  InsightsSlugRoute: InsightsSlugRoute,
+}
+
+const InsightsRouteWithChildren = InsightsRoute._addFileChildren(
+  InsightsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutUsRoute: AboutUsRoute,
   ContactUsRoute: ContactUsRoute,
+  FaqRoute: FaqRoute,
+  InsightsRoute: InsightsRouteWithChildren,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   PrivacyPolicy2Route: PrivacyPolicy2Route,
   ServicesRoute: ServicesRoute,
@@ -250,3 +323,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
