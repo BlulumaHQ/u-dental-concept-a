@@ -64,6 +64,7 @@ export const SERVICES: ServiceItem[] = [
     name: "Orthodontics",
     short: "Alignment and bite improvement using modern orthodontic technology.",
     category: "cosmetic",
+    image: "/services/orthodontics.png",
     intro: "Orthodontic treatment focuses on improving the alignment of teeth and the relationship of the upper and lower jaws.",
     benefits: ["Helps improve bite and alignment", "Supports easier cleaning", "Custom treatment planning"],
     when: ["Crowded teeth", "Spacing issues", "Bite irregularities"],
