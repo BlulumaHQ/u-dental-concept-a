@@ -34,14 +34,13 @@ export function Header() {
         scrolled ? "bg-background/90 backdrop-blur-lg border-b border-border shadow-sm" : "bg-background/60 backdrop-blur"
       )}
     >
-      <div className="flex items-stretch justify-between py-2 lg:py-3 min-h-[88px] lg:min-h-[104px]">
-        <div className="container-x flex items-center" style={{ paddingRight: 0 }}>
-          <Link to="/" aria-label="U-Dental Clinic home" className="flex items-center">
+      <div className="relative flex min-h-[88px] items-stretch lg:min-h-[104px]">
+        <div className="container-x flex items-stretch gap-5 pr-5 min-[1180px]:pr-[196px]">
+          <Link to="/" aria-label="U-Dental Clinic home" className="flex shrink-0 items-center">
             <Logo variant="dark" />
           </Link>
-        </div>
 
-        <nav className="hidden lg:flex items-center gap-1 ml-auto">
+          <nav className="ml-auto hidden min-w-0 items-center justify-end gap-0.5 min-[1180px]:flex">
           {NAV.map((item) =>
             item.hasMenu ? (
               <div
@@ -52,8 +51,8 @@ export function Header() {
               >
                 <Link
                   to={item.to}
-                  className="px-4 py-2 rounded-md text-sm font-semibold text-foreground hover:text-primary transition-colors flex items-center gap-1"
-                  activeProps={{ className: "px-4 py-2 rounded-md text-sm font-semibold text-primary flex items-center gap-1" }}
+                  className="flex items-center gap-1 rounded-md px-2.5 py-2 text-sm font-semibold text-foreground transition-colors hover:text-primary min-[1280px]:px-3.5"
+                  activeProps={{ className: "flex items-center gap-1 rounded-md px-2.5 py-2 text-sm font-semibold text-primary min-[1280px]:px-3.5" }}
                 >
                   {item.label}
                   <ChevronDown className="h-3.5 w-3.5" />
@@ -89,8 +88,8 @@ export function Header() {
               <Link
                 key={item.to}
                 to={item.to}
-                className="px-4 py-2 rounded-md text-sm font-semibold text-foreground hover:text-primary transition-colors"
-                activeProps={{ className: "px-4 py-2 rounded-md text-sm font-semibold text-primary" }}
+                className="whitespace-nowrap rounded-md px-2.5 py-2 text-sm font-semibold text-foreground transition-colors hover:text-primary min-[1280px]:px-3.5"
+                activeProps={{ className: "whitespace-nowrap rounded-md px-2.5 py-2 text-sm font-semibold text-primary min-[1280px]:px-3.5" }}
                 activeOptions={{ exact: item.to === "/" }}
               >
                 {item.label}
@@ -98,7 +97,7 @@ export function Header() {
             )
           )}
 
-          <div className="flex items-center gap-1.5 px-3 text-sm font-semibold">
+          <div className="flex shrink-0 items-center gap-1.5 px-3 text-sm font-semibold whitespace-nowrap">
             <button
               type="button"
               aria-current="true"
@@ -118,26 +117,29 @@ export function Header() {
 
           <a
             href={SITE.phoneHref}
-            className="text-sm font-semibold text-foreground hover:text-primary flex items-center gap-2 px-4"
+            className="flex shrink-0 items-center gap-2 whitespace-nowrap px-3 text-sm font-semibold text-foreground transition-colors hover:text-primary min-[1280px]:px-4"
           >
-            <Phone className="h-4 w-4" /> {SITE.phone}
+            <Phone className="h-4 w-4 shrink-0" />
+            <span>{SITE.phone}</span>
           </a>
-        </nav>
+          </nav>
+
+          <button
+            aria-label="Open menu"
+            className="ml-auto self-center p-2 text-foreground min-[1180px]:hidden"
+            onClick={() => setOpen(true)}
+          >
+            <Menu className="h-6 w-6" />
+          </button>
+        </div>
 
         <Link
           to="/contact-us"
-          className="hidden lg:flex items-center gap-2 bg-primary text-primary-foreground px-8 font-bold text-sm hover:bg-charcoal transition-colors self-stretch -my-2 lg:-my-3"
+          className="absolute inset-y-0 right-0 hidden w-[184px] items-center justify-center gap-2 bg-primary px-5 text-sm font-bold text-primary-foreground transition-colors hover:bg-charcoal min-[1180px]:flex"
         >
-          <Calendar className="h-4 w-4" /> Book Appointment
+          <Calendar className="h-4 w-4 shrink-0" />
+          <span className="whitespace-nowrap">Book Appointment</span>
         </Link>
-
-        <button
-          aria-label="Open menu"
-          className="lg:hidden p-2 mr-4 self-center text-foreground"
-          onClick={() => setOpen(true)}
-        >
-          <Menu className="h-6 w-6" />
-        </button>
       </div>
 
       {open && (
