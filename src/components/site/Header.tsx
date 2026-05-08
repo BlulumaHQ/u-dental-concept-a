@@ -97,10 +97,37 @@ export function Header() {
           )}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3">
-          <a href={SITE.phoneHref} className="text-sm font-semibold text-foreground hover:text-primary flex items-center gap-2">
+        <div className="hidden lg:flex items-stretch gap-0 self-stretch -my-2 lg:-my-3">
+          <a
+            href={SITE.phoneHref}
+            className="text-sm font-semibold text-foreground hover:text-primary flex items-center gap-2 pr-5"
+          >
             <Phone className="h-4 w-4" /> {SITE.phone}
           </a>
+          <Link
+            to="/contact-us"
+            className="flex items-center gap-2 bg-primary text-primary-foreground px-6 font-bold text-sm hover:bg-charcoal transition-colors"
+          >
+            <Calendar className="h-4 w-4" /> Book Appointment
+          </Link>
+          <div className="flex items-center bg-charcoal text-charcoal-foreground px-4 gap-2 text-xs font-bold uppercase tracking-wider">
+            <Globe className="h-3.5 w-3.5 text-primary" />
+            <button
+              type="button"
+              aria-current="true"
+              className="text-primary-foreground hover:text-primary transition-colors"
+            >
+              EN
+            </button>
+            <span className="opacity-30">/</span>
+            <button
+              type="button"
+              className="opacity-60 hover:opacity-100 hover:text-primary transition-colors"
+              title="Coming soon"
+            >
+              中文
+            </button>
+          </div>
         </div>
 
         <button
