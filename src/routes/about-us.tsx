@@ -153,20 +153,7 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Section 6 — Team group photo */}
-      <section className="pt-4">
-        <div className="container-x">
-          <figure className="relative rounded-3xl overflow-hidden shadow-elevated">
-            <img src="/about/team-wide.jpg" alt="The U-Dental team" className="w-full h-auto object-cover" />
-            <figcaption className="absolute inset-x-0 bottom-0 p-6 lg:p-10 bg-gradient-to-t from-charcoal/85 to-transparent text-white">
-              <p className="text-primary text-xs font-bold uppercase tracking-[0.25em]">The U-Dental Team</p>
-              <p className="mt-2 text-lg lg:text-2xl font-semibold max-w-3xl">Bilingual dentists, hygienists and support staff — united by a commitment to excellence.</p>
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      {/* Section 7 — Doctors */}
+      {/* Section 6 — Doctors */}
       <section id="team" className="section-y">
         <div className="container-x">
           <div className="max-w-3xl">
@@ -204,6 +191,20 @@ function AboutPage() {
                 </div>
               </Link>
             ))}
+          </div>
+
+          {/* Support team — group photo */}
+          <div className="mt-16 rounded-3xl overflow-hidden bg-charcoal text-white shadow-elevated grid lg:grid-cols-5">
+            <div className="lg:col-span-2 p-8 lg:p-12 flex flex-col justify-center">
+              <p className="text-primary text-xs font-bold uppercase tracking-[0.3em]">Behind Every Smile</p>
+              <h3 className="mt-3 text-3xl lg:text-4xl font-extrabold leading-tight">Our clinical &amp; support team</h3>
+              <p className="mt-5 text-white/80 leading-relaxed">
+                Beyond our seven dentists, U-Dental is supported by a dedicated team of hygienists, dental assistants and front-desk coordinators — bilingual in English and Mandarin, and committed to making every visit comfortable, organized and personal.
+              </p>
+            </div>
+            <div className="lg:col-span-3 min-h-[260px]">
+              <img src="/about/team-wide.jpg" alt="The U-Dental clinical and support team" className="w-full h-full object-cover" />
+            </div>
           </div>
         </div>
       </section>
