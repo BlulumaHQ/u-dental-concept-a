@@ -129,6 +129,8 @@ export function Header() {
               </Link>
             ),
           )}
+          </div>
+
 
           <div className="flex shrink-0 items-center gap-1.5 px-1.5 text-xs font-semibold whitespace-nowrap min-[1360px]:px-3 min-[1360px]:text-sm">
             <Link to={enHref as string} className={locale === "en" ? "text-primary" : "text-foreground hover:text-primary transition-colors"}>EN</Link>
