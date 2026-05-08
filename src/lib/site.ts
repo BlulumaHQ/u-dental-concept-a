@@ -55,6 +55,7 @@ export const SERVICES: ServiceItem[] = [
     name: "Invisalign",
     short: "Clear, removable aligners for discreet teeth straightening.",
     category: "cosmetic",
+    image: "/featured/invisalign.jpg",
     intro: "Invisalign uses a series of clear, custom aligners to gradually move teeth into a more aligned position — a discreet alternative to traditional braces.",
     benefits: ["Clear and removable", "Designed for comfort", "Easier to clean teeth during treatment", "Custom-planned with digital scans"],
     when: ["Crowded or spaced teeth", "Bite concerns", "Patients wanting a discreet option"],
