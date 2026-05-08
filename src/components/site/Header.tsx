@@ -42,13 +42,20 @@ export function Header() {
             <Logo variant="dark" />
           </Link>
 
-          <button
-            aria-label="Open menu"
-            className="ml-auto self-center p-2 text-foreground min-[1180px]:hidden"
-            onClick={() => setOpen(true)}
-          >
-            <Menu className="h-6 w-6" />
-          </button>
+          <div className="ml-auto flex items-center gap-3 self-center min-[1180px]:hidden">
+            <div className="flex items-center gap-1.5 text-sm font-semibold">
+              <button type="button" aria-current="true" className="text-primary">EN</button>
+              <span className="text-muted-foreground">/</span>
+              <button type="button" className="text-foreground hover:text-primary transition-colors" title="Coming soon">中文</button>
+            </div>
+            <button
+              aria-label="Open menu"
+              className="p-2 text-foreground"
+              onClick={() => setOpen(true)}
+            >
+              <Menu className="h-6 w-6" />
+            </button>
+          </div>
         </div>
 
         <nav className="absolute inset-y-0 left-[330px] right-[184px] hidden items-center justify-end gap-0 overflow-hidden min-[1180px]:flex min-[1360px]:left-[360px]">
