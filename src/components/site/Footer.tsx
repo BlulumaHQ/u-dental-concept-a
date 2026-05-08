@@ -52,6 +52,20 @@ export function Footer() {
         <Link to={lp("/contact-us")} className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-bold">
           <Calendar className="h-4 w-4" /> {t("cta.book", locale)}
         </Link>
+        <div className="mt-5 flex items-center gap-3">
+          {SOCIAL_LINKS.map(({ href, label, Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-charcoal-foreground/80 transition-colors hover:border-primary hover:text-primary"
+            >
+              <Icon className="h-4 w-4" />
+            </a>
+          ))}
+        </div>
         <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-xs opacity-80">
           <Link to={lp("/about-us")} className="hover:text-primary">{t("nav.about", locale)}</Link>
           <Link to={lp("/services")} className="hover:text-primary">{t("nav.services", locale)}</Link>
@@ -59,10 +73,13 @@ export function Footer() {
           <Link to={lp("/insights")} className="hover:text-primary">{t("nav.insights", locale)}</Link>
           <Link to={lp("/faq")} className="hover:text-primary">{t("nav.faq", locale)}</Link>
           <Link to={lp("/contact-us")} className="hover:text-primary">{t("nav.contact", locale)}</Link>
-          <Link to={lp("/privacy-policy")} className="hover:text-primary">{t("foot.privacyShort", locale)}</Link>
-          <Link to={lp("/term-of-service")} className="hover:text-primary">{t("foot.termsShort", locale)}</Link>
         </div>
-        <div className="mt-6 pt-4 border-t border-white/10 text-[11px] opacity-70 flex flex-col gap-1">
+        <div className="mt-6 pt-4 border-t border-white/10 text-[11px] opacity-70 flex flex-col gap-2 items-start">
+          <div className="flex flex-wrap gap-x-3 gap-y-1">
+            <Link to={lp("/privacy-policy")} className="hover:text-primary">{t("foot.privacy", locale)}</Link>
+            <span className="opacity-40">|</span>
+            <Link to={lp("/term-of-service")} className="hover:text-primary">{t("foot.terms", locale)}</Link>
+          </div>
           <span>© {year} {t("foot.copyright", locale)}</span>
           <span>{t("foot.webby", locale)} <a href="https://bluluma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Bluluma</a></span>
         </div>
