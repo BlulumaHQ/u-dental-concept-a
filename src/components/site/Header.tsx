@@ -2,11 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { SERVICES, SERVICE_CATEGORIES, SITE } from "@/lib/site";
+import { Logo } from "./Logo";
 import { cn } from "@/lib/utils";
 
 const NAV = [
   { to: "/", label: "Home" },
   { to: "/about-us", label: "About" },
+  { to: "/about-us", label: "Our Team", hash: "team" },
   { to: "/services", label: "Services", hasMenu: true },
   { to: "/technology", label: "Technology" },
   { to: "/contact-us", label: "Contact" },
@@ -32,13 +34,8 @@ export function Header() {
       )}
     >
       <div className="container-x flex items-center justify-between h-[88px]">
-        <Link to="/" className="flex items-center gap-3" aria-label="U-Dental Clinic home">
-          <img
-            src="https://u-dental.ca/wp-content/uploads/2020/10/logo-udental.svg"
-            alt="U-Dental Clinic"
-            className="h-[75px] w-auto"
-            loading="eager"
-          />
+        <Link to="/" aria-label="U-Dental Clinic home">
+          <Logo variant="dark" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
@@ -123,7 +120,7 @@ export function Header() {
       {open && (
         <div className="lg:hidden fixed inset-0 z-50 bg-background overflow-y-auto">
           <div className="container-x flex items-center justify-between h-[88px]">
-            <img src="https://u-dental.ca/wp-content/uploads/2020/10/logo-udental.svg" alt="U-Dental" className="h-[60px]" />
+            <Logo variant="dark" />
             <button onClick={() => setOpen(false)} aria-label="Close menu" className="p-2 -mr-2">
               <X className="h-6 w-6" />
             </button>
