@@ -44,7 +44,7 @@ export const SERVICES: ServiceItem[] = [
     name: "All-on-4",
     short: "Full-arch tooth replacement supported by four strategically placed implants.",
     category: "replacement",
-    image: "/featured/all-on-4.jpg",
+    image: "/services/all-on-4.png",
     intro: "All-on-4 is a full-arch restoration concept that replaces a full set of upper or lower teeth using four implants. It can offer a stable, fixed alternative to traditional dentures.",
     benefits: ["Fixed full-arch restoration", "Designed to support chewing function", "May reduce the need for bone grafting", "Aesthetic, natural-looking result"],
     when: ["Multiple missing teeth in an arch", "Currently wearing loose dentures", "Looking for a fixed long-term solution"],
