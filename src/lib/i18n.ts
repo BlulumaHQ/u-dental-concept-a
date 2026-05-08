@@ -67,19 +67,6 @@ type LocaleLinkProps = Omit<LinkProps, "to"> & {
   params?: Record<string, string>;
   className?: string;
   activeProps?: { className?: string };
-  activeOptions?: { exact?: boolean };
-  children?: React.ReactNode;
-};
-
-export function LocaleLink(props: LocaleLinkProps) {
-  const locale = useLocale();
-  const to = localePath(props.to, locale);
-  // Cast to any: we compute paths dynamically; TanStack's strict route literal
-  // typing cannot infer this. The path is guaranteed valid by route generation.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return <Link {...(props as any)} to={to as any} />;
-}
-
 // ============= UI Dictionary =============
 type Dict = Record<string, { en: string; zh: string }>;
 
