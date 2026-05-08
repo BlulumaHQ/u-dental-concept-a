@@ -4,9 +4,11 @@ import {
   Microscope, Cpu, Building2, Heart, MapPin, Clock, Mail, CheckCircle2,
 } from "lucide-react";
 import { SERVICES, SITE, HERO_IMAGES, DOCTORS, FEATURED_TREATMENTS } from "@/lib/site";
+import { FAQS } from "@/lib/faqs";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import { PageLoader } from "@/components/site/PageLoader";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -285,7 +287,33 @@ function HomePage() {
         </div>
       </section>
 
-      {/* APPOINTMENT CTA */}
+      {/* FAQ PREVIEW */}
+      <section className="section-y">
+        <div className="container-x max-w-4xl">
+          <div className="text-center mb-10">
+            <p className="text-primary font-bold text-sm uppercase tracking-wider">Patient FAQ</p>
+            <h2 className="mt-3 text-3xl lg:text-4xl font-extrabold">Answers to common questions</h2>
+          </div>
+          <Accordion type="single" collapsible defaultValue="home-faq-0" className="border-t border-border">
+            {FAQS.slice(0, 3).map((f, i) => (
+              <AccordionItem key={i} value={`home-faq-${i}`}>
+                <AccordionTrigger className="text-left text-base lg:text-lg font-semibold py-5">
+                  {f.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-5">
+                  {f.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+          <div className="mt-8 text-center">
+            <Link to="/faq" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
+              View All FAQs <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="section-y">
         <div className="container-x">
           <div className="rounded-3xl bg-charcoal text-charcoal-foreground p-10 lg:p-16 text-center shadow-elevated">
