@@ -16,7 +16,7 @@ export const Route = createFileRoute("/privacy-policy")({
 function PrivacyPage() {
   return (
     <>
-      <PageHero eyebrow="Legal" title="Privacy Policy" subtitle="How we collect, use, and protect your personal information." />
+      <PageHero eyebrow="Legal" title="Privacy Policy" subtitle="How we collect, use, and protect your personal information." image="/about/about-banner.jpg" />
       <section className="section-y">
         <div className="container-x max-w-3xl prose-style">
           <p className="text-muted-foreground">Last updated: January 2025</p>

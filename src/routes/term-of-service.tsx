@@ -16,7 +16,7 @@ export const Route = createFileRoute("/term-of-service")({
 function TermsPage() {
   return (
     <>
-      <PageHero eyebrow="Legal" title="Terms of Service" subtitle="Please read these terms carefully before using our website." />
+      <PageHero eyebrow="Legal" title="Terms of Service" subtitle="Please read these terms carefully before using our website." image="/about/about-banner.jpg" />
       <section className="section-y">
         <div className="container-x max-w-3xl">
           <p className="text-muted-foreground">Last updated: January 2025</p>
