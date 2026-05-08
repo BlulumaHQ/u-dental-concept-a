@@ -1,6 +1,8 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound, useParams } from "@tanstack/react-router";
 import { ArrowRight, Phone, Calendar, ArrowLeft, CheckCircle2 } from "lucide-react";
-import { DOCTORS, SERVICES, SITE, type Doctor } from "@/lib/site";
+import { DOCTORS, SERVICES } from "@/lib/site";
+import { LocaleLink } from "@/components/site/LocaleLink";
+import { useLocale, useT, getDoctors, getServices, getSite, localePath } from "@/lib/i18n";
 
 export const Route = createFileRoute("/doctor/$slug")({
   loader: ({ params }) => {
@@ -24,7 +26,7 @@ export const Route = createFileRoute("/doctor/$slug")({
   notFoundComponent: () => (
     <div className="container-x section-y text-center">
       <h1 className="text-4xl font-extrabold">Doctor not found</h1>
-      <Link to="/about-us" className="mt-6 inline-flex text-primary font-semibold">Back to Our Team</Link>
+      <LocaleLink to="/about-us" className="mt-6 inline-flex text-primary font-semibold">Back to Our Team</LocaleLink>
     </div>
   ),
   errorComponent: ({ error }) => (
@@ -36,18 +38,37 @@ export const Route = createFileRoute("/doctor/$slug")({
 });
 
 export function DoctorPage() {
-  const { doctor } = Route.useLoaderData() as { doctor: Doctor };
+  const locale = useLocale();
+  const t = useT();
+  const params = useParams({ strict: false }) as { slug?: string };
+  const slug = params.slug ?? "";
+  const doctors = getDoctors(locale);
+  const services = getServices(locale);
+  const site = getSite(locale);
+  const doctor = doctors.find((d) => d.slug === slug);
+
+  if (!doctor) {
+    return (
+      <div className="container-x section-y text-center">
+        <h1 className="text-4xl font-extrabold">{t("doctor.notFound")}</h1>
+        <LocaleLink to="/about-us" className="mt-6 inline-flex text-primary font-semibold">{t("cta.backTeam")}</LocaleLink>
+      </div>
+    );
+  }
+
   const related = doctor.related
-    .map((slug: string) => SERVICES.find((s) => s.slug === slug))
+    .map((s: string) => services.find((x) => x.slug === s))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
+
+  const lastName = doctor.name.split(" ").slice(-1)[0];
 
   return (
     <>
       <section className="bg-cream border-b border-border">
         <div className="container-x py-6">
-          <Link to="/about-us" className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-primary">
-            <ArrowLeft className="h-4 w-4" /> Back to Our Team
-          </Link>
+          <LocaleLink to="/about-us" className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-primary">
+            <ArrowLeft className="h-4 w-4" /> {t("cta.backTeam")}
+          </LocaleLink>
         </div>
       </section>
 
@@ -64,7 +85,7 @@ export function DoctorPage() {
             </div>
           </div>
           <div className="lg:col-span-7">
-            <p className="text-primary font-bold text-sm uppercase tracking-wider">Our Dentists</p>
+            <p className="text-primary font-bold text-sm uppercase tracking-wider">{t("doctor.specialties")}</p>
             <h1 className="mt-3 text-4xl lg:text-6xl font-extrabold leading-[1.05]">{doctor.name}</h1>
             <p className="mt-2 text-lg text-muted-foreground font-semibold">{doctor.credentials}</p>
 
@@ -85,11 +106,11 @@ export function DoctorPage() {
             </div>
 
             <div className="mt-9 flex flex-wrap gap-3">
-              <Link to="/contact-us" className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground shadow-glow">
-                <Calendar className="h-4 w-4" /> Book an Appointment
-              </Link>
-              <a href={SITE.phoneHref} className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 font-semibold hover:border-primary hover:text-primary transition">
-                <Phone className="h-4 w-4" /> Call {SITE.phone}
+              <LocaleLink to="/contact-us" className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground shadow-glow">
+                <Calendar className="h-4 w-4" /> {t("cta.bookLong")}
+              </LocaleLink>
+              <a href={site.phoneHref} className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 font-semibold hover:border-primary hover:text-primary transition">
+                <Phone className="h-4 w-4" /> {t("cta.call")} {site.phone}
               </a>
             </div>
           </div>
@@ -99,23 +120,24 @@ export function DoctorPage() {
       {related.length > 0 && (
         <section className="section-y bg-cream">
           <div className="container-x">
-            <p className="text-primary font-bold text-sm uppercase tracking-wider">Related Services</p>
-            <h2 className="mt-3 text-3xl lg:text-4xl font-extrabold">Treatments {doctor.name.split(" ").slice(-1)} provides</h2>
+            <p className="text-primary font-bold text-sm uppercase tracking-wider">{t("sec.relatedSvcs")}</p>
+            <h2 className="mt-3 text-3xl lg:text-4xl font-extrabold">
+              {locale === "zh-Hant" ? `${lastName} 醫師提供的治療項目` : `Treatments ${lastName} provides`}
+            </h2>
             <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               {related.map((s) => (
-                <Link
+                <a
                   key={s.slug}
-                  to="/service/$slug"
-                  params={{ slug: s.slug }}
+                  href={localePath(`/service/${s.slug}`, locale)}
                   className="group rounded-2xl bg-card border border-border p-6 hover:border-primary hover:shadow-card transition"
                 >
                   <CheckCircle2 className="h-5 w-5 text-primary" />
                   <h3 className="mt-3 font-bold group-hover:text-primary">{s.name}</h3>
                   <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{s.short}</p>
                   <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-primary">
-                    Learn more <ArrowRight className="h-3.5 w-3.5" />
+                    {t("cta.learnMore")} <ArrowRight className="h-3.5 w-3.5" />
                   </span>
-                </Link>
+                </a>
               ))}
             </div>
           </div>
@@ -124,14 +146,16 @@ export function DoctorPage() {
 
       <section className="section-y bg-charcoal text-charcoal-foreground">
         <div className="container-x text-center">
-          <h2 className="text-3xl lg:text-5xl font-extrabold">Ready to schedule a visit with {doctor.name}?</h2>
-          <p className="mt-4 text-lg text-white/80 max-w-2xl mx-auto">Bilingual care in Kitsilano Vancouver — English and Mandarin welcome.</p>
+          <h2 className="text-3xl lg:text-5xl font-extrabold">
+            {locale === "zh-Hant" ? `準備預約 ${doctor.name} 醫師了嗎？` : `Ready to schedule a visit with ${doctor.name}?`}
+          </h2>
+          <p className="mt-4 text-lg text-white/80 max-w-2xl mx-auto">{t("doctor.bilingual")}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link to="/contact-us" className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 font-bold shadow-glow">
-              <Calendar className="h-5 w-5" /> Book an Appointment
-            </Link>
-            <a href={SITE.phoneHref} className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-7 py-4 font-bold hover:bg-white/10 transition">
-              <Phone className="h-5 w-5" /> Call {SITE.phone}
+            <LocaleLink to="/contact-us" className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 font-bold shadow-glow">
+              <Calendar className="h-5 w-5" /> {t("cta.bookLong")}
+            </LocaleLink>
+            <a href={site.phoneHref} className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-7 py-4 font-bold hover:bg-white/10 transition">
+              <Phone className="h-5 w-5" /> {t("cta.call")} {site.phone}
             </a>
           </div>
         </div>
@@ -139,3 +163,6 @@ export function DoctorPage() {
     </>
   );
 }
+
+// suppress unused import lint for SERVICES (kept for loader typing parity)
+void SERVICES;
