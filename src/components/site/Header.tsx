@@ -36,13 +36,13 @@ export function Header() {
           : "bg-background/60 backdrop-blur",
       )}
     >
-      <div className="relative flex min-h-[88px] items-stretch lg:min-h-[104px]">
-        <div className="container-x flex items-stretch gap-5 pr-5 min-[1180px]:pr-[196px]">
+      <div className="relative flex min-h-[80px] items-stretch lg:min-h-[96px]">
+        <div className="container-x flex items-stretch gap-6 pr-5 min-[1180px]:pr-[196px]">
           <Link to="/" aria-label="U-Dental Clinic home" className="flex shrink-0 items-center">
             <Logo variant="dark" />
           </Link>
 
-          <nav className="ml-auto hidden min-w-0 items-center justify-end gap-0.5 min-[1180px]:flex">
+          <nav className="hidden min-w-0 flex-1 items-center justify-end gap-0.5 pl-10 min-[1180px]:flex min-[1280px]:pl-16">
             {NAV.map((item) =>
               item.hasMenu ? (
                 <div
@@ -53,10 +53,10 @@ export function Header() {
                 >
                   <Link
                     to={item.to}
-                    className="flex items-center gap-1 rounded-md px-2.5 py-2 text-sm font-semibold text-foreground transition-colors hover:text-primary min-[1280px]:px-3.5"
+                    className="flex items-center gap-1 rounded-md px-2 py-2 text-[13px] font-semibold text-foreground transition-colors hover:text-primary min-[1280px]:px-3 min-[1320px]:text-sm"
                     activeProps={{
                       className:
-                        "flex items-center gap-1 rounded-md px-2.5 py-2 text-sm font-semibold text-primary min-[1280px]:px-3.5",
+                        "flex items-center gap-1 rounded-md px-2 py-2 text-[13px] font-semibold text-primary min-[1280px]:px-3 min-[1320px]:text-sm",
                     }}
                   >
                     {item.label}
@@ -95,10 +95,10 @@ export function Header() {
                 <Link
                   key={item.to}
                   to={item.to}
-                  className="whitespace-nowrap rounded-md px-2.5 py-2 text-sm font-semibold text-foreground transition-colors hover:text-primary min-[1280px]:px-3.5"
+                  className="whitespace-nowrap rounded-md px-2 py-2 text-[13px] font-semibold text-foreground transition-colors hover:text-primary min-[1280px]:px-3 min-[1320px]:text-sm"
                   activeProps={{
                     className:
-                      "whitespace-nowrap rounded-md px-2.5 py-2 text-sm font-semibold text-primary min-[1280px]:px-3.5",
+                      "whitespace-nowrap rounded-md px-2 py-2 text-[13px] font-semibold text-primary min-[1280px]:px-3 min-[1320px]:text-sm",
                   }}
                   activeOptions={{ exact: item.to === "/" }}
                 >
