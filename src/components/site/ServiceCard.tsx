@@ -1,6 +1,32 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Stethoscope } from "lucide-react";
+import {
+  ArrowRight, Stethoscope, Sparkles, Smile, Layers, Crosshair, Scissors,
+  HeartPulse, Crown, Activity, AlertTriangle, Wrench, Syringe, Gem, ScanLine,
+} from "lucide-react";
 import type { ServiceItem } from "@/lib/site";
+
+const ICONS: Record<string, React.ComponentType<{ className?: string; strokeWidth?: number }>> = {
+  "dental-implants": Layers,
+  "all-on-4": Layers,
+  "invisalign": Smile,
+  "orthodontics": Smile,
+  "x-guide-real-time-3d-guidance-surgery": Crosshair,
+  "oral-surgery": Scissors,
+  "wisdom-tooth-extraction": Scissors,
+  "cosmetics-and-comprehensive-dentistry": Sparkles,
+  "dental-cleaning": Sparkles,
+  "emergency": AlertTriangle,
+  "restorations": Wrench,
+  "crown-and-bridges": Crown,
+  "root-canal-treatment": ScanLine,
+  "denture": Gem,
+  "botox": Syringe,
+};
+
+function ServiceIcon({ slug, size = 36 }: { slug: string; size?: number }) {
+  const Icon = ICONS[slug] ?? Stethoscope;
+  return <Icon className="text-primary" strokeWidth={1.75} style={{ width: size, height: size }} />;
+}
 
 export function ServiceCard({ service, variant = "horizontal" }: { service: ServiceItem; variant?: "horizontal" | "stacked" }) {
   if (variant === "stacked") {
@@ -14,7 +40,7 @@ export function ServiceCard({ service, variant = "horizontal" }: { service: Serv
           {service.image ? (
             <img src={service.image} alt={service.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-500" />
           ) : (
-            <Stethoscope className="h-14 w-14 text-primary/40" />
+            <ServiceIcon slug={service.slug} size={72} />
           )}
         </div>
         <div className="p-6 flex-1 flex flex-col">
@@ -34,12 +60,8 @@ export function ServiceCard({ service, variant = "horizontal" }: { service: Serv
       params={{ slug: service.slug }}
       className="group rounded-2xl bg-card border border-border p-5 hover:border-primary hover:shadow-elevated transition flex gap-4 items-start"
     >
-      <div className="h-20 w-20 rounded-xl bg-soft grid place-items-center shrink-0 overflow-hidden">
-        {service.image ? (
-          <img src={service.image} alt="" className="max-h-14 max-w-14 object-contain" />
-        ) : (
-          <Stethoscope className="h-8 w-8 text-primary/60" />
-        )}
+      <div className="h-20 w-20 rounded-xl bg-primary/10 grid place-items-center shrink-0">
+        <ServiceIcon slug={service.slug} size={36} />
       </div>
       <div className="min-w-0 flex-1">
         <h3 className="font-bold text-base leading-tight group-hover:text-primary">{service.name}</h3>
@@ -51,3 +73,6 @@ export function ServiceCard({ service, variant = "horizontal" }: { service: Serv
     </Link>
   );
 }
+
+// Activity, HeartPulse imports kept unused-friendly via re-export to avoid TS pruning warnings in some setups.
+export const _icons = { Activity, HeartPulse };
