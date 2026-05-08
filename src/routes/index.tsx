@@ -6,6 +6,7 @@ import {
 import { SERVICES, SITE, HERO_IMAGES, DOCTORS, FEATURED_TREATMENTS } from "@/lib/site";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { ServiceCard } from "@/components/site/ServiceCard";
+import { PageLoader } from "@/components/site/PageLoader";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -67,6 +68,7 @@ const SLIDES = [
 function HomePage() {
   return (
     <>
+      <PageLoader />
       <HeroSlider slides={SLIDES} />
 
       {/* TRUST BAR */}
