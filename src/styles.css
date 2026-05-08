@@ -173,7 +173,14 @@ body {
 }
 
 /* Allow Chinese hero section to expand if text needs more height */
-:lang(zh-Hant) section.relative.w-full[class*="h-["] {
+:lang(zh-Hant) .site-hero {
   height: auto;
+  max-height: none;
   min-height: 600px;
+}
+@media (max-width: 640px) {
+  :lang(zh-Hant) .site-hero {
+    min-height: 560px;
+    padding-block: 2rem;
+  }
 }
