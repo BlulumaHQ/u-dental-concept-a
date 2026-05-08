@@ -42,19 +42,19 @@ const SLIDES = [
     image: HERO_IMAGES[0],
     eyebrow: "U-Dental Clinic · Kitsilano Vancouver",
     title: "Modern Dental Care with a Human Touch",
-    subtitle: "U-Dental Clinic provides advanced dental care in Kitsilano Vancouver with experienced dentists, English and Mandarin communication, and technology-supported treatment planning.",
+    subtitle: "Advanced dental care in Kitsilano Vancouver — experienced bilingual dentists, English and Mandarin communication, and technology-supported treatment planning.",
+  },
+  {
+    image: "/equipment/clinic-1.jpg",
+    eyebrow: "Inside Our Clinic",
+    title: "A Premium, Comfort-First Environment",
+    subtitle: "Modern treatment rooms and an exclusive surgical suite — designed around hygiene, calm, and clinical precision.",
   },
   {
     image: HERO_IMAGES[1],
     eyebrow: "Digital Dentistry",
     title: "Precision Implant & Surgical Care",
     subtitle: "3D-guided implant planning, an exclusive surgical room, and a team that has performed thousands of procedures.",
-  },
-  {
-    image: HERO_IMAGES[2],
-    eyebrow: "Bilingual Care",
-    title: "Dentistry in English & Mandarin",
-    subtitle: "Clear communication, considered treatment plans, and a calm patient experience for every visit.",
   },
   {
     image: HERO_IMAGES[3],
@@ -65,8 +65,6 @@ const SLIDES = [
 ];
 
 function HomePage() {
-  const highValue = HIGH_VALUE_SLUGS.map((slug) => SERVICES.find((s) => s.slug === slug)!);
-
   return (
     <>
       <HeroSlider slides={SLIDES} />
@@ -85,8 +83,81 @@ function HomePage() {
         </div>
       </section>
 
+      {/* FEATURED TREATMENTS — photo cards */}
+      <section className="section-y bg-cream">
+        <div className="container-x">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+            <div className="max-w-2xl">
+              <p className="text-primary font-bold text-sm uppercase tracking-wider">Featured Treatments</p>
+              <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">High-value dental care, planned with precision</h2>
+            </div>
+            <Link to="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
+              View all services <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {FEATURED_TREATMENTS.map((t) => (
+              <Link
+                key={t.slug}
+                to="/service/$slug"
+                params={{ slug: t.slug }}
+                className="group relative rounded-2xl overflow-hidden shadow-card hover:shadow-elevated transition aspect-[4/5]"
+              >
+                <img src={t.image} alt={t.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                  <h3 className="text-2xl font-extrabold leading-tight">{t.title}</h3>
+                  <p className="mt-2 text-sm text-white/85">{t.tagline}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-primary-foreground bg-primary px-3 py-1.5 rounded-full">
+                    Learn more <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* INSIDE U-DENTAL CLINIC */}
+      <section className="section-y">
+        <div className="container-x">
+          <div className="max-w-3xl mb-12">
+            <p className="text-primary font-bold text-sm uppercase tracking-wider">Inside U-Dental Clinic</p>
+            <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">A modern dental environment</h2>
+            <p className="mt-5 text-lg text-muted-foreground">
+              Designed for comfort, precision, and care — featuring an exclusive surgical suite, advanced digital workflow, and treatment rooms built around the patient experience.
+            </p>
+          </div>
+          <div className="grid lg:grid-cols-3 gap-5">
+            <div className="lg:col-span-2 lg:row-span-2 rounded-3xl overflow-hidden shadow-elevated min-h-[300px] lg:min-h-[520px]">
+              <img src="/equipment/clinic-2.jpg" alt="U-Dental clinic interior" className="w-full h-full object-cover" />
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-card aspect-[4/3]">
+              <img src="/equipment/clinic-5.jpg" alt="Treatment room" className="w-full h-full object-cover" />
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-card aspect-[4/3]">
+              <img src="/equipment/clinic-9.jpg" alt="Surgical suite equipment" className="w-full h-full object-cover" />
+            </div>
+          </div>
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
+            {[
+              "Digital Dentistry Workflow",
+              "Exclusive Surgical Room",
+              "Advanced Implant Technology",
+              "Comfort-Focused Environment",
+              "English & Mandarin Care",
+            ].map((f) => (
+              <div key={f} className="rounded-xl bg-card border border-border px-4 py-3 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
+                <span className="text-sm font-semibold">{f}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* MEET OUR DENTISTS */}
-      <section id="team" className="section-y">
+      <section id="team" className="section-y bg-cream">
         <div className="container-x">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
             <div className="max-w-2xl">
@@ -127,26 +198,6 @@ function HomePage() {
                   </span>
                 </div>
               </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURED SERVICES */}
-      <section className="section-y bg-cream">
-        <div className="container-x">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
-            <div className="max-w-2xl">
-              <p className="text-primary font-bold text-sm uppercase tracking-wider">Featured Treatments</p>
-              <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">High-value dental care, planned with precision</h2>
-            </div>
-            <Link to="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
-              View all services <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {highValue.map((s) => (
-              <ServiceCard key={s.slug} service={s} variant="stacked" />
             ))}
           </div>
         </div>
