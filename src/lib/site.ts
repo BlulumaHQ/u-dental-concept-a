@@ -231,7 +231,7 @@ export const DOCTORS: Doctor[] = [
     slug: "dr-lo-lin-tsai",
     name: "Dr. Lo-Lin Tsai",
     credentials: "DDS, M Sc, PhD",
-    photo: "https://u-dental.ca/wp-content/uploads/2018/12/Dr.-Lo-Lin-Tsai-3.jpg",
+    photo: "/doctors/lo-lin-tsai.webp",
     specialties: ["Oral Surgery", "Dental Implants", "Wisdom Tooth Extraction"],
     summary: "Oral & maxillofacial surgery specialist with 20,000+ wisdom tooth extractions and 5,000+ implant cases.",
     bio: [
@@ -244,7 +244,7 @@ export const DOCTORS: Doctor[] = [
     slug: "dr-clair-wang",
     name: "Dr. Claire Wang",
     credentials: "DDS",
-    photo: "https://u-dental.ca/wp-content/uploads/2018/12/Dr.-Clair-Wang-v8-1.png",
+    photo: "/doctors/clair-wang.webp",
     specialties: ["Family Dentistry", "Cosmetic Dentistry", "Prosthodontics", "Invisalign"],
     summary: "Warm, gentle family dentist and Invisalign Preferred Provider, certified in conscious sedation and laser dentistry.",
     bio: [
@@ -257,7 +257,7 @@ export const DOCTORS: Doctor[] = [
     slug: "dr-edward-cheng",
     name: "Dr. Edward Cheng",
     credentials: "DMD",
-    photo: "https://u-dental.ca/wp-content/uploads/2018/12/Fig11.5-1.png",
+    photo: "/doctors/edward-cheng.webp",
     specialties: ["General Dentistry", "Dental Emergency", "Prosthodontics", "Treatment under General Anesthesia"],
     summary: "UBC graduate known for affable service and experienced in dental treatment under general anesthesia for anxious or pediatric patients.",
     bio: [
@@ -283,7 +283,7 @@ export const DOCTORS: Doctor[] = [
     slug: "dr-ivan-kahn-dds",
     name: "Dr. Ivan Kahn",
     credentials: "DDS",
-    photo: "https://u-dental.ca/wp-content/uploads/2018/12/kahn.png",
+    photo: "/doctors/ivan-kahn.webp",
     specialties: ["Aesthetic Dentistry", "Prosthodontics"],
     summary: "Practicing in Canada since 1998 with advanced training in soft-tissue diode laser, smile design, Invisalign and Botox.",
     bio: [
@@ -296,7 +296,7 @@ export const DOCTORS: Doctor[] = [
     slug: "dr-suzanne-carlisle-dmd",
     name: "Dr. Suzanne Carlisle",
     credentials: "DMD",
-    photo: "https://u-dental.ca/wp-content/uploads/2018/12/fig9.jpg",
+    photo: "/doctors/suzanne-carlisle.webp",
     specialties: ["General Dentistry", "Oral Oncology Dentistry"],
     summary: "Award-winning UBC Faculty of Dentistry educator providing clinical supervision for the UBC/VGH residency program.",
     bio: [
