@@ -20,7 +20,7 @@ export const Route = createFileRoute("/insights/$slug")({
   component: InsightArticle,
 });
 
-function InsightArticle() {
+export function InsightArticle() {
   const { slug } = Route.useParams();
   const post = INSIGHTS.find((p) => p.slug === slug);
   if (!post) throw notFound();
