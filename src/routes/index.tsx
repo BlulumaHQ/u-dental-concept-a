@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight, Phone, Calendar, ShieldCheck, Languages, Stethoscope,
-  Microscope, Cpu, Building2, Heart, MapPin, Clock, Mail,
-  CheckCircle2, Users,
+  Microscope, Cpu, Building2, Heart, MapPin, Clock, Mail, CheckCircle2,
 } from "lucide-react";
 import { SERVICES, HIGH_VALUE_SLUGS, SITE, HERO_IMAGES, DOCTORS } from "@/lib/site";
+import { HeroSlider } from "@/components/site/HeroSlider";
+import { ServiceCard } from "@/components/site/ServiceCard";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -36,82 +37,42 @@ const whyPoints = [
   { icon: Microscope, title: "Microscopic Precision", body: "Advanced visualization tools support careful, detail-oriented dentistry." },
 ];
 
+const SLIDES = [
+  {
+    image: HERO_IMAGES[0],
+    eyebrow: "U-Dental Clinic · Kitsilano Vancouver",
+    title: "Modern Dental Care with a Human Touch",
+    subtitle: "U-Dental Clinic provides advanced dental care in Kitsilano Vancouver with experienced dentists, English and Mandarin communication, and technology-supported treatment planning.",
+  },
+  {
+    image: HERO_IMAGES[1],
+    eyebrow: "Digital Dentistry",
+    title: "Precision Implant & Surgical Care",
+    subtitle: "3D-guided implant planning, an exclusive surgical room, and a team that has performed thousands of procedures.",
+  },
+  {
+    image: HERO_IMAGES[2],
+    eyebrow: "Bilingual Care",
+    title: "Dentistry in English & Mandarin",
+    subtitle: "Clear communication, considered treatment plans, and a calm patient experience for every visit.",
+  },
+  {
+    image: HERO_IMAGES[3],
+    eyebrow: "Comprehensive Treatment",
+    title: "Every Service, Under One Roof",
+    subtitle: "From cleanings and Invisalign to All-on-4 and microscopic restorations — your full dental care, in one premium clinic.",
+  },
+];
+
 function HomePage() {
   const highValue = HIGH_VALUE_SLUGS.map((slug) => SERVICES.find((s) => s.slug === slug)!);
 
   return (
     <>
-      {/* HERO — warm, dental, human */}
-      <section className="relative bg-cream overflow-hidden">
-        <div className="absolute -top-24 -right-24 w-[520px] h-[520px] bg-dental/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] bg-primary/10 rounded-full blur-3xl" />
-        <div className="container-x relative grid lg:grid-cols-12 gap-12 items-center pt-12 pb-20 lg:pt-20 lg:pb-28">
-          <div className="lg:col-span-6">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white border border-border px-4 py-1.5 text-xs font-semibold tracking-wide text-foreground/80 shadow-card">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Now Welcoming New Patients · Kitsilano Vancouver
-            </div>
-            <h1 className="mt-6 font-extrabold text-[2.4rem] leading-[1.05] sm:text-5xl lg:text-[4.25rem] lg:leading-[1.02] text-charcoal">
-              Modern Dental Care with a <span className="text-primary">Human Touch</span>
-            </h1>
-            <p className="mt-6 text-lg lg:text-xl text-foreground/75 max-w-2xl leading-relaxed">
-              U-Dental Clinic provides advanced dental care in Kitsilano Vancouver with experienced dentists, English and Mandarin communication, and technology-supported treatment planning.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/contact-us" className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 font-semibold text-primary-foreground shadow-glow hover:scale-[1.02] transition">
-                <Calendar className="h-5 w-5" /> Book an Appointment
-              </Link>
-              <a href="#team" className="inline-flex items-center gap-2 rounded-full bg-white border border-border px-7 py-4 font-semibold hover:border-primary hover:text-primary transition">
-                <Users className="h-5 w-5" /> Meet Our Dentists
-              </a>
-              <Link to="/services" className="inline-flex items-center gap-2 px-4 py-4 font-semibold text-foreground/70 hover:text-primary">
-                View Services <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-            <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-foreground/70">
-              <a href={SITE.phoneHref} className="inline-flex items-center gap-2 font-semibold hover:text-primary">
-                <Phone className="h-4 w-4 text-primary" /> {SITE.phone}
-              </a>
-              <span className="inline-flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-primary" /> {SITE.address}
-              </span>
-            </div>
-          </div>
-          <div className="lg:col-span-6">
-            <div className="relative">
-              <img
-                src={HERO_IMAGES[0]}
-                alt="U-Dental Clinic — modern dental care in Kitsilano Vancouver"
-                className="rounded-[2rem] w-full object-cover aspect-[4/5] lg:aspect-[5/6] shadow-elevated"
-              />
-              <div className="hidden md:block absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-elevated border border-border p-5 max-w-[260px]">
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-primary/10 grid place-items-center text-primary">
-                    <Languages className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-sm">English & Mandarin</p>
-                    <p className="text-xs text-muted-foreground">Bilingual care, every visit</p>
-                  </div>
-                </div>
-              </div>
-              <div className="hidden md:block absolute -top-5 -right-5 bg-white rounded-2xl shadow-card border border-border p-4">
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-dental/15 grid place-items-center text-dental">
-                    <Cpu className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-sm">3D Guided Implants</p>
-                    <p className="text-xs text-muted-foreground">X-Guide™ navigation</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSlider slides={SLIDES} />
 
       {/* TRUST BAR */}
-      <section className="border-y border-border bg-white">
+      <section className="border-b border-border bg-white">
         <div className="container-x py-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
           {trustPoints.map((t) => (
             <div key={t.label} className="flex items-center gap-3">
@@ -135,6 +96,9 @@ function HomePage() {
                 Seven trusted dentists, certified across Canada and Taiwan, bringing decades of combined experience in surgery, implants, orthodontics, cosmetic and family dentistry.
               </p>
             </div>
+            <Link to="/about-us" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
+              About the clinic <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {DOCTORS.map((d) => (
@@ -152,7 +116,7 @@ function HomePage() {
                   <p className="text-xs font-semibold text-muted-foreground mt-0.5">{d.credentials}</p>
                   <div className="mt-3 flex flex-wrap gap-1.5">
                     {d.specialties.slice(0, 3).map((s) => (
-                      <span key={s} className="text-[10px] font-semibold uppercase tracking-wide rounded-full bg-primary/8 text-primary px-2 py-0.5">
+                      <span key={s} className="text-[10px] font-semibold uppercase tracking-wide rounded-full bg-primary/10 text-primary px-2 py-0.5">
                         {s}
                       </span>
                     ))}
@@ -181,27 +145,8 @@ function HomePage() {
             </Link>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {highValue.map((s, i) => (
-              <Link
-                key={s.slug}
-                to="/service/$slug"
-                params={{ slug: s.slug }}
-                className="group rounded-2xl bg-white border border-border overflow-hidden hover:border-primary hover:shadow-elevated transition"
-              >
-                {s.image && (
-                  <div className="aspect-[4/3] bg-soft overflow-hidden">
-                    <img src={s.image} alt={s.name} className="w-full h-full object-contain p-6 group-hover:scale-105 transition duration-500" />
-                  </div>
-                )}
-                <div className="p-6">
-                  <div className="text-xs font-bold text-primary mb-2">0{i + 1}</div>
-                  <h3 className="text-xl font-bold leading-tight group-hover:text-primary">{s.name}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{s.short}</p>
-                  <div className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-primary">
-                    Learn more <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition" />
-                  </div>
-                </div>
-              </Link>
+            {highValue.map((s) => (
+              <ServiceCard key={s.slug} service={s} variant="stacked" />
             ))}
           </div>
         </div>
@@ -231,15 +176,11 @@ function HomePage() {
         </div>
       </section>
 
-      {/* TECHNOLOGY & EQUIPMENT */}
+      {/* TECHNOLOGY */}
       <section className="section-y bg-charcoal text-charcoal-foreground">
         <div className="container-x grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative">
             <img src="https://u-dental.ca/wp-content/uploads/2025/05/fig0.jpg" alt="Digital dentistry technology" className="rounded-3xl shadow-elevated w-full object-cover aspect-[4/3]" />
-            <div className="absolute -bottom-6 -right-6 hidden md:block bg-white text-foreground rounded-2xl shadow-elevated border border-border p-5 max-w-xs">
-              <p className="text-xs font-bold text-primary uppercase tracking-wider">Surgical Room</p>
-              <p className="mt-1 font-bold">Medical center-class asepsis</p>
-            </div>
           </div>
           <div>
             <p className="text-primary font-bold text-sm uppercase tracking-wider">Technology &amp; Equipment</p>
@@ -273,28 +214,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ABOUT */}
-      <section className="section-y">
-        <div className="container-x grid lg:grid-cols-2 gap-12 items-center">
-          <img src={HERO_IMAGES[3]} alt="U-Dental clinic interior" className="rounded-3xl w-full aspect-[4/3] object-cover shadow-elevated" />
-          <div>
-            <p className="text-primary font-bold text-sm uppercase tracking-wider">About U-Dental</p>
-            <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">Comprehensive dental care, all in one place</h2>
-            <p className="mt-6 text-lg text-foreground/80 leading-relaxed">
-              U-Dental Clinic is a team of professional dentists fluent in both English and Mandarin, with decades of dental experience. We offer advanced digital dentistry, implant technology, orthodontics, and an exclusive surgical room designed to provide a medical center-class experience in asepsis quality and patient care.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/about-us" className="inline-flex items-center gap-2 rounded-full bg-charcoal text-charcoal-foreground px-6 py-3 font-semibold hover:opacity-90">
-                About the Clinic <ArrowRight className="h-4 w-4" />
-              </Link>
-              <a href="#team" className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 font-semibold hover:border-primary hover:text-primary transition">
-                Meet the Team
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* FULL SERVICES GRID */}
       <section className="section-y bg-cream">
         <div className="container-x">
@@ -307,26 +226,7 @@ function HomePage() {
           </div>
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {SERVICES.map((s) => (
-              <Link
-                key={s.slug}
-                to="/service/$slug"
-                params={{ slug: s.slug }}
-                className="group rounded-2xl bg-white border border-border p-6 hover:border-primary hover:shadow-card transition flex gap-4 items-start"
-              >
-                {s.image ? (
-                  <div className="h-14 w-14 rounded-xl bg-soft grid place-items-center shrink-0 overflow-hidden">
-                    <img src={s.image} alt="" className="h-12 w-12 object-contain" />
-                  </div>
-                ) : (
-                  <div className="h-14 w-14 rounded-xl bg-primary/10 grid place-items-center text-primary shrink-0">
-                    <Stethoscope className="h-6 w-6" />
-                  </div>
-                )}
-                <div>
-                  <h3 className="font-bold text-base group-hover:text-primary">{s.name}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground line-clamp-2">{s.short}</p>
-                </div>
-              </Link>
+              <ServiceCard key={s.slug} service={s} variant="horizontal" />
             ))}
           </div>
         </div>
@@ -335,18 +235,18 @@ function HomePage() {
       {/* APPOINTMENT CTA */}
       <section className="section-y">
         <div className="container-x">
-          <div className="rounded-3xl bg-gradient-to-br from-primary to-[oklch(0.5_0.2_22)] text-primary-foreground p-10 lg:p-16 text-center shadow-elevated">
+          <div className="rounded-3xl bg-charcoal text-charcoal-foreground p-10 lg:p-16 text-center shadow-elevated">
             <h2 className="text-3xl lg:text-5xl font-extrabold leading-tight max-w-3xl mx-auto">
               Ready to schedule your visit?
             </h2>
-            <p className="mt-4 text-lg opacity-90 max-w-xl mx-auto">
+            <p className="mt-4 text-lg text-white/80 max-w-xl mx-auto">
               Experience modern dental care in Kitsilano Vancouver — in English or Mandarin.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Link to="/contact-us" className="rounded-full bg-white text-primary px-7 py-4 font-bold shadow-card hover:scale-[1.02] transition inline-flex items-center gap-2">
+              <Link to="/contact-us" className="rounded-full bg-primary text-primary-foreground px-7 py-4 font-bold inline-flex items-center gap-2 hover:bg-white hover:text-primary transition">
                 <Calendar className="h-5 w-5" /> Book an Appointment
               </Link>
-              <a href={SITE.phoneHref} className="rounded-full border-2 border-white/40 px-7 py-4 font-bold inline-flex items-center gap-2 hover:bg-white/10 transition">
+              <a href={SITE.phoneHref} className="rounded-full border-2 border-white/30 px-7 py-4 font-bold inline-flex items-center gap-2 hover:bg-white/10 transition">
                 <Phone className="h-5 w-5" /> Call {SITE.phone}
               </a>
             </div>
