@@ -88,15 +88,30 @@ function TechPage() {
           </ul>
 
           <div className="mt-14">
-            <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Featured brands & systems</p>
-            <div className="mt-6 flex flex-wrap items-center gap-x-12 gap-y-6">
-              <img src="/brands/x-guide.png" alt="X-Guide" className="h-10 md:h-12 object-contain" />
-              <img src="/brands/bioclear.png" alt="Bioclear" className="h-8 md:h-10 object-contain" />
-              <span className="text-lg font-semibold text-foreground/70">Invisalign®</span>
-              <span className="text-lg font-semibold text-foreground/70">Nobel Biocare</span>
-              <span className="text-lg font-semibold text-foreground/70">Leica M320D</span>
-              <span className="text-lg font-semibold text-foreground/70">Medit i500</span>
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-muted-foreground">Trusted brands &amp; systems</p>
+            <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+              {[
+                { src: "/brands/all-on-4.png", alt: "All-on-4®" },
+                { src: "/brands/invisalign.png", alt: "Invisalign®" },
+                { src: "/brands/x-guide.png", alt: "X-Guide" },
+                { src: "/brands/bioclear.png", alt: "Bioclear®" },
+                { src: "/brands/galvosurge.png", alt: "GalvoSurge®" },
+                { src: "/brands/botox.png", alt: "Botox® Cosmetic" },
+                { src: "/brands/timan.png", alt: "Timan Dental" },
+              ].map((b) => (
+                <div key={b.alt} className="bg-white rounded-2xl border border-border h-28 grid place-items-center p-5">
+                  <img src={b.src} alt={b.alt} className="max-h-14 max-w-[80%] object-contain" />
+                </div>
+              ))}
             </div>
+          </div>
+
+          <div className="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {["clinic-2", "clinic-6", "clinic-10", "clinic-14"].map((n) => (
+              <div key={n} className="aspect-[4/5] overflow-hidden rounded-2xl shadow-card">
+                <img src={`/equipment/${n}.jpg`} alt="U-Dental equipment" loading="lazy" className="h-full w-full object-cover" />
+              </div>
+            ))}
           </div>
         </div>
       </section>
