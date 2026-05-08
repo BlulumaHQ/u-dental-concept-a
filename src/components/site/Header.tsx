@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, Phone, ChevronDown, Calendar, Globe } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, Calendar } from "lucide-react";
 import { SERVICES, SERVICE_CATEGORIES, SITE } from "@/lib/site";
 import { Logo } from "./Logo";
 import { cn } from "@/lib/utils";
@@ -34,12 +34,12 @@ export function Header() {
         scrolled ? "bg-background/90 backdrop-blur-lg border-b border-border shadow-sm" : "bg-background/60 backdrop-blur"
       )}
     >
-      <div className="container-x flex items-center justify-between py-2 lg:py-3 min-h-[88px] lg:min-h-[104px]">
-        <Link to="/" aria-label="U-Dental Clinic home">
+      <div className="flex items-stretch justify-between py-2 lg:py-3 min-h-[88px] lg:min-h-[104px] pl-4 sm:pl-6 lg:pl-8">
+        <Link to="/" aria-label="U-Dental Clinic home" className="flex items-center">
           <Logo variant="dark" />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-1 ml-auto">
           {NAV.map((item) =>
             item.hasMenu ? (
               <div
@@ -95,44 +95,43 @@ export function Header() {
               </Link>
             )
           )}
-        </nav>
 
-        <div className="hidden lg:flex items-stretch gap-0 self-stretch -my-2 lg:-my-3">
-          <a
-            href={SITE.phoneHref}
-            className="text-sm font-semibold text-foreground hover:text-primary flex items-center gap-2 pr-5"
-          >
-            <Phone className="h-4 w-4" /> {SITE.phone}
-          </a>
-          <Link
-            to="/contact-us"
-            className="flex items-center gap-2 bg-primary text-primary-foreground px-6 font-bold text-sm hover:bg-charcoal transition-colors"
-          >
-            <Calendar className="h-4 w-4" /> Book Appointment
-          </Link>
-          <div className="flex items-center bg-charcoal text-charcoal-foreground px-4 gap-2 text-xs font-bold uppercase tracking-wider">
-            <Globe className="h-3.5 w-3.5 text-primary" />
+          <div className="flex items-center gap-1.5 px-3 text-sm font-semibold">
             <button
               type="button"
               aria-current="true"
-              className="text-primary-foreground hover:text-primary transition-colors"
+              className="text-primary"
             >
               EN
             </button>
-            <span className="opacity-30">/</span>
+            <span className="text-muted-foreground">/</span>
             <button
               type="button"
-              className="opacity-60 hover:opacity-100 hover:text-primary transition-colors"
+              className="text-foreground hover:text-primary transition-colors"
               title="Coming soon"
             >
               中文
             </button>
           </div>
-        </div>
+
+          <a
+            href={SITE.phoneHref}
+            className="text-sm font-semibold text-foreground hover:text-primary flex items-center gap-2 px-4"
+          >
+            <Phone className="h-4 w-4" /> {SITE.phone}
+          </a>
+        </nav>
+
+        <Link
+          to="/contact-us"
+          className="hidden lg:flex items-center gap-2 bg-primary text-primary-foreground px-8 font-bold text-sm hover:bg-charcoal transition-colors self-stretch -my-2 lg:-my-3"
+        >
+          <Calendar className="h-4 w-4" /> Book Appointment
+        </Link>
 
         <button
           aria-label="Open menu"
-          className="lg:hidden p-2 -mr-2 text-foreground"
+          className="lg:hidden p-2 mr-4 self-center text-foreground"
           onClick={() => setOpen(true)}
         >
           <Menu className="h-6 w-6" />
