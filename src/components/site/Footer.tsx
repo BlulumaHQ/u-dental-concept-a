@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { SERVICES, SITE } from "@/lib/site";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Logo } from "./Logo";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -8,7 +9,7 @@ export function Footer() {
     <footer className="bg-charcoal text-charcoal-foreground pt-20 pb-8 mt-12">
       <div className="container-x grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
         <div className="lg:col-span-1">
-          <div className="text-2xl font-extrabold tracking-tight mb-3">U-Dental</div>
+          <Logo variant="light" className="h-10 mb-4" />
           <p className="text-sm opacity-75 leading-relaxed">
             Premium digital dentistry in Kitsilano Vancouver. English &amp; Mandarin care designed around modern technology and patient comfort.
           </p>
