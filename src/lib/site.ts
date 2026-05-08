@@ -198,3 +198,111 @@ export const HERO_IMAGES = [
   "https://u-dental.ca/wp-content/uploads/2020/10/Dark3-4-1.jpg",
   "https://u-dental.ca/wp-content/uploads/2020/10/Dark3-5.jpg",
 ];
+
+export type Doctor = {
+  slug: string;
+  name: string;
+  credentials: string;
+  photo: string;
+  specialties: string[];
+  summary: string;
+  bio: string[];
+  related: string[]; // service slugs
+};
+
+export const DOCTORS: Doctor[] = [
+  {
+    slug: "dr-joyce-wu",
+    name: "Dr. Joyce Wu",
+    credentials: "DDS",
+    photo: "https://u-dental.ca/wp-content/uploads/2018/12/Dr.-Joyce-Wu-3.jpg",
+    specialties: ["General Dentistry", "Orthodontics & Invisalign", "Botox"],
+    summary: "Certified in both Taiwan and Canada, with decades of considerate, comprehensive general and orthodontic care in Vancouver.",
+    bio: [
+      "Dr. Joyce Wu graduated from National Yang-Ming Medical University in Taipei, Taiwan in 1992 and completed her general dentistry training at Taipei Veteran General Hospital. During her time at VGHTPE, she mastered her clinical dentistry skills and became a certified clinical instructor at the VGHTPE Faculty of Dentistry.",
+      "Dr. Wu immigrated to Canada in 1997, bringing with her an extensive skill set in general dentistry. She passed the Canadian National Dental Examining Board soon after. As one of the few dentists certified in both Taiwan and Canada, Dr. Wu has since established her reputation in Vancouver through considerate care and exceptional clinical skills. For the past 20 years, “Joyce Wu Dental” has become the first choice of many patients in Metro Vancouver, with her patient loyalty transcending the physical distance of her offices. With Dr. Joyce Wu in U-Dental group, we will surely provide comprehensive and high quality care for people in Vancouver.",
+    ],
+    related: ["orthodontics", "invisalign", "botox", "dental-cleaning"],
+  },
+  {
+    slug: "dr-lo-lin-tsai",
+    name: "Dr. Lo-Lin Tsai",
+    credentials: "DDS, M Sc, PhD",
+    photo: "https://u-dental.ca/wp-content/uploads/2018/12/Dr.-Lo-Lin-Tsai-3.jpg",
+    specialties: ["Oral Surgery", "Dental Implants", "Wisdom Tooth Extraction"],
+    summary: "Oral & maxillofacial surgery specialist with 20,000+ wisdom tooth extractions and 5,000+ implant cases.",
+    bio: [
+      "Dr. Lo-Lin Tsai graduated dental school in 2000, completed the 3-year-period oral maxillofacial surgery training at Taiwan’s top medical center, and became the youngest oral maxillofacial surgery specialist in Taiwan’s history. Over the years, he has strived to make progress in his career and in the field of dentistry as a whole. In 2014, Dr. Tsai was promoted to be an associate professor at dental school, and he was also honored as an instructor of PhD students in 2017.",
+      "Dr. Tsai is renowned for his superb surgical skill. To this day, Dr. Tsai has executed more than 20,000 cases of wisdom teeth extraction and over 5,000 cases of dental implant surgeries. Dr. Tsai was also the pioneering surgeon of All-on-4 zygoma implant full arch reconstruction in Taiwan in 2012. With extraordinary achievement in clinical practice, he immigrated to Canada in 2015 and passed the National Dental Examining Board of Canada. Now, he is committed to providing exceptional service and care for his patients in Taiwan and Metro Vancouver alike.",
+    ],
+    related: ["oral-surgery", "dental-implants", "all-on-4", "wisdom-tooth-extraction"],
+  },
+  {
+    slug: "dr-clair-wang",
+    name: "Dr. Claire Wang",
+    credentials: "DDS",
+    photo: "https://u-dental.ca/wp-content/uploads/2018/12/Dr.-Clair-Wang-v8-1.png",
+    specialties: ["Family Dentistry", "Cosmetic Dentistry", "Prosthodontics", "Invisalign"],
+    summary: "Warm, gentle family dentist and Invisalign Preferred Provider, certified in conscious sedation and laser dentistry.",
+    bio: [
+      "Dr. Claire Wang is the doctor in charge of “Just Smiles”, a well-known dental clinic in Surrey. After obtaining her Bachelor of Science degree with Honours in Biochemistry at the University of British Columbia, she earned her Doctor of Dental Surgery at the University of Western Ontario, and graduated with Dean’s Honours.",
+      "Dr. Wang provides full-service family dentistry for patients of all ages. She has a warm, caring and gentle personality which puts children and anxious patients at ease. She understands the importance of open communication and is always driven to deliver the highest quality of care. Dr. Wang maintains her skills by spending countless hours in continuous education. She has obtained an Associate Fellowship at the World Clinical Laser Institute, she is certified in conscious sedation and she is a Preferred Provider of Invisalign. Dr. Wang is also a part-time clinical instructor at the UBC Faculty of Dentistry.",
+    ],
+    related: ["cosmetics-and-comprehensive-dentistry", "invisalign", "crown-and-bridges", "dental-cleaning"],
+  },
+  {
+    slug: "dr-edward-cheng",
+    name: "Dr. Edward Cheng",
+    credentials: "DMD",
+    photo: "https://u-dental.ca/wp-content/uploads/2018/12/Fig11.5-1.png",
+    specialties: ["General Dentistry", "Dental Emergency", "Prosthodontics", "Treatment under General Anesthesia"],
+    summary: "UBC graduate known for affable service and experienced in dental treatment under general anesthesia for anxious or pediatric patients.",
+    bio: [
+      "Dr. Edward Cheng graduated from University of British Columbia, followed by his residency in New York’s St. Barnabas hospital, and now practices as a general dentist in metro Vancouver, centered in Burnaby. For many years, Dr. Cheng is well known for his affable service and smooth communication with patients.",
+      "For children with dental phobia or those who exhibit uncooperative behavior, Dr. Cheng is experienced in performing dental treatment under general anesthesia in conjunction with the anesthetic team. Today, Dr. Cheng is one of our core members in U-Dental, providing friendly and top quality dental services to all his patients.",
+    ],
+    related: ["emergency", "crown-and-bridges", "restorations", "dental-cleaning"],
+  },
+  {
+    slug: "dr-yu-ting-liao-dds",
+    name: "Dr. Yu-Ting Liao",
+    credentials: "DDS",
+    photo: "https://u-dental.ca/wp-content/uploads/2018/12/fig7.png",
+    specialties: ["Microscopic Dentistry", "Cosmetic Dentistry", "Bioclear", "Root Canal Treatment"],
+    summary: "Microscope-enhanced cosmetic dentist specializing in restoration, root canal therapy and digital smile design.",
+    bio: [
+      "Dr. Liao graduated from Taipei Medical University in 2015. She has great passion on cosmetic dentistry and restoration. After many advanced international courses, she became a member of the Taiwan Academy of Aesthetics Dentistry and the Taiwan Academy of Microscopes-enhanced Aesthetic Dentistry.",
+      "With her own dental microscope, she specializes in dental restoration and root canal therapy, which makes precise treatment in details possible. Dr. Liao also has a great sense of aesthetic and is well experienced in digital flow for smile design. Her passion in dental learning continues keeping her skill and knowledge progressing.",
+    ],
+    related: ["root-canal-treatment", "restorations", "cosmetics-and-comprehensive-dentistry"],
+  },
+  {
+    slug: "dr-ivan-kahn-dds",
+    name: "Dr. Ivan Kahn",
+    credentials: "DDS",
+    photo: "https://u-dental.ca/wp-content/uploads/2018/12/kahn.png",
+    specialties: ["Aesthetic Dentistry", "Prosthodontics"],
+    summary: "Practicing in Canada since 1998 with advanced training in soft-tissue diode laser, smile design, Invisalign and Botox.",
+    bio: [
+      "Dr. Ivan Kahn grew up in South Africa, receiving his dental training in Johannesburg. He has been practicing in Canada since 1998. He enjoys all aspects of dentistry, and has done additional studies, such as the use of a soft-tissue diode laser and Aesthetic Dentistry and Smile Design. He was a preferred provider for Invisalign Treatment and did his Botox certification.",
+      "Dr. Kahn also has extensive knowledge regarding dental solutions for snoring and sleep apnea through multiple continued education seminars. His extensive experience in the dental industry has given him a unique perspective on the challenges and concerns faced by dental patients.",
+    ],
+    related: ["cosmetics-and-comprehensive-dentistry", "crown-and-bridges", "invisalign", "botox"],
+  },
+  {
+    slug: "dr-suzanne-carlisle-dmd",
+    name: "Dr. Suzanne Carlisle",
+    credentials: "DMD",
+    photo: "https://u-dental.ca/wp-content/uploads/2018/12/fig9.jpg",
+    specialties: ["General Dentistry", "Oral Oncology Dentistry"],
+    summary: "Award-winning UBC Faculty of Dentistry educator providing clinical supervision for the UBC/VGH residency program.",
+    bio: [
+      "Dr. Suzanne Carlisle is a general dentist who has been honored with several teaching awards from UBC Faculty of Dentistry. She provides clinical supervision for the UBC/VGH residency program every year.",
+    ],
+    related: ["dental-cleaning", "restorations", "crown-and-bridges"],
+  },
+];
+
+export const TEAM_INTRO =
+  "We are a team of professional dentists fluent in both English and Mandarin, with decades of combined experience. U-Dental brings together advanced digital dentistry, implant and orthodontic technology, and an exclusive surgical room designed to deliver a medical center-class experience.";
+
