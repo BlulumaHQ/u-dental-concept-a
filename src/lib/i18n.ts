@@ -1,4 +1,4 @@
-import { useRouterState, Link, type LinkProps } from "@tanstack/react-router";
+import { useRouterState } from "@tanstack/react-router";
 import { SITE, SERVICES, SERVICE_CATEGORIES, DOCTORS, type ServiceItem, type Doctor } from "./site";
 import { SITE_ZH, SERVICES_ZH, SERVICE_CATEGORIES_ZH, DOCTORS_ZH } from "./site.zh";
 import { FAQS, type FAQ } from "./faqs";
