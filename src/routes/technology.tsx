@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CheckCircle2, Cpu, Building2, Microscope, Zap, ArrowRight, ScanLine, Activity } from "lucide-react";
-import { HERO_IMAGES } from "@/lib/site";
 import { PageHero } from "@/components/site/PageHero";
 
 export const Route = createFileRoute("/technology")({
