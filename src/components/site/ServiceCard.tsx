@@ -36,7 +36,7 @@ export function ServiceCard({ service, variant = "horizontal" }: { service: Serv
     >
       <div className="h-20 w-20 rounded-xl bg-soft grid place-items-center shrink-0 overflow-hidden">
         {service.image ? (
-          <img src={service.image} alt="" className="h-12 w-12 object-contain" />
+          <img src={service.image} alt="" className="max-h-14 max-w-14 object-contain" />
         ) : (
           <Stethoscope className="h-8 w-8 text-primary/60" />
         )}
