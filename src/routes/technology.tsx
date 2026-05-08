@@ -118,7 +118,7 @@ function TechPage() {
 
       <section className="section-y">
         <div className="container-x grid lg:grid-cols-2 gap-12 items-center">
-          <img src={HERO_IMAGES[4]} alt="Surgical room" className="rounded-3xl shadow-elevated w-full aspect-[4/3] object-cover" />
+          <img src="/equipment/clinic-8.jpg" alt="Surgical room" className="rounded-3xl shadow-elevated w-full aspect-[4/3] object-cover" />
           <div>
             <p className="text-primary font-bold text-sm uppercase tracking-wider">A Higher Standard</p>
             <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">Medical center-class asepsis quality</h2>
