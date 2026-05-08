@@ -1,6 +1,6 @@
 import { createFileRoute, notFound, useParams } from "@tanstack/react-router";
 import { ArrowRight, Phone, Calendar, ArrowLeft, CheckCircle2 } from "lucide-react";
-import { DOCTORS, SERVICES } from "@/lib/site";
+import { DOCTORS } from "@/lib/site";
 import { LocaleLink } from "@/components/site/LocaleLink";
 import { useLocale, useT, getDoctors, getServices, getSite, localePath } from "@/lib/i18n";
 
@@ -164,5 +164,3 @@ export function DoctorPage() {
   );
 }
 
-// suppress unused import lint for SERVICES (kept for loader typing parity)
-void SERVICES;
