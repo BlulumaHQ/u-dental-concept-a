@@ -140,7 +140,7 @@ export function Header() {
 
           <a
             href={SITE.phoneHref}
-            className="flex shrink-0 items-center gap-2 whitespace-nowrap px-2.5 text-xs font-semibold text-foreground transition-colors hover:text-primary min-[1360px]:px-3 min-[1360px]:text-sm"
+            className="flex shrink-0 items-center gap-2 whitespace-nowrap pl-2.5 pr-5 text-xs font-semibold text-foreground transition-colors hover:text-primary min-[1360px]:pl-3 min-[1360px]:pr-6 min-[1360px]:text-sm"
           >
             <Phone className="h-4 w-4 shrink-0" />
             <span>{SITE.phone}</span>
