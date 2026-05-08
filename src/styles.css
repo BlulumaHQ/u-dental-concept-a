@@ -65,7 +65,7 @@
   --charcoal: oklch(0.22 0.018 240);
   --charcoal-foreground: oklch(0.98 0.005 80);
   --dental: oklch(0.55 0.06 220);
-  --gradient-hero: linear-gradient(135deg, oklch(0.985 0.008 80) 0%, oklch(0.95 0.018 220) 100%);
+  --gradient-hero: linear-gradient(135deg, oklch(0.22 0.018 240) 0%, oklch(0.18 0.018 240) 60%, oklch(0.3 0.04 235) 100%);
   --gradient-accent: linear-gradient(135deg, oklch(0.56 0.21 25) 0%, oklch(0.5 0.2 22) 100%);
   --shadow-elevated: 0 30px 80px -30px oklch(0.22 0.02 240 / 0.22);
   --shadow-card: 0 10px 30px -12px oklch(0.22 0.02 240 / 0.1);
