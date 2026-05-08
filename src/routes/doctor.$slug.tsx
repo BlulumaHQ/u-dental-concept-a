@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, Phone, Calendar, ArrowLeft, CheckCircle2 } from "lucide-react";
-import { DOCTORS, SERVICES, SITE } from "@/lib/site";
+import { DOCTORS, SERVICES, SITE, type Doctor } from "@/lib/site";
 
 export const Route = createFileRoute("/doctor/$slug")({
   loader: ({ params }) => {
@@ -36,9 +36,9 @@ export const Route = createFileRoute("/doctor/$slug")({
 });
 
 function DoctorPage() {
-  const { doctor } = Route.useLoaderData();
+  const { doctor } = Route.useLoaderData() as { doctor: Doctor };
   const related = doctor.related
-    .map((slug) => SERVICES.find((s) => s.slug === slug))
+    .map((slug: string) => SERVICES.find((s) => s.slug === slug))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
 
   return (
@@ -69,7 +69,7 @@ function DoctorPage() {
             <p className="mt-2 text-lg text-muted-foreground font-semibold">{doctor.credentials}</p>
 
             <div className="mt-6 flex flex-wrap gap-2">
-              {doctor.specialties.map((s) => (
+              {doctor.specialties.map((s: string) => (
                 <span key={s} className="rounded-full bg-primary/10 text-primary px-3 py-1 text-xs font-semibold">
                   {s}
                 </span>
@@ -79,7 +79,7 @@ function DoctorPage() {
             <p className="mt-7 text-lg text-foreground/85 leading-relaxed">{doctor.summary}</p>
 
             <div className="mt-8 space-y-5 text-foreground/85 leading-relaxed">
-              {doctor.bio.map((p, i) => (
+              {doctor.bio.map((p: string, i: number) => (
                 <p key={i}>{p}</p>
               ))}
             </div>
