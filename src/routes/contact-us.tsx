@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
-import { SITE } from "@/lib/site";
+import { SITE, HERO_IMAGES } from "@/lib/site";
+import { PageHero } from "@/components/site/PageHero";
 
 export const Route = createFileRoute("/contact-us")({
   head: () => ({
@@ -19,15 +20,12 @@ function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   return (
     <>
-      <section className="gradient-hero text-white">
-        <div className="container-x section-y">
-          <p className="text-primary font-bold uppercase text-sm tracking-wider">Contact</p>
-          <h1 className="mt-3 text-5xl lg:text-7xl font-extrabold leading-[1.05] max-w-4xl">Book your visit at U-Dental Clinic.</h1>
-          <p className="mt-6 text-xl text-white/80 max-w-2xl">
-            English and Mandarin support, modern digital dentistry, and a comfortable patient experience in Kitsilano Vancouver.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Contact"
+        title="Book your visit at U-Dental Clinic."
+        subtitle="English and Mandarin support, modern digital dentistry, and a comfortable patient experience in Kitsilano Vancouver."
+        image={HERO_IMAGES[4]}
+      />
 
       <section className="section-y">
         <div className="container-x grid lg:grid-cols-5 gap-10">
