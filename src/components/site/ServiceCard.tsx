@@ -10,9 +10,9 @@ export function ServiceCard({ service, variant = "horizontal" }: { service: Serv
         params={{ slug: service.slug }}
         className="group rounded-2xl bg-card border border-border overflow-hidden hover:border-primary hover:shadow-elevated transition flex flex-col"
       >
-        <div className="aspect-[4/3] bg-soft overflow-hidden">
+        <div className="aspect-[4/3] bg-soft grid place-items-center overflow-hidden p-8">
           {service.image ? (
-            <img src={service.image} alt={service.name} className="h-full w-full object-cover group-hover:scale-105 transition duration-500" style={{ objectPosition: "0% 50%" }} />
+            <img src={service.image} alt={service.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-500" />
           ) : (
             <Stethoscope className="h-14 w-14 text-primary/40" />
           )}
