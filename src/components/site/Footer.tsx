@@ -14,8 +14,39 @@ const FEATURED = [
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="bg-charcoal text-charcoal-foreground pt-20 pb-8 mt-12">
-      <div className="container-x grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="bg-charcoal text-charcoal-foreground pt-10 md:pt-20 pb-24 md:pb-8 mt-12">
+      {/* MOBILE — compact */}
+      <div className="container-x md:hidden">
+        <Logo variant="light" className="h-9 mb-4" />
+        <ul className="space-y-2 text-sm opacity-85">
+          <li className="flex gap-2"><MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary" /> {SITE.address}</li>
+          <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 shrink-0 text-primary" /> <a href={SITE.phoneHref} className="hover:text-primary">{SITE.phone}</a></li>
+          <li className="flex gap-2"><Mail className="h-4 w-4 mt-0.5 shrink-0 text-primary" /> <a href={SITE.emailHref} className="hover:text-primary">{SITE.email}</a></li>
+        </ul>
+        <Link
+          to="/contact-us"
+          className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-bold"
+        >
+          <Calendar className="h-4 w-4" /> Book Appointment
+        </Link>
+        <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-xs opacity-80">
+          <Link to="/about-us" className="hover:text-primary">About</Link>
+          <Link to="/services" className="hover:text-primary">Services</Link>
+          <Link to="/technology" className="hover:text-primary">Technology</Link>
+          <Link to="/insights" className="hover:text-primary">Insights</Link>
+          <Link to="/faq" className="hover:text-primary">FAQ</Link>
+          <Link to="/contact-us" className="hover:text-primary">Contact</Link>
+          <Link to="/privacy-policy" className="hover:text-primary">Privacy</Link>
+          <Link to="/term-of-service" className="hover:text-primary">Terms</Link>
+        </div>
+        <div className="mt-6 pt-4 border-t border-white/10 text-[11px] opacity-70 flex flex-col gap-1">
+          <span>© {year} U-Dental Clinic. All rights reserved.</span>
+          <span>Web Design by <a href="https://bluluma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Bluluma</a></span>
+        </div>
+      </div>
+
+      {/* DESKTOP / TABLET */}
+      <div className="container-x hidden md:grid grid-cols-2 lg:grid-cols-4 gap-10">
         {/* COL 1 — Clinic */}
         <div>
           <Logo variant="light" className="h-10 mb-4" />
@@ -88,7 +119,7 @@ export function Footer() {
           </Link>
         </div>
       </div>
-      <div className="container-x mt-14 pt-6 border-t border-white/10 text-xs opacity-70 flex flex-col sm:flex-row gap-3 sm:gap-5 items-center justify-center text-center">
+      <div className="container-x mt-14 pt-6 border-t border-white/10 text-xs opacity-70 hidden md:flex flex-col sm:flex-row gap-3 sm:gap-5 items-center justify-center text-center">
         <span>© {year} U-Dental Clinic. All rights reserved.</span>
         <span className="hidden sm:inline opacity-40">|</span>
         <span>Web Design by{" "}
