@@ -53,12 +53,16 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="container-x mt-14 pt-6 border-t border-white/10 text-xs opacity-70 text-center">
-        © {year} U-Dental Clinic. All rights reserved. |{" "}
-        Web Design by{" "}
-        <a href="https://bluluma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Bluluma</a>
-        {" "}|{" "}Powered by{" "}
-        <a href="https://swiftlift.app" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">SwiftLift</a>
+      <div className="container-x mt-14 pt-6 border-t border-white/10 text-xs opacity-70 flex flex-col sm:flex-row gap-3 sm:gap-5 items-center justify-center text-center">
+        <span>© {year} U-Dental Clinic. All rights reserved.</span>
+        <span className="hidden sm:inline opacity-40">|</span>
+        <Link to="/privacy-policy" className="hover:text-primary">Privacy Policy</Link>
+        <span className="hidden sm:inline opacity-40">|</span>
+        <Link to="/term-of-service" className="hover:text-primary">Terms of Service</Link>
+        <span className="hidden sm:inline opacity-40">|</span>
+        <span>Web Design by{" "}
+          <a href="https://bluluma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Bluluma</a>
+        </span>
       </div>
     </footer>
   );
