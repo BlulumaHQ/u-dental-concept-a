@@ -153,7 +153,20 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Section 6 — Doctors */}
+      {/* Section 6 — Team group photo */}
+      <section className="pt-4">
+        <div className="container-x">
+          <figure className="relative rounded-3xl overflow-hidden shadow-elevated">
+            <img src="/about/team-wide.jpg" alt="The U-Dental team" className="w-full h-auto object-cover" />
+            <figcaption className="absolute inset-x-0 bottom-0 p-6 lg:p-10 bg-gradient-to-t from-charcoal/85 to-transparent text-white">
+              <p className="text-primary text-xs font-bold uppercase tracking-[0.25em]">The U-Dental Team</p>
+              <p className="mt-2 text-lg lg:text-2xl font-semibold max-w-3xl">Bilingual dentists, hygienists and support staff — united by a commitment to excellence.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      {/* Section 7 — Doctors */}
       <section id="team" className="section-y">
         <div className="container-x">
           <div className="max-w-3xl">

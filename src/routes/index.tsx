@@ -130,13 +130,13 @@ function HomePage() {
           </div>
           <div className="grid lg:grid-cols-3 gap-5">
             <div className="lg:col-span-2 lg:row-span-2 rounded-3xl overflow-hidden shadow-elevated min-h-[300px] lg:min-h-[520px]">
-              <img src="/equipment/clinic-2.jpg" alt="U-Dental clinic interior" className="w-full h-full object-cover" />
+              <img src="/interior/operatory.jpg" alt="U-Dental treatment operatory" className="w-full h-full object-cover" />
             </div>
             <div className="rounded-2xl overflow-hidden shadow-card aspect-[4/3]">
-              <img src="/equipment/clinic-5.jpg" alt="Treatment room" className="w-full h-full object-cover" />
+              <img src="/interior/lounge.jpg" alt="U-Dental patient lounge" className="w-full h-full object-cover" />
             </div>
             <div className="rounded-2xl overflow-hidden shadow-card aspect-[4/3]">
-              <img src="/equipment/clinic-9.jpg" alt="Surgical suite equipment" className="w-full h-full object-cover" />
+              <img src="/interior/details.jpg" alt="Clinic interior details" className="w-full h-full object-cover" />
             </div>
           </div>
           <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
@@ -231,7 +231,7 @@ function HomePage() {
       <section className="section-y bg-charcoal text-charcoal-foreground">
         <div className="container-x grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <img src="https://u-dental.ca/wp-content/uploads/2025/05/fig0.jpg" alt="Digital dentistry technology" className="rounded-3xl shadow-elevated w-full object-cover aspect-[4/3]" />
+            <img src="/equipment/tech-cbct.jpg" alt="3D Cone Beam CT imaging at U-Dental" className="rounded-3xl shadow-elevated w-full object-cover aspect-[4/3]" />
           </div>
           <div>
             <p className="text-primary font-bold text-sm uppercase tracking-wider">Technology &amp; Equipment</p>
