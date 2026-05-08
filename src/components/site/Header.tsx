@@ -34,10 +34,12 @@ export function Header() {
         scrolled ? "bg-background/90 backdrop-blur-lg border-b border-border shadow-sm" : "bg-background/60 backdrop-blur"
       )}
     >
-      <div className="flex items-stretch justify-between py-2 lg:py-3 min-h-[88px] lg:min-h-[104px] pl-4 sm:pl-6 lg:pl-8">
-        <Link to="/" aria-label="U-Dental Clinic home" className="flex items-center">
-          <Logo variant="dark" />
-        </Link>
+      <div className="flex items-stretch justify-between py-2 lg:py-3 min-h-[88px] lg:min-h-[104px]">
+        <div className="container-x flex items-center" style={{ paddingRight: 0 }}>
+          <Link to="/" aria-label="U-Dental Clinic home" className="flex items-center">
+            <Logo variant="dark" />
+          </Link>
+        </div>
 
         <nav className="hidden lg:flex items-center gap-1 ml-auto">
           {NAV.map((item) =>
