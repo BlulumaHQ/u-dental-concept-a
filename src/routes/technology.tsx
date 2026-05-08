@@ -86,6 +86,18 @@ function TechPage() {
               </li>
             ))}
           </ul>
+
+          <div className="mt-14">
+            <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Featured brands & systems</p>
+            <div className="mt-6 flex flex-wrap items-center gap-x-12 gap-y-6">
+              <img src="/brands/x-guide.png" alt="X-Guide" className="h-10 md:h-12 object-contain" />
+              <img src="/brands/bioclear.png" alt="Bioclear" className="h-8 md:h-10 object-contain" />
+              <span className="text-lg font-semibold text-foreground/70">Invisalign®</span>
+              <span className="text-lg font-semibold text-foreground/70">Nobel Biocare</span>
+              <span className="text-lg font-semibold text-foreground/70">Leica M320D</span>
+              <span className="text-lg font-semibold text-foreground/70">Medit i500</span>
+            </div>
+          </div>
         </div>
       </section>
 
