@@ -51,7 +51,7 @@ export function Header() {
           </button>
         </div>
 
-        <nav className="absolute inset-y-0 right-[184px] hidden items-center justify-end gap-0 min-[1180px]:flex min-[1180px]:max-w-[760px] min-[1360px]:max-w-none">
+        <nav className="absolute inset-y-0 left-[330px] right-[184px] hidden items-center justify-end gap-0 overflow-hidden min-[1180px]:flex min-[1360px]:left-[360px]">
           {NAV.map((item) =>
             item.hasMenu ? (
               <div
