@@ -113,8 +113,6 @@ export function Footer() {
             <li><Link to={lp("/faq")} className="hover:text-primary">{t("nav.faq", locale)}</Link></li>
             <li><Link to={lp("/insights")} className="hover:text-primary">{t("nav.insights", locale)}</Link></li>
             <li><Link to={lp("/contact-us")} className="hover:text-primary">{t("nav.contact", locale)}</Link></li>
-            <li><Link to={lp("/privacy-policy")} className="hover:text-primary">{t("foot.privacy", locale)}</Link></li>
-            <li><Link to={lp("/term-of-service")} className="hover:text-primary">{t("foot.terms", locale)}</Link></li>
           </ul>
         </div>
 
