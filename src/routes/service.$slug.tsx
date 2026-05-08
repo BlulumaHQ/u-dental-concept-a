@@ -68,7 +68,7 @@ function ServicePage() {
             <div>
               <h2 className="text-3xl font-extrabold">Patient-focused benefits</h2>
               <ul className="mt-6 grid sm:grid-cols-2 gap-3">
-                {service.benefits.map((b) => (
+                {service.benefits.map((b: string) => (
                   <li key={b} className="flex gap-3 rounded-xl bg-cream border border-border p-4">
                     <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                     <span className="text-sm font-medium">{b}</span>
@@ -80,7 +80,7 @@ function ServicePage() {
             <div>
               <h2 className="text-3xl font-extrabold">When this may be needed</h2>
               <ul className="mt-6 space-y-3">
-                {service.when.map((w) => (
+                {service.when.map((w: string) => (
                   <li key={w} className="flex gap-3 text-foreground/90">
                     <ArrowRight className="h-5 w-5 text-primary shrink-0 mt-1" /> {w}
                   </li>
