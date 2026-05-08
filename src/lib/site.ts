@@ -44,6 +44,7 @@ export const SERVICES: ServiceItem[] = [
     name: "All-on-4",
     short: "Full-arch tooth replacement supported by four strategically placed implants.",
     category: "replacement",
+    image: "/services/all-on-4.png",
     intro: "All-on-4 is a full-arch restoration concept that replaces a full set of upper or lower teeth using four implants. It can offer a stable, fixed alternative to traditional dentures.",
     benefits: ["Fixed full-arch restoration", "Designed to support chewing function", "May reduce the need for bone grafting", "Aesthetic, natural-looking result"],
     when: ["Multiple missing teeth in an arch", "Currently wearing loose dentures", "Looking for a fixed long-term solution"],
@@ -54,6 +55,7 @@ export const SERVICES: ServiceItem[] = [
     name: "Invisalign",
     short: "Clear, removable aligners for discreet teeth straightening.",
     category: "cosmetic",
+    image: "/featured/invisalign.jpg",
     intro: "Invisalign uses a series of clear, custom aligners to gradually move teeth into a more aligned position — a discreet alternative to traditional braces.",
     benefits: ["Clear and removable", "Designed for comfort", "Easier to clean teeth during treatment", "Custom-planned with digital scans"],
     when: ["Crowded or spaced teeth", "Bite concerns", "Patients wanting a discreet option"],
@@ -74,6 +76,7 @@ export const SERVICES: ServiceItem[] = [
     name: "X-guide Real-time 3D Guidance Surgery",
     short: "Real-time 3D navigation during dental implant placement.",
     category: "advanced",
+    image: "/services/x-guide.png",
     intro: "X-guide is a real-time 3D navigation system used during dental implant surgery. It helps the surgical team visualize the planned implant position with greater precision.",
     benefits: ["Real-time 3D navigation", "Helps improve accuracy of placement", "Supports a more controlled surgical workflow"],
     when: ["Patients undergoing dental implant placement", "Complex implant cases requiring precise planning"],
@@ -84,6 +87,7 @@ export const SERVICES: ServiceItem[] = [
     name: "Oral Surgery",
     short: "Advanced surgical care for the mouth, face, and jaw.",
     category: "advanced",
+    image: "/services/oral-surgery.png",
     intro: "Our exclusive surgical room is designed to provide a medical center-class environment in asepsis quality, supporting a wide range of oral surgical needs.",
     benefits: ["Dedicated surgical room", "Designed to support patient comfort", "Modern surgical workflows"],
     when: ["Complex extractions", "Implant-related surgery", "Other oral surgical needs"],
@@ -113,7 +117,7 @@ export const SERVICES: ServiceItem[] = [
     name: "Dental Cleaning",
     short: "Preventive care and periodontal health support.",
     category: "general",
-    image: "https://u-dental.ca/wp-content/uploads/2020/10/Dental-Cleaning-img-left.png",
+    image: "/services/dental-cleaning.png",
     intro: "Regular cleanings help support healthy teeth and gums by removing plaque and tartar that brushing alone may miss.",
     benefits: ["Helps support gum health", "Removes plaque and tartar", "Opportunity for early issue detection"],
     when: ["Routine preventive visits", "Gum health concerns"],
@@ -123,7 +127,7 @@ export const SERVICES: ServiceItem[] = [
     name: "Emergency",
     short: "Pain relief and dental trauma support when you need it most.",
     category: "general",
-    image: "https://u-dental.ca/wp-content/uploads/2020/10/Emergency-img-left.png",
+    image: "/services/emergency.png",
     intro: "Dental emergencies can happen unexpectedly. Contact our clinic to discuss urgent dental concerns.",
     benefits: ["Prompt evaluation", "Focus on pain relief and stabilization", "Treatment planning for next steps"],
     when: ["Sudden dental pain", "Dental trauma or injury", "Lost or broken restoration"],
@@ -173,6 +177,7 @@ export const SERVICES: ServiceItem[] = [
     name: "Botox",
     short: "Targeted treatment provided in a clinical dental setting.",
     category: "cosmetic",
+    image: "/services/botox.png",
     intro: "Botox treatments may be provided in a dental setting for select clinical purposes. Recommendations depend on individual needs — speak with our team for more information.",
     benefits: ["Provided in a clinical environment", "Personalized assessment"],
     when: ["Patients seeking information about clinical treatment options"],
@@ -185,6 +190,14 @@ export const SERVICE_CATEGORIES = {
   general: "General Dentistry",
   replacement: "Tooth Replacement",
 } as const;
+
+export const FEATURED_TREATMENTS: { slug: string; title: string; image: string; tagline: string }[] = [
+  { slug: "dental-implants", title: "Dental Implants", image: "/featured/dental-implants.jpg", tagline: "Digitally planned, precisely placed." },
+  { slug: "all-on-4", title: "All-on-4", image: "/featured/all-on-4.jpg", tagline: "Full-arch restoration in a single workflow." },
+  { slug: "invisalign", title: "Invisalign", image: "/featured/invisalign.jpg", tagline: "Discreet, custom-planned aligners." },
+  { slug: "x-guide-real-time-3d-guidance-surgery", title: "X-Guide Implant Surgery", image: "/featured/x-guide.jpg", tagline: "Real-time 3D guided precision." },
+  { slug: "cosmetics-and-comprehensive-dentistry", title: "Cosmetic & Comprehensive Dentistry", image: "/featured/cosmetics.jpg", tagline: "Smile design with a digital workflow." },
+];
 
 export const HIGH_VALUE_SLUGS = [
   "dental-implants",
