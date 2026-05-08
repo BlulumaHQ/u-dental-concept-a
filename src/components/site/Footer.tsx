@@ -1,7 +1,20 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { MapPin, Phone, Mail, Clock, ArrowRight, Calendar } from "lucide-react";
+import { Phone, Mail, ArrowRight, Calendar, Facebook, MapPin } from "lucide-react";
 import { Logo } from "./Logo";
 import { detectLocale, getSite, localePath, t } from "@/lib/i18n";
+
+const SOCIAL_LINKS = [
+  {
+    href: "https://www.facebook.com/profile.php?id=100057379632650",
+    label: "Facebook",
+    Icon: Facebook,
+  },
+  {
+    href: "https://www.google.com/maps/place/U-Dental/@49.2642655,-123.1707699,15z/data=!4m6!3m5!1s0x5486735fc5f25775:0xae72798eeb46d504!8m2!3d49.2642655!4d-123.1707699!16s%2Fg%2F11frsrmkq_",
+    label: "Google Maps",
+    Icon: MapPin,
+  },
+];
 
 const FEATURED_EN = [
   { slug: "dental-implants", name: "Dental Implants" },
