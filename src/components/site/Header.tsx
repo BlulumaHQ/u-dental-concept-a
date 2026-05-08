@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, Calendar, Globe } from "lucide-react";
 import { SERVICES, SERVICE_CATEGORIES, SITE } from "@/lib/site";
 import { Logo } from "./Logo";
 import { cn } from "@/lib/utils";
