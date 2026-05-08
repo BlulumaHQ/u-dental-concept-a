@@ -175,7 +175,31 @@ function HomePage() {
               About the clinic <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          {/* Mobile: horizontal scroll */}
+          <div className="sm:hidden -mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            {DOCTORS.map((d) => (
+              <Link
+                key={d.slug}
+                to="/doctor/$slug"
+                params={{ slug: d.slug }}
+                className="group snap-start shrink-0 w-[78%] rounded-2xl bg-card border border-border overflow-hidden flex flex-col"
+              >
+                <div className="aspect-[4/5] bg-cream overflow-hidden">
+                  <img src={d.photo} alt={d.name} className="w-full h-full object-cover" />
+                </div>
+                <div className="p-4 flex-1 flex flex-col">
+                  <h3 className="text-base font-bold leading-tight">{d.name}</h3>
+                  <p className="text-xs font-semibold text-muted-foreground mt-0.5">{d.credentials}</p>
+                  <p className="mt-2 text-sm text-muted-foreground line-clamp-3 flex-1">{d.summary}</p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-primary">
+                    View profile <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+          {/* Tablet+ : grid */}
+          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {DOCTORS.map((d) => (
               <Link
                 key={d.slug}
