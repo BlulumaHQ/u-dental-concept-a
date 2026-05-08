@@ -1,6 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { CheckCircle2, Cpu, Building2, Microscope, Zap, ArrowRight, ScanLine, Activity } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
+import { LocaleLink } from "@/components/site/LocaleLink";
+import { useLocale, useT, TECH_STACK, TECH_EQUIPMENT, TECH_HIGHER_LIST } from "@/lib/i18n";
 
 export const Route = createFileRoute("/technology")({
   head: () => ({
@@ -15,67 +17,49 @@ export const Route = createFileRoute("/technology")({
   component: TechPage,
 });
 
-const stack = [
-  { icon: ScanLine, title: "3D Cone Beam CT (CBCT)", body: "High-resolution 3D imaging that supports accurate diagnosis and digital implant planning." },
-  { icon: Zap, title: "X-Guide™ Real-time 3D Surgery", body: "Real-time 3D navigation during implant placement for greater positional accuracy." },
-  { icon: Cpu, title: "Medit i500 Intra-oral Scanner", body: "Comfortable digital impressions for crowns, Invisalign®, and full digital workflows." },
-  { icon: Building2, title: "Exclusive Surgical Room", body: "A dedicated surgical environment designed for medical center-class asepsis quality." },
-  { icon: Microscope, title: "Leica M320D Dental Microscope", body: "Advanced visualization for restorative, cosmetic and root canal treatment in fine detail." },
-  { icon: Activity, title: "Sirona Diode LASER", body: "Precision soft-tissue laser used in modern periodontal and surgical procedures." },
-];
-
-const equipment = [
-  "3D Cone Beam Computed Tomography (CBCT)",
-  "Medit i500 intra-oral scanner",
-  "X-Guide™ real-time 3D surgical navigator",
-  "Full digital implant workflow",
-  "Immediate implants with provisional crowns",
-  "All-on-4 full mouth reconstruction",
-  "Invisalign® orthodontic treatment",
-  "German DR.MACH surgical light",
-  "Sirona Diode LASER",
-  "Versah crestal sinus lift drill",
-  "COLTENE Perfect TSC II electrosurgery system",
-  "Nobel Biocare OsseoSet 200 dental implant system",
-  "A-dec / W&H electronic motor handpieces",
-  "GalvoSurge® implant surface care",
-  "Bioclear™ matrix restorations",
-  "Leica M320D dental microscope",
-  "BOTOX® clinical treatment",
-];
+const ICONS: Record<string, typeof ScanLine> = {
+  cbct: ScanLine, xguide: Zap, scanner: Cpu, surgery: Building2, microscope: Microscope, laser: Activity,
+};
 
 export function TechPage() {
+  const locale = useLocale();
+  const t = useT();
+  const stack = TECH_STACK[locale];
+  const equipment = TECH_EQUIPMENT[locale];
+  const higher = TECH_HIGHER_LIST[locale];
+
   return (
     <>
       <PageHero
-        eyebrow="Technology & Equipment"
-        title="Digital dentistry, designed for precision."
-        subtitle="U-Dental invests in the same technology used by leading dental medical centers — from 3D imaging to real-time guided implant surgery and microscopic dentistry."
+        eyebrow={t("page.tech.eyebrow")}
+        title={t("page.tech.title")}
+        subtitle={t("page.tech.sub")}
         image="/equipment/clinic-4.jpg"
       />
 
       <section className="section-y">
         <div className="container-x grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {stack.map((s) => (
-            <div key={s.title} className="rounded-2xl bg-card border border-border p-7 shadow-card">
-              <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary grid place-items-center mb-5">
-                <s.icon className="h-6 w-6" />
+          {stack.map((s) => {
+            const Icon = ICONS[s.key] ?? ScanLine;
+            return (
+              <div key={s.key} className="rounded-2xl bg-card border border-border p-7 shadow-card">
+                <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary grid place-items-center mb-5">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-bold">{s.title}</h3>
+                <p className="mt-3 text-muted-foreground leading-relaxed">{s.body}</p>
               </div>
-              <h3 className="text-xl font-bold">{s.title}</h3>
-              <p className="mt-3 text-muted-foreground leading-relaxed">{s.body}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
       <section className="section-y bg-cream">
         <div className="container-x">
           <div className="max-w-3xl">
-            <p className="text-primary font-bold text-sm uppercase tracking-wider">Our Equipment</p>
-            <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">A complete digital and surgical suite</h2>
-            <p className="mt-5 text-lg text-muted-foreground">
-              From digital scanning to surgical lighting, every system is selected to support precise, comfortable, and predictable treatment.
-            </p>
+            <p className="text-primary font-bold text-sm uppercase tracking-wider">{t("tech.equipmentLabel")}</p>
+            <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">{t("tech.equipmentHeading")}</h2>
+            <p className="mt-5 text-lg text-muted-foreground">{t("tech.equipmentSub")}</p>
           </div>
           <ul className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3">
             {equipment.map((e) => (
@@ -87,7 +71,7 @@ export function TechPage() {
           </ul>
 
           <div className="mt-14">
-            <p className="text-sm font-bold uppercase tracking-[0.25em] text-muted-foreground">Trusted brands &amp; systems</p>
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-muted-foreground">{t("tech.brands")}</p>
             <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
               {[
                 { src: "/brands/all-on-4.png", alt: "All-on-4®" },
@@ -119,23 +103,18 @@ export function TechPage() {
         <div className="container-x grid lg:grid-cols-2 gap-12 items-center">
           <img src="/equipment/clinic-8.jpg" alt="Surgical room" className="rounded-3xl shadow-elevated w-full aspect-[4/3] object-cover" />
           <div>
-            <p className="text-primary font-bold text-sm uppercase tracking-wider">A Higher Standard</p>
-            <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">Medical center-class asepsis quality</h2>
+            <p className="text-primary font-bold text-sm uppercase tracking-wider">{t("tech.higherStandard")}</p>
+            <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">{t("tech.medicalClass")}</h2>
             <ul className="mt-8 space-y-4">
-              {[
-                "Dedicated surgical room separated from general treatment areas",
-                "Modern sterilization and infection-control workflows",
-                "Designed to support a calm, controlled surgical experience",
-                "Advanced imaging and digital planning integrated into every case",
-              ].map((t) => (
-                <li key={t} className="flex gap-3 text-foreground/90">
-                  <CheckCircle2 className="h-6 w-6 text-primary shrink-0 mt-0.5" /> {t}
+              {higher.map((tx) => (
+                <li key={tx} className="flex gap-3 text-foreground/90">
+                  <CheckCircle2 className="h-6 w-6 text-primary shrink-0 mt-0.5" /> {tx}
                 </li>
               ))}
             </ul>
-            <Link to="/contact-us" className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 font-semibold">
-              Book a consultation <ArrowRight className="h-4 w-4" />
-            </Link>
+            <LocaleLink to="/contact-us" className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 font-semibold">
+              {t("cta.bookConsult")} <ArrowRight className="h-4 w-4" />
+            </LocaleLink>
           </div>
         </div>
       </section>
