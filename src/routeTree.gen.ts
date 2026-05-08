@@ -9,14 +9,22 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermOfServiceRouteImport } from './routes/term-of-service'
 import { Route as TechnologyRouteImport } from './routes/technology'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as PrivacyPolicy2RouteImport } from './routes/privacy-policy-2'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as AboutUsRouteImport } from './routes/about-us'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServiceSlugRouteImport } from './routes/service.$slug'
 import { Route as DoctorSlugRouteImport } from './routes/doctor.$slug'
 
+const TermOfServiceRoute = TermOfServiceRouteImport.update({
+  id: '/term-of-service',
+  path: '/term-of-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TechnologyRoute = TechnologyRouteImport.update({
   id: '/technology',
   path: '/technology',
@@ -25,6 +33,16 @@ const TechnologyRoute = TechnologyRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicy2Route = PrivacyPolicy2RouteImport.update({
+  id: '/privacy-policy-2',
+  path: '/privacy-policy-2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactUsRoute = ContactUsRouteImport.update({
@@ -57,8 +75,11 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/contact-us': typeof ContactUsRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/privacy-policy-2': typeof PrivacyPolicy2Route
   '/services': typeof ServicesRoute
   '/technology': typeof TechnologyRoute
+  '/term-of-service': typeof TermOfServiceRoute
   '/doctor/$slug': typeof DoctorSlugRoute
   '/service/$slug': typeof ServiceSlugRoute
 }
@@ -66,8 +87,11 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/contact-us': typeof ContactUsRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/privacy-policy-2': typeof PrivacyPolicy2Route
   '/services': typeof ServicesRoute
   '/technology': typeof TechnologyRoute
+  '/term-of-service': typeof TermOfServiceRoute
   '/doctor/$slug': typeof DoctorSlugRoute
   '/service/$slug': typeof ServiceSlugRoute
 }
@@ -76,8 +100,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/contact-us': typeof ContactUsRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/privacy-policy-2': typeof PrivacyPolicy2Route
   '/services': typeof ServicesRoute
   '/technology': typeof TechnologyRoute
+  '/term-of-service': typeof TermOfServiceRoute
   '/doctor/$slug': typeof DoctorSlugRoute
   '/service/$slug': typeof ServiceSlugRoute
 }
@@ -87,8 +114,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about-us'
     | '/contact-us'
+    | '/privacy-policy'
+    | '/privacy-policy-2'
     | '/services'
     | '/technology'
+    | '/term-of-service'
     | '/doctor/$slug'
     | '/service/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -96,8 +126,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about-us'
     | '/contact-us'
+    | '/privacy-policy'
+    | '/privacy-policy-2'
     | '/services'
     | '/technology'
+    | '/term-of-service'
     | '/doctor/$slug'
     | '/service/$slug'
   id:
@@ -105,8 +138,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about-us'
     | '/contact-us'
+    | '/privacy-policy'
+    | '/privacy-policy-2'
     | '/services'
     | '/technology'
+    | '/term-of-service'
     | '/doctor/$slug'
     | '/service/$slug'
   fileRoutesById: FileRoutesById
@@ -115,14 +151,24 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutUsRoute: typeof AboutUsRoute
   ContactUsRoute: typeof ContactUsRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  PrivacyPolicy2Route: typeof PrivacyPolicy2Route
   ServicesRoute: typeof ServicesRoute
   TechnologyRoute: typeof TechnologyRoute
+  TermOfServiceRoute: typeof TermOfServiceRoute
   DoctorSlugRoute: typeof DoctorSlugRoute
   ServiceSlugRoute: typeof ServiceSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/term-of-service': {
+      id: '/term-of-service'
+      path: '/term-of-service'
+      fullPath: '/term-of-service'
+      preLoaderRoute: typeof TermOfServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/technology': {
       id: '/technology'
       path: '/technology'
@@ -135,6 +181,20 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy-2': {
+      id: '/privacy-policy-2'
+      path: '/privacy-policy-2'
+      fullPath: '/privacy-policy-2'
+      preLoaderRoute: typeof PrivacyPolicy2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact-us': {
@@ -179,8 +239,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutUsRoute: AboutUsRoute,
   ContactUsRoute: ContactUsRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  PrivacyPolicy2Route: PrivacyPolicy2Route,
   ServicesRoute: ServicesRoute,
   TechnologyRoute: TechnologyRoute,
+  TermOfServiceRoute: TermOfServiceRoute,
   DoctorSlugRoute: DoctorSlugRoute,
   ServiceSlugRoute: ServiceSlugRoute,
 }
