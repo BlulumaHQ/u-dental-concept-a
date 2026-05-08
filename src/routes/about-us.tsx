@@ -1,84 +1,165 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Languages, ShieldCheck, Cpu, Heart, Building2, Microscope } from "lucide-react";
-import { HERO_IMAGES, DOCTORS } from "@/lib/site";
+import { ArrowRight, Phone } from "lucide-react";
+import { DOCTORS, SITE } from "@/lib/site";
 import { PageHero } from "@/components/site/PageHero";
 
 export const Route = createFileRoute("/about-us")({
   head: () => ({
     meta: [
       { title: "About U-Dental Clinic | Bilingual Dentists in Kitsilano Vancouver" },
-      { name: "description", content: "Meet the U-Dental team — professional dentists fluent in English and Mandarin, providing advanced digital dentistry in Kitsilano Vancouver." },
+      { name: "description", content: "Meet the U-Dental team — bilingual dentists, advanced digital dentistry, an exclusive surgical room, and a calm, technology-supported environment in Kitsilano Vancouver." },
       { property: "og:title", content: "About U-Dental Clinic" },
       { property: "og:description", content: "Bilingual dentists, decades of experience, modern digital dentistry in Kitsilano Vancouver." },
-      { property: "og:image", content: HERO_IMAGES[3] },
+      { property: "og:image", content: "/about/about-banner.jpg" },
     ],
   }),
   component: AboutPage,
 });
 
-const values = [
-  { icon: Languages, title: "Bilingual Care", body: "English & Mandarin-speaking team for clear, comfortable communication." },
-  { icon: Cpu, title: "Digital Dentistry", body: "Modern scanning, planning, and 3D-guided treatment workflows." },
-  { icon: Building2, title: "Exclusive Surgical Room", body: "A dedicated environment designed for high-standard asepsis." },
-  { icon: Heart, title: "Patient Comfort", body: "A calm, considered patient experience from first call to follow-up." },
-  { icon: ShieldCheck, title: "Decades of Experience", body: "An experienced team committed to thoughtful, modern care." },
-  { icon: Microscope, title: "Precision Approach", body: "Advanced visualization tools support detail-oriented dentistry." },
+const BRANDS = [
+  { src: "/brands/all-on-4.png", alt: "All-on-4®" },
+  { src: "/brands/invisalign.png", alt: "Invisalign®" },
+  { src: "/brands/x-guide.png", alt: "X-Guide" },
+  { src: "/brands/bioclear.png", alt: "Bioclear®" },
+  { src: "/brands/galvosurge.png", alt: "GalvoSurge®" },
+  { src: "/brands/botox.png", alt: "Botox® Cosmetic" },
+  { src: "/brands/timan.png", alt: "Timan Dental" },
+];
+
+const ENVIRONMENT = [
+  { src: "/equipment/clinic-1.jpg", alt: "U-Dental clinic interior" },
+  { src: "/equipment/clinic-3.jpg", alt: "U-Dental treatment room" },
+  { src: "/equipment/clinic-5.jpg", alt: "U-Dental reception area" },
+  { src: "/equipment/clinic-7.jpg", alt: "U-Dental sterilization workflow" },
+];
+
+const TECH_PHOTOS = [
+  { src: "/equipment/clinic-9.jpg", alt: "Surgical suite" },
+  { src: "/equipment/clinic-11.jpg", alt: "Digital implant planning" },
+  { src: "/equipment/clinic-13.jpg", alt: "Intra-oral scanning" },
+  { src: "/equipment/clinic-15.jpg", alt: "Dental microscope" },
 ];
 
 function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About"
-        title="A modern dental clinic, designed around the patient."
-        subtitle="U-Dental Clinic combines advanced digital dentistry, bilingual care, and a comfortable, technology-forward experience in Kitsilano Vancouver."
-        image={HERO_IMAGES[3]}
+        eyebrow="About U-Dental"
+        title="About U-Dental"
+        subtitle="Advanced dental care in Kitsilano Vancouver with experienced English and Mandarin-speaking dentists."
+        image="/about/about-banner.jpg"
       />
 
+      {/* Section 2 — Philosophy / Story with artwork */}
       <section className="section-y">
-        <div className="container-x grid lg:grid-cols-2 gap-12 items-center">
-          <img src={HERO_IMAGES[2]} alt="U-Dental clinic" className="rounded-3xl shadow-elevated aspect-[4/3] object-cover w-full" />
-          <div>
-            <p className="text-primary font-bold text-sm uppercase tracking-wider">Our Story</p>
-            <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">Experienced bilingual dentists in Kitsilano</h2>
-            <div className="mt-6 space-y-5 text-lg text-muted-foreground leading-relaxed">
+        <div className="container-x grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-5 order-2 lg:order-1">
+            <div className="relative">
+              <div className="absolute -inset-4 rounded-[2rem] bg-cream -z-10" />
+              <img
+                src="/about/artwork-1.png"
+                alt="Original U-Dental clinic artwork"
+                className="rounded-2xl w-full object-contain shadow-elevated bg-white"
+              />
+            </div>
+          </div>
+          <div className="lg:col-span-7 order-1 lg:order-2">
+            <p className="text-primary font-bold text-sm uppercase tracking-[0.25em]">Our Vision</p>
+            <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold leading-[1.1]">
+              Designed around care, precision, and comfort.
+            </h2>
+            <div className="mt-6 space-y-5 text-lg text-foreground/80 leading-relaxed">
               <p>
-                U-Dental Clinic is a team of professional dentists fluent in both English and Mandarin, with decades of dental experience.
+                The team here at U-Dental brings together members from well-established local clinics and specialists and professors from Taiwan. Our vision is captured in our name — the pronunciation of <em>“U”</em> is similar to <em>“Excellence”</em> in Mandarin.
               </p>
               <p>
-                We offer the highest quality facilities in digital dentistry, dental implant technology, and orthodontics — and our exclusive surgical room is designed to provide a medical center-class experience in asepsis quality and patient care.
+                Our vision is to be the guardian of every healthy and bright smile in Metro Vancouver. We hold this core value in mind as we provide considered preventive care and high-quality treatment for our patients — with English and Mandarin spoken throughout the clinic.
               </p>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Section 3 — Modern Dental Environment */}
       <section className="section-y bg-cream">
         <div className="container-x">
-          <div className="max-w-2xl">
-            <p className="text-primary font-bold text-sm uppercase tracking-wider">What we stand for</p>
-            <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">Care designed around clarity, comfort, and precision</h2>
+          <div className="max-w-3xl">
+            <p className="text-primary font-bold text-sm uppercase tracking-[0.25em]">A Modern Environment</p>
+            <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">A calm, comfortable, medical-class clinic</h2>
+            <p className="mt-5 text-lg text-foreground/75">
+              Our clinic was designed for clarity and comfort — quiet treatment rooms, a dedicated surgical suite, and modern infection-control workflows that meet a medical center-class standard of asepsis.
+            </p>
           </div>
-          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {values.map((v) => (
-              <div key={v.title} className="rounded-2xl bg-card border border-border p-7 shadow-card">
-                <div className="h-12 w-12 rounded-xl gradient-accent text-primary-foreground grid place-items-center mb-5">
-                  <v.icon className="h-6 w-6" />
-                </div>
-                <h3 className="text-xl font-bold">{v.title}</h3>
-                <p className="mt-2 text-muted-foreground">{v.body}</p>
+          <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {ENVIRONMENT.map((p) => (
+              <div key={p.src} className="aspect-[4/5] overflow-hidden rounded-2xl bg-white shadow-card">
+                <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover hover:scale-105 transition duration-700" />
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Section 4 — Equipment & Technology */}
+      <section className="section-y">
+        <div className="container-x grid lg:grid-cols-12 gap-12 items-start">
+          <div className="lg:col-span-5 lg:sticky lg:top-28">
+            <p className="text-primary font-bold text-sm uppercase tracking-[0.25em]">Equipment & Technology</p>
+            <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold leading-[1.1]">
+              Cutting-edge equipment, end-to-end digital workflow.
+            </h2>
+            <div className="mt-6 space-y-5 text-foreground/80 leading-relaxed">
+              <p>
+                U-Dental is equipped with 3D Cone Beam CT (CBCT), the Medit i500 intra-oral scanner, and the X-Guide real-time surgical navigator — supporting a fully digital implant workflow, immediate implants with provisional crowns, All-on-4 full-mouth reconstruction, and Invisalign® orthodontic treatment.
+              </p>
+              <p>
+                Our exclusive surgical room is equipped with the German DR.MACH surgical light, Sirona Diode LASER, Versah crestal sinus lift drill, COLTENE Perfect TSC II electrosurgery system, the Nobel Biocare OsseoSet 200 implant system, and A-dec / W&amp;H electronic motor handpieces.
+              </p>
+              <p>
+                For restorative and microscopic dentistry we use the Leica M320D dental microscope, with Bioclear® matrix systems and GalvoSurge® implant surface care to support precise, predictable outcomes.
+              </p>
+            </div>
+            <Link to="/technology" className="mt-8 inline-flex items-center gap-2 text-primary font-bold">
+              See full technology list <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="lg:col-span-7 grid grid-cols-2 gap-4">
+            {TECH_PHOTOS.map((p) => (
+              <div key={p.src} className="aspect-square overflow-hidden rounded-2xl shadow-card">
+                <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5 — Brand Logo Grid */}
+      <section className="section-y bg-soft">
+        <div className="container-x">
+          <div className="max-w-3xl">
+            <p className="text-primary font-bold text-sm uppercase tracking-[0.25em]">Trusted Systems</p>
+            <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">Advanced Dental Technology &amp; Trusted Systems</h2>
+            <p className="mt-5 text-foreground/75">
+              U-Dental treatments are supported by clinically established technologies and systems used in modern digital dentistry.
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {BRANDS.map((b) => (
+              <div key={b.alt} className="bg-white rounded-2xl border border-border h-32 grid place-items-center p-6 hover:shadow-card transition">
+                <img src={b.src} alt={b.alt} className="max-h-16 max-w-[80%] object-contain" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6 — Doctors */}
       <section id="team" className="section-y">
         <div className="container-x">
           <div className="max-w-3xl">
-            <p className="text-primary font-bold text-sm uppercase tracking-wider">Our Team</p>
-            <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">Meet the U-Dental Team</h2>
-            <p className="mt-5 text-lg text-muted-foreground">
+            <p className="text-primary font-bold text-sm uppercase tracking-[0.25em]">Our Team</p>
+            <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">Meet our dentists</h2>
+            <p className="mt-5 text-lg text-foreground/75">
               Seven trusted dentists, certified across Canada and Taiwan, with decades of combined experience in surgery, implants, orthodontics, cosmetic and family dentistry.
             </p>
           </div>
@@ -111,10 +192,23 @@ function AboutPage() {
               </Link>
             ))}
           </div>
-          <div className="mt-12 text-center">
-            <Link to="/contact-us" className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-7 py-4 font-semibold shadow-glow">
-              Book a visit <ArrowRight className="h-4 w-4" />
+        </div>
+      </section>
+
+      {/* Section 7 — CTA */}
+      <section className="section-y bg-charcoal text-white">
+        <div className="container-x text-center max-w-3xl mx-auto">
+          <h2 className="text-4xl lg:text-5xl font-extrabold">Ready when you are.</h2>
+          <p className="mt-5 text-lg text-white/80">
+            Whether you're booking your first visit or planning a complex treatment, our team is here to help — in English or Mandarin.
+          </p>
+          <div className="mt-9 flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact-us" className="inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground px-7 py-4 font-semibold shadow-glow">
+              Book an Appointment <ArrowRight className="h-4 w-4" />
             </Link>
+            <a href={SITE.phoneHref} className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-7 py-4 font-semibold hover:bg-white/10">
+              <Phone className="h-4 w-4" /> Call {SITE.phone}
+            </a>
           </div>
         </div>
       </section>
