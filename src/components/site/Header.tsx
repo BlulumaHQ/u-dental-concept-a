@@ -99,12 +99,6 @@ export function Header() {
           <a href={SITE.phoneHref} className="text-sm font-semibold text-foreground hover:text-primary flex items-center gap-2">
             <Phone className="h-4 w-4" /> {SITE.phone}
           </a>
-          <Link
-            to="/contact-us"
-            className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition shadow-glow"
-          >
-            Book Appointment
-          </Link>
         </div>
 
         <button
