@@ -6,10 +6,6 @@ type Props = { variant?: "dark" | "light"; className?: string };
 export function Logo({ variant = "dark", className = "" }: Props) {
   const src = variant === "dark" ? logoDark : logoLight;
   return (
-    <img
-      src={src}
-      alt="U-Dental Clinic"
-      className={`h-14 sm:h-16 lg:h-[88px] w-auto ${className}`}
-    />
+    <img src={src} alt="U-Dental Clinic" className={`h-13 sm:h-15 lg:h-20 w-auto ${className}`} />
   );
 }
