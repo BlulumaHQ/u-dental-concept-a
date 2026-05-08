@@ -32,7 +32,7 @@ export function Header() {
         scrolled ? "bg-background/90 backdrop-blur-lg border-b border-border shadow-sm" : "bg-background/60 backdrop-blur"
       )}
     >
-      <div className="container-x flex items-center justify-between h-[88px]">
+      <div className="container-x flex items-center justify-between py-2 lg:py-3 min-h-[88px] lg:min-h-[104px]">
         <Link to="/" aria-label="U-Dental Clinic home">
           <Logo variant="dark" />
         </Link>
