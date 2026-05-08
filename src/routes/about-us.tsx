@@ -79,16 +79,49 @@ function AboutPage() {
         </div>
       </section>
 
-      <section id="u-dental-team" className="section-y">
-        <div className="container-x text-center max-w-3xl mx-auto">
-          <p className="text-primary font-bold text-sm uppercase tracking-wider">Our Team</p>
-          <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">Meet the U-Dental Team</h2>
-          <p className="mt-5 text-lg text-muted-foreground">
-            A team of professional dentists fluent in English and Mandarin, supported by experienced clinical and front-desk staff dedicated to making your visit comfortable.
-          </p>
-          <Link to="/contact-us" className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-7 py-4 font-semibold shadow-glow">
-            Book a visit <ArrowRight className="h-4 w-4" />
-          </Link>
+      <section id="team" className="section-y">
+        <div className="container-x">
+          <div className="max-w-3xl">
+            <p className="text-primary font-bold text-sm uppercase tracking-wider">Our Team</p>
+            <h2 className="mt-3 text-4xl lg:text-5xl font-extrabold">Meet the U-Dental Team</h2>
+            <p className="mt-5 text-lg text-muted-foreground">
+              Seven trusted dentists, certified across Canada and Taiwan, with decades of combined experience in surgery, implants, orthodontics, cosmetic and family dentistry.
+            </p>
+          </div>
+          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {DOCTORS.map((d) => (
+              <Link
+                key={d.slug}
+                to="/doctor/$slug"
+                params={{ slug: d.slug }}
+                className="group rounded-2xl bg-card border border-border overflow-hidden hover:border-primary hover:shadow-elevated transition flex flex-col"
+              >
+                <div className="aspect-[4/5] bg-cream overflow-hidden">
+                  <img src={d.photo} alt={d.name} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                </div>
+                <div className="p-5 flex-1 flex flex-col">
+                  <h3 className="text-lg font-bold leading-tight group-hover:text-primary">{d.name}</h3>
+                  <p className="text-xs font-semibold text-muted-foreground mt-0.5">{d.credentials}</p>
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {d.specialties.slice(0, 3).map((s) => (
+                      <span key={s} className="text-[10px] font-semibold uppercase tracking-wide rounded-full bg-primary/10 text-primary px-2 py-0.5">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="mt-3 text-sm text-muted-foreground line-clamp-3 flex-1">{d.summary}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-primary">
+                    View profile <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link to="/contact-us" className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-7 py-4 font-semibold shadow-glow">
+              Book a visit <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
     </>
