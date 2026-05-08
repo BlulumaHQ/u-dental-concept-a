@@ -11,7 +11,7 @@ export const Route = createFileRoute("/zh-hant/insights/$slug")({
       enPath: `/insights/${params.slug}`,
       title: article ? `${article.title}｜U-Dental 牙科專欄` : "U-Dental 牙科專欄",
       description: article?.excerpt ?? "U-Dental 牙科專業文章。",
-      image: article?.cover,
+      image: article?.image,
       type: "article",
     });
   },
