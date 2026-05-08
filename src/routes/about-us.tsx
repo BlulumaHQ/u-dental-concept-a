@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Languages, ShieldCheck, Cpu, Heart, Building2, Microscope } from "lucide-react";
-import { HERO_IMAGES } from "@/lib/site";
+import { HERO_IMAGES, DOCTORS } from "@/lib/site";
 
 export const Route = createFileRoute("/about-us")({
   head: () => ({
