@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermOfServiceRouteImport } from './routes/term-of-service'
 import { Route as TechnologyRouteImport } from './routes/technology'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PrivacyPolicy2RouteImport } from './routes/privacy-policy-2'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
@@ -43,6 +44,11 @@ const TermOfServiceRoute = TermOfServiceRouteImport.update({
 const TechnologyRoute = TechnologyRouteImport.update({
   id: '/technology',
   path: '/technology',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -170,6 +176,7 @@ export interface FileRoutesByFullPath {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/privacy-policy-2': typeof PrivacyPolicy2Route
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/technology': typeof TechnologyRoute
   '/term-of-service': typeof TermOfServiceRoute
   '/doctor/$slug': typeof DoctorSlugRoute
@@ -197,6 +204,7 @@ export interface FileRoutesByTo {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/privacy-policy-2': typeof PrivacyPolicy2Route
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/technology': typeof TechnologyRoute
   '/term-of-service': typeof TermOfServiceRoute
   '/doctor/$slug': typeof DoctorSlugRoute
@@ -225,6 +233,7 @@ export interface FileRoutesById {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/privacy-policy-2': typeof PrivacyPolicy2Route
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/technology': typeof TechnologyRoute
   '/term-of-service': typeof TermOfServiceRoute
   '/doctor/$slug': typeof DoctorSlugRoute
@@ -254,6 +263,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/privacy-policy-2'
     | '/services'
+    | '/sitemap.xml'
     | '/technology'
     | '/term-of-service'
     | '/doctor/$slug'
@@ -281,6 +291,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/privacy-policy-2'
     | '/services'
+    | '/sitemap.xml'
     | '/technology'
     | '/term-of-service'
     | '/doctor/$slug'
@@ -308,6 +319,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/privacy-policy-2'
     | '/services'
+    | '/sitemap.xml'
     | '/technology'
     | '/term-of-service'
     | '/doctor/$slug'
@@ -336,6 +348,7 @@ export interface RootRouteChildren {
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   PrivacyPolicy2Route: typeof PrivacyPolicy2Route
   ServicesRoute: typeof ServicesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TechnologyRoute: typeof TechnologyRoute
   TermOfServiceRoute: typeof TermOfServiceRoute
   DoctorSlugRoute: typeof DoctorSlugRoute
@@ -367,6 +380,13 @@ declare module '@tanstack/react-router' {
       path: '/technology'
       fullPath: '/technology'
       preLoaderRoute: typeof TechnologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -566,6 +586,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   PrivacyPolicy2Route: PrivacyPolicy2Route,
   ServicesRoute: ServicesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TechnologyRoute: TechnologyRoute,
   TermOfServiceRoute: TermOfServiceRoute,
   DoctorSlugRoute: DoctorSlugRoute,
@@ -585,3 +606,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
