@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { INSIGHTS } from "@/lib/insights";
+import { useLocale, getInsights, localePath, t } from "@/lib/i18n";
 import { ArrowLeft, ArrowRight, Calendar, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/insights/$slug")({
@@ -22,7 +23,10 @@ export const Route = createFileRoute("/insights/$slug")({
 
 export function InsightArticle() {
   const { slug } = Route.useParams();
-  const post = INSIGHTS.find((p) => p.slug === slug);
+  const locale = useLocale();
+  const isZh = locale === "zh-Hant";
+  const insights = getInsights(locale);
+  const post = insights.find((p) => p.slug === slug);
   if (!post) throw notFound();
 
   return (
@@ -31,14 +35,14 @@ export function InsightArticle() {
         <img src={post.image} alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal/95 via-charcoal/75 to-charcoal/40" />
         <div className="relative container-x py-20 lg:py-28 max-w-4xl">
-          <Link to="/insights" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-primary mb-6">
-            <ArrowLeft className="h-4 w-4" /> All insights
+          <Link to={localePath("/insights", locale) as string} className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-primary mb-6">
+            <ArrowLeft className="h-4 w-4" /> {t("cta.backInsights", locale)}
           </Link>
           <p className="text-primary font-bold uppercase text-sm tracking-[0.25em]">{post.category}</p>
           <h1 className="mt-4 text-4xl lg:text-5xl font-extrabold leading-tight">{post.title}</h1>
           <div className="mt-6 flex items-center gap-5 text-sm text-white/80">
-            <span className="flex items-center gap-2"><Calendar className="h-4 w-4" /> {new Date(post.date).toLocaleDateString("en-CA", { month: "long", day: "numeric", year: "numeric" })}</span>
-            <span className="flex items-center gap-2"><Clock className="h-4 w-4" /> {post.readMin} min read</span>
+            <span className="flex items-center gap-2"><Calendar className="h-4 w-4" /> {new Date(post.date).toLocaleDateString(isZh ? "zh-Hant" : "en-CA", { month: "long", day: "numeric", year: "numeric" })}</span>
+            <span className="flex items-center gap-2"><Clock className="h-4 w-4" /> {post.readMin} {isZh ? "分鐘閱讀" : "min read"}</span>
           </div>
         </div>
       </header>
@@ -62,7 +66,7 @@ export function InsightArticle() {
 
           {post.faqs && post.faqs.length > 0 && (
             <div className="mt-14 border-t border-border pt-10">
-              <h2 className="text-2xl lg:text-3xl font-extrabold mb-6">Common questions</h2>
+              <h2 className="text-2xl lg:text-3xl font-extrabold mb-6">{t("sec.commonQ", locale)}</h2>
               <div className="space-y-5">
                 {post.faqs.map((f, i) => (
                   <div key={i} className="rounded-xl bg-cream p-5 border border-border">
@@ -75,22 +79,22 @@ export function InsightArticle() {
           )}
 
           <div className="mt-14 rounded-3xl bg-charcoal text-white p-8 lg:p-10 text-center">
-            <h3 className="text-2xl lg:text-3xl font-extrabold">Have questions about this treatment?</h3>
-            <p className="mt-2 text-white/80">Book a consultation with our team in Kitsilano Vancouver.</p>
-            <Link to="/contact-us" className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 font-semibold">
-              Book a consultation <ArrowRight className="h-4 w-4" />
+            <h3 className="text-2xl lg:text-3xl font-extrabold">{isZh ? "對此治療有疑問嗎？" : "Have questions about this treatment?"}</h3>
+            <p className="mt-2 text-white/80">{isZh ? "歡迎預約溫哥華 Kitsilano 的 U-Dental 團隊諮詢。" : "Book a consultation with our team in Kitsilano Vancouver."}</p>
+            <Link to={localePath("/contact-us", locale) as string} className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 font-semibold">
+              {t("cta.bookConsult", locale)} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
           {post.related && post.related.length > 0 && (
             <div className="mt-16">
-              <h2 className="text-xl font-extrabold mb-5">Related articles</h2>
+              <h2 className="text-xl font-extrabold mb-5">{t("sec.relatedArticles", locale)}</h2>
               <div className="grid sm:grid-cols-2 gap-4">
-                {post.related.map((slug) => {
-                  const r = INSIGHTS.find((p) => p.slug === slug);
+                {post.related.map((rs) => {
+                  const r = insights.find((p) => p.slug === rs);
                   if (!r) return null;
                   return (
-                    <Link key={slug} to="/insights/$slug" params={{ slug }} className="group rounded-xl border border-border p-4 hover:border-primary transition">
+                    <Link key={rs} to={localePath(`/insights/${rs}`, locale) as string} className="group rounded-xl border border-border p-4 hover:border-primary transition">
                       <p className="text-xs font-bold uppercase tracking-wider text-primary">{r.category}</p>
                       <p className="mt-1 font-bold group-hover:text-primary">{r.title}</p>
                     </Link>
