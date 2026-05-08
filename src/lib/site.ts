@@ -193,10 +193,10 @@ export const SERVICE_CATEGORIES = {
 
 export const FEATURED_TREATMENTS: { slug: string; title: string; image: string; tagline: string }[] = [
   { slug: "dental-implants", title: "Dental Implants", image: "/featured/dental-implants.jpg", tagline: "Digitally planned, precisely placed." },
-  { slug: "all-on-4", title: "All-on-4", image: "/featured/all-on-4.jpg", tagline: "Full-arch restoration in a single workflow." },
+  { slug: "cosmetics-and-comprehensive-dentistry", title: "Cosmetic & Comprehensive Dentistry", image: "/featured/cosmetics.jpg", tagline: "Smile design with a digital workflow." },
   { slug: "invisalign", title: "Invisalign", image: "/featured/invisalign.jpg", tagline: "Discreet, custom-planned aligners." },
   { slug: "x-guide-real-time-3d-guidance-surgery", title: "X-Guide Implant Surgery", image: "/featured/x-guide.jpg", tagline: "Real-time 3D guided precision." },
-  { slug: "cosmetics-and-comprehensive-dentistry", title: "Cosmetic & Comprehensive Dentistry", image: "/featured/cosmetics.jpg", tagline: "Smile design with a digital workflow." },
+  { slug: "all-on-4", title: "All-on-4", image: "/featured/all-on-4.jpg", tagline: "Full-arch restoration in a single workflow." },
 ];
 
 export const HIGH_VALUE_SLUGS = [
