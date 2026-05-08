@@ -113,7 +113,7 @@ export const SERVICES: ServiceItem[] = [
     name: "Dental Cleaning",
     short: "Preventive care and periodontal health support.",
     category: "general",
-    image: "https://u-dental.ca/wp-content/uploads/2020/10/Dental-Cleaning-img-left.png",
+    image: "/services/dental-cleaning.png",
     intro: "Regular cleanings help support healthy teeth and gums by removing plaque and tartar that brushing alone may miss.",
     benefits: ["Helps support gum health", "Removes plaque and tartar", "Opportunity for early issue detection"],
     when: ["Routine preventive visits", "Gum health concerns"],
@@ -123,7 +123,7 @@ export const SERVICES: ServiceItem[] = [
     name: "Emergency",
     short: "Pain relief and dental trauma support when you need it most.",
     category: "general",
-    image: "https://u-dental.ca/wp-content/uploads/2020/10/Emergency-img-left.png",
+    image: "/services/emergency.png",
     intro: "Dental emergencies can happen unexpectedly. Contact our clinic to discuss urgent dental concerns.",
     benefits: ["Prompt evaluation", "Focus on pain relief and stabilization", "Treatment planning for next steps"],
     when: ["Sudden dental pain", "Dental trauma or injury", "Lost or broken restoration"],
@@ -185,6 +185,14 @@ export const SERVICE_CATEGORIES = {
   general: "General Dentistry",
   replacement: "Tooth Replacement",
 } as const;
+
+export const FEATURED_TREATMENTS: { slug: string; title: string; image: string; tagline: string }[] = [
+  { slug: "dental-implants", title: "Dental Implants", image: "/featured/dental-implants.jpg", tagline: "Digitally planned, precisely placed." },
+  { slug: "all-on-4", title: "All-on-4", image: "/featured/all-on-4.jpg", tagline: "Full-arch restoration in a single workflow." },
+  { slug: "invisalign", title: "Invisalign", image: "/featured/invisalign.jpg", tagline: "Discreet, custom-planned aligners." },
+  { slug: "x-guide-real-time-3d-guidance-surgery", title: "X-Guide Implant Surgery", image: "/featured/x-guide.jpg", tagline: "Real-time 3D guided precision." },
+  { slug: "cosmetics-and-comprehensive-dentistry", title: "Cosmetic & Comprehensive Dentistry", image: "/featured/cosmetics.jpg", tagline: "Smile design with a digital workflow." },
+];
 
 export const HIGH_VALUE_SLUGS = [
   "dental-implants",
