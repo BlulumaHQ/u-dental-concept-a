@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Languages, ShieldCheck, Cpu, Heart, Building2, Microscope } from "lucide-react";
 import { HERO_IMAGES, DOCTORS } from "@/lib/site";
+import { PageHero } from "@/components/site/PageHero";
 
 export const Route = createFileRoute("/about-us")({
   head: () => ({
@@ -27,19 +28,12 @@ const values = [
 function AboutPage() {
   return (
     <>
-      <section className="gradient-hero text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-25 bg-cover bg-center" style={{ backgroundImage: `url(${HERO_IMAGES[3]})` }} />
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/95 to-charcoal/60" />
-        <div className="container-x relative section-y">
-          <p className="text-primary font-bold uppercase text-sm tracking-wider">About</p>
-          <h1 className="mt-3 text-5xl lg:text-7xl font-extrabold leading-[1.05] max-w-4xl">
-            A modern dental clinic, designed around the patient.
-          </h1>
-          <p className="mt-6 text-xl text-white/80 max-w-2xl">
-            U-Dental Clinic combines advanced digital dentistry, bilingual care, and a comfortable, technology-forward experience in Kitsilano Vancouver.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="About"
+        title="A modern dental clinic, designed around the patient."
+        subtitle="U-Dental Clinic combines advanced digital dentistry, bilingual care, and a comfortable, technology-forward experience in Kitsilano Vancouver."
+        image={HERO_IMAGES[3]}
+      />
 
       <section className="section-y">
         <div className="container-x grid lg:grid-cols-2 gap-12 items-center">

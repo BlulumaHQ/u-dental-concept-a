@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CheckCircle2, Cpu, Building2, Microscope, Zap, ArrowRight, ScanLine, Activity } from "lucide-react";
 import { HERO_IMAGES } from "@/lib/site";
+import { PageHero } from "@/components/site/PageHero";
 
 export const Route = createFileRoute("/technology")({
   head: () => ({
@@ -47,17 +48,12 @@ const equipment = [
 function TechPage() {
   return (
     <>
-      <section className="gradient-hero text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-25 bg-cover bg-center" style={{ backgroundImage: `url(https://u-dental.ca/wp-content/uploads/2025/05/fig0.jpg)` }} />
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/95 to-charcoal/60" />
-        <div className="container-x relative section-y">
-          <p className="text-primary font-bold uppercase text-sm tracking-wider">Technology &amp; Equipment</p>
-          <h1 className="mt-3 text-5xl lg:text-7xl font-extrabold leading-[1.05] max-w-4xl">Digital dentistry, designed for precision.</h1>
-          <p className="mt-6 text-xl text-white/80 max-w-2xl">
-            U-Dental invests in the same technology used by leading dental medical centers — from 3D imaging to real-time guided implant surgery and microscopic dentistry.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Technology & Equipment"
+        title="Digital dentistry, designed for precision."
+        subtitle="U-Dental invests in the same technology used by leading dental medical centers — from 3D imaging to real-time guided implant surgery and microscopic dentistry."
+        image="https://u-dental.ca/wp-content/uploads/2025/05/fig0.jpg"
+      />
 
       <section className="section-y">
         <div className="container-x grid md:grid-cols-2 lg:grid-cols-3 gap-5">

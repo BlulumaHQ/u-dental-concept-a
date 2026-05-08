@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, Phone, Calendar, Sparkles } from "lucide-react";
 import { SERVICES, SITE, HERO_IMAGES } from "@/lib/site";
+import { ServiceCard } from "@/components/site/ServiceCard";
 
 export const Route = createFileRoute("/service/$slug")({
   loader: ({ params }) => {
@@ -36,18 +37,18 @@ function ServicePage() {
 
   return (
     <>
-      <section className="gradient-hero text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-cover bg-center" style={{ backgroundImage: `url(${service.image || HERO_IMAGES[0]})` }} />
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/95 to-charcoal/60" />
-        <div className="container-x relative section-y">
+      <section className="relative w-full overflow-hidden bg-charcoal text-white">
+        <img src={HERO_IMAGES[service.slug.length % HERO_IMAGES.length]} alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/95 via-charcoal/75 to-charcoal/40" />
+        <div className="container-x relative py-20 lg:py-28">
           <Link to="/services" className="text-sm text-white/70 hover:text-white inline-flex items-center gap-1.5 mb-6">
             ← All services
           </Link>
-          <p className="text-primary font-bold uppercase text-sm tracking-wider">U-Dental Clinic</p>
-          <h1 className="mt-3 text-5xl lg:text-7xl font-extrabold leading-[1.05] max-w-4xl">{service.name}</h1>
-          <p className="mt-6 text-xl text-white/80 max-w-2xl">{service.short}</p>
+          <p className="text-primary font-bold uppercase text-sm tracking-[0.25em]">U-Dental Clinic</p>
+          <h1 className="mt-3 text-4xl lg:text-6xl font-extrabold leading-[1.05] max-w-4xl">{service.name}</h1>
+          <p className="mt-6 text-lg lg:text-xl text-white/85 max-w-2xl">{service.short}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/contact-us" className="rounded-full bg-primary text-primary-foreground px-6 py-3 font-semibold inline-flex items-center gap-2 shadow-glow">
+            <Link to="/contact-us" className="rounded-full bg-primary text-primary-foreground px-6 py-3 font-semibold inline-flex items-center gap-2 hover:bg-white hover:text-primary transition">
               <Calendar className="h-4 w-4" /> Book an Appointment
             </Link>
             <a href={SITE.phoneHref} className="rounded-full border border-white/30 px-6 py-3 font-semibold inline-flex items-center gap-2 hover:bg-white/10">
@@ -130,13 +131,7 @@ function ServicePage() {
             <h2 className="text-3xl lg:text-4xl font-extrabold">Related services</h2>
             <div className="mt-8 grid md:grid-cols-3 gap-5">
               {related.map((r) => (
-                <Link key={r.slug} to="/service/$slug" params={{ slug: r.slug }} className="group rounded-2xl bg-card border border-border p-7 hover:border-primary hover:shadow-card transition">
-                  <h3 className="text-lg font-bold group-hover:text-primary">{r.name}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{r.short}</p>
-                  <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
-                    Learn more <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition" />
-                  </div>
-                </Link>
+                <ServiceCard key={r.slug} service={r} variant="horizontal" />
               ))}
             </div>
           </div>
