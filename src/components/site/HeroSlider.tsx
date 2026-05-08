@@ -18,7 +18,7 @@ export function HeroSlider({ slides }: { slides: Slide[] }) {
   }, [slides.length]);
 
   return (
-    <section className="relative w-full h-[88vh] min-h-[600px] max-h-[860px] overflow-hidden bg-charcoal">
+    <section className="site-hero relative w-full h-[88vh] min-h-[600px] max-h-[860px] overflow-hidden bg-charcoal">
       {slides.map((s, idx) => (
         <div
           key={idx}

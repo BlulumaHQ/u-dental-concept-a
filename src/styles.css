@@ -128,18 +128,59 @@
   .shadow-card { box-shadow: var(--shadow-card); }
 }
 
+/* Global horizontal overflow protection (mobile shake fix) */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* Traditional Chinese typography optimizations */
 :lang(zh-Hant) {
   font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Inter", ui-sans-serif, system-ui, sans-serif;
   line-height: 1.75;
   letter-spacing: 0.01em;
   word-break: keep-all;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 :lang(zh-Hant) h1,
 :lang(zh-Hant) h2,
 :lang(zh-Hant) h3,
 :lang(zh-Hant) h4 {
   letter-spacing: 0.005em;
-  line-height: 1.4;
+  line-height: 1.25;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* Mobile-only Chinese hero sizing — prevents cropping & overflow */
+@media (max-width: 640px) {
+  :lang(zh-Hant) h1 {
+    font-size: clamp(28px, 8vw, 40px);
+    line-height: 1.2;
+  }
+  :lang(zh-Hant) h2 {
+    font-size: clamp(22px, 6.2vw, 32px);
+    line-height: 1.25;
+  }
+  :lang(zh-Hant) .container-x {
+    padding-inline: 1.25rem;
+  }
+}
+
+/* Allow Chinese hero section to expand if text needs more height */
+:lang(zh-Hant) .site-hero {
+  height: auto;
+  max-height: none;
+  min-height: 600px;
+}
+@media (max-width: 640px) {
+  :lang(zh-Hant) .site-hero {
+    min-height: 560px;
+    padding-block: 2rem;
+  }
 }
