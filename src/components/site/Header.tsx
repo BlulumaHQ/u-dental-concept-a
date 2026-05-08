@@ -36,99 +36,11 @@ export function Header() {
           : "bg-background/60 backdrop-blur",
       )}
     >
-      <div className="relative flex min-h-[80px] items-stretch lg:min-h-[96px]">
-        <div className="container-x flex items-stretch gap-6 pr-5 min-[1180px]:pr-[196px]">
+      <div className="relative flex min-h-[80px] items-stretch overflow-hidden lg:min-h-[96px]">
+        <div className="container-x flex items-stretch gap-6 pr-5">
           <Link to="/" aria-label="U-Dental Clinic home" className="flex shrink-0 items-center">
             <Logo variant="dark" />
           </Link>
-
-          <nav className="hidden min-w-0 flex-1 items-center justify-end gap-0.5 pl-10 min-[1180px]:flex min-[1280px]:pl-16">
-            {NAV.map((item) =>
-              item.hasMenu ? (
-                <div
-                  key={item.to}
-                  className="relative"
-                  onMouseEnter={() => setSvcOpen(true)}
-                  onMouseLeave={() => setSvcOpen(false)}
-                >
-                  <Link
-                    to={item.to}
-                    className="flex items-center gap-1 rounded-md px-2 py-2 text-[13px] font-semibold text-foreground transition-colors hover:text-primary min-[1280px]:px-3 min-[1320px]:text-sm"
-                    activeProps={{
-                      className:
-                        "flex items-center gap-1 rounded-md px-2 py-2 text-[13px] font-semibold text-primary min-[1280px]:px-3 min-[1320px]:text-sm",
-                    }}
-                  >
-                    {item.label}
-                    <ChevronDown className="h-3.5 w-3.5" />
-                  </Link>
-                  {svcOpen && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[760px]">
-                      <div className="bg-card rounded-2xl shadow-elevated border border-border p-6 grid grid-cols-2 gap-x-8 gap-y-5">
-                        {(
-                          Object.keys(SERVICE_CATEGORIES) as Array<keyof typeof SERVICE_CATEGORIES>
-                        ).map((cat) => (
-                          <div key={cat}>
-                            <p className="text-xs font-bold uppercase tracking-wider text-primary mb-2">
-                              {SERVICE_CATEGORIES[cat]}
-                            </p>
-                            <ul className="space-y-1.5">
-                              {SERVICES.filter((s) => s.category === cat).map((s) => (
-                                <li key={s.slug}>
-                                  <Link
-                                    to="/service/$slug"
-                                    params={{ slug: s.slug }}
-                                    className="text-sm text-foreground hover:text-primary transition-colors block"
-                                  >
-                                    {s.name}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  className="whitespace-nowrap rounded-md px-2 py-2 text-[13px] font-semibold text-foreground transition-colors hover:text-primary min-[1280px]:px-3 min-[1320px]:text-sm"
-                  activeProps={{
-                    className:
-                      "whitespace-nowrap rounded-md px-2 py-2 text-[13px] font-semibold text-primary min-[1280px]:px-3 min-[1320px]:text-sm",
-                  }}
-                  activeOptions={{ exact: item.to === "/" }}
-                >
-                  {item.label}
-                </Link>
-              ),
-            )}
-
-            <div className="flex shrink-0 items-center gap-1.5 px-2 text-[13px] font-semibold whitespace-nowrap min-[1280px]:px-3 min-[1320px]:text-sm">
-              <button type="button" aria-current="true" className="text-primary">
-                EN
-              </button>
-              <span className="text-muted-foreground">/</span>
-              <button
-                type="button"
-                className="text-foreground hover:text-primary transition-colors"
-                title="Coming soon"
-              >
-                中文
-              </button>
-            </div>
-
-            <a
-              href={SITE.phoneHref}
-              className="flex shrink-0 items-center gap-2 whitespace-nowrap px-2 text-[13px] font-semibold text-foreground transition-colors hover:text-primary min-[1280px]:px-3 min-[1320px]:text-sm"
-            >
-              <Phone className="h-4 w-4 shrink-0" />
-              <span>{SITE.phone}</span>
-            </a>
-          </nav>
 
           <button
             aria-label="Open menu"
@@ -138,6 +50,94 @@ export function Header() {
             <Menu className="h-6 w-6" />
           </button>
         </div>
+
+        <nav className="absolute inset-y-0 left-[330px] right-[184px] hidden items-center justify-end gap-0 overflow-hidden min-[1180px]:flex min-[1360px]:left-[360px]">
+          {NAV.map((item) =>
+            item.hasMenu ? (
+              <div
+                key={item.to}
+                className="relative"
+                onMouseEnter={() => setSvcOpen(true)}
+                onMouseLeave={() => setSvcOpen(false)}
+              >
+                <Link
+                  to={item.to}
+                  className="flex items-center gap-1 rounded-md px-1.5 py-2 text-xs font-semibold text-foreground transition-colors hover:text-primary min-[1360px]:px-3 min-[1360px]:text-sm"
+                  activeProps={{
+                    className:
+                      "flex items-center gap-1 rounded-md px-1.5 py-2 text-xs font-semibold text-primary min-[1360px]:px-3 min-[1360px]:text-sm",
+                  }}
+                >
+                  {item.label}
+                  <ChevronDown className="h-3.5 w-3.5" />
+                </Link>
+                {svcOpen && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[760px]">
+                    <div className="bg-card rounded-2xl shadow-elevated border border-border p-6 grid grid-cols-2 gap-x-8 gap-y-5">
+                      {(
+                        Object.keys(SERVICE_CATEGORIES) as Array<keyof typeof SERVICE_CATEGORIES>
+                      ).map((cat) => (
+                        <div key={cat}>
+                          <p className="text-xs font-bold uppercase tracking-wider text-primary mb-2">
+                            {SERVICE_CATEGORIES[cat]}
+                          </p>
+                          <ul className="space-y-1.5">
+                            {SERVICES.filter((s) => s.category === cat).map((s) => (
+                              <li key={s.slug}>
+                                <Link
+                                  to="/service/$slug"
+                                  params={{ slug: s.slug }}
+                                  className="text-sm text-foreground hover:text-primary transition-colors block"
+                                >
+                                  {s.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={item.to}
+                to={item.to}
+                className="whitespace-nowrap rounded-md px-1.5 py-2 text-xs font-semibold text-foreground transition-colors hover:text-primary min-[1360px]:px-3 min-[1360px]:text-sm"
+                activeProps={{
+                  className:
+                    "whitespace-nowrap rounded-md px-1.5 py-2 text-xs font-semibold text-primary min-[1360px]:px-3 min-[1360px]:text-sm",
+                }}
+                activeOptions={{ exact: item.to === "/" }}
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
+
+          <div className="flex shrink-0 items-center gap-1.5 px-1.5 text-xs font-semibold whitespace-nowrap min-[1360px]:px-3 min-[1360px]:text-sm">
+            <button type="button" aria-current="true" className="text-primary">
+              EN
+            </button>
+            <span className="text-muted-foreground">/</span>
+            <button
+              type="button"
+              className="text-foreground hover:text-primary transition-colors"
+              title="Coming soon"
+            >
+              中文
+            </button>
+          </div>
+
+          <a
+            href={SITE.phoneHref}
+            className="flex shrink-0 items-center gap-2 whitespace-nowrap px-2.5 text-xs font-semibold text-foreground transition-colors hover:text-primary min-[1360px]:px-3 min-[1360px]:text-sm"
+          >
+            <Phone className="h-4 w-4 shrink-0" />
+            <span>{SITE.phone}</span>
+          </a>
+        </nav>
 
         <Link
           to="/contact-us"
