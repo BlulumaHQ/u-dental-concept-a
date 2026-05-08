@@ -5,11 +5,11 @@ import { SITE } from "@/lib/site";
 export function StickyCTA() {
   return (
     <>
-      {/* Desktop: slim vertical right-edge tab */}
+      {/* Desktop: slim vertical right-edge tab — upper area, aligned with chatbot margin */}
       <Link
         to="/contact-us"
         aria-label="Book Appointment"
-        className="hidden lg:flex fixed right-0 top-1/2 -translate-y-1/2 z-30 items-center gap-2 bg-primary text-primary-foreground px-3 py-5 rounded-l-xl shadow-elevated hover:bg-charcoal transition-colors"
+        className="hidden lg:flex fixed right-6 top-32 z-30 items-center gap-2 bg-primary text-primary-foreground px-3 py-5 rounded-xl shadow-elevated hover:bg-charcoal transition-colors"
         style={{ writingMode: "vertical-rl" as const }}
       >
         <Calendar className="h-4 w-4 rotate-90" />
