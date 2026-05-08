@@ -13,7 +13,7 @@ export const Route = createFileRoute("/term-of-service")({
   component: TermsPage,
 });
 
-function TermsPage() {
+export function TermsPage() {
   return (
     <>
       <PageHero eyebrow="Legal" title="Terms of Service" subtitle="Please read these terms carefully before using our website." image="/about/about-banner.jpg" />

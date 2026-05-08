@@ -40,7 +40,7 @@ const TECH_PHOTOS = [
   { src: "/equipment/clinic-15.jpg", alt: "Dental microscope" },
 ];
 
-function AboutPage() {
+export function AboutPage() {
   return (
     <>
       <PageHero

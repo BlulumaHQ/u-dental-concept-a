@@ -13,7 +13,7 @@ export const Route = createFileRoute("/privacy-policy")({
   component: PrivacyPage,
 });
 
-function PrivacyPage() {
+export function PrivacyPage() {
   return (
     <>
       <PageHero eyebrow="Legal" title="Privacy Policy" subtitle="How we collect, use, and protect your personal information." image="/about/about-banner.jpg" />

@@ -31,7 +31,7 @@ export const Route = createFileRoute("/service/$slug")({
   ),
 });
 
-function ServicePage() {
+export function ServicePage() {
   const { service } = Route.useLoaderData();
   const related = SERVICES.filter((s) => s.category === service.category && s.slug !== service.slug).slice(0, 3);
 

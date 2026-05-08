@@ -17,7 +17,7 @@ export const Route = createFileRoute("/faq")({
   component: FaqPage,
 });
 
-function FaqPage() {
+export function FaqPage() {
   const categories = Array.from(new Set(FAQS.map((f) => f.category)));
   return (
     <>

@@ -67,7 +67,7 @@ const SLIDES = [
   },
 ];
 
-function HomePage() {
+export function HomePage() {
   return (
     <>
       <PageLoader />

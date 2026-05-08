@@ -35,7 +35,7 @@ export const Route = createFileRoute("/doctor/$slug")({
   component: DoctorPage,
 });
 
-function DoctorPage() {
+export function DoctorPage() {
   const { doctor } = Route.useLoaderData() as { doctor: Doctor };
   const related = doctor.related
     .map((slug: string) => SERVICES.find((s) => s.slug === slug))
