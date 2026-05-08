@@ -10,6 +10,8 @@ const NAV = [
   { to: "/about-us", label: "About" },
   { to: "/services", label: "Services", hasMenu: true },
   { to: "/technology", label: "Technology" },
+  { to: "/insights", label: "Insights" },
+  { to: "/faq", label: "FAQ" },
   { to: "/contact-us", label: "Contact" },
 ];
 
