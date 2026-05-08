@@ -67,7 +67,7 @@ export function Header() {
           </div>
         </div>
 
-        <nav className="absolute inset-y-0 left-[300px] right-[184px] hidden items-center justify-end gap-0 overflow-hidden min-[1180px]:flex min-[1360px]:left-[340px]">
+        <nav className="absolute inset-y-0 left-[max(360px,calc((100vw-80rem)/2+360px))] right-[184px] hidden items-center justify-end gap-0 overflow-hidden min-[1180px]:flex min-[1360px]:left-[max(400px,calc((100vw-80rem)/2+400px))]">
           <div className="mx-auto flex items-center gap-0 pr-6 min-[1360px]:pr-10">
           {NAV.map((item) =>
             item.hasMenu ? (
