@@ -4,12 +4,12 @@ type IconProps = SVGProps<SVGSVGElement> & { size?: number };
 
 const base = (props: IconProps) => ({
   xmlns: "http://www.w3.org/2000/svg",
-  width: props.size ?? 36,
-  height: props.size ?? 36,
+  width: props.size ?? 44,
+  height: props.size ?? 44,
   viewBox: "0 0 48 48",
   fill: "none",
   stroke: "currentColor",
-  strokeWidth: 1.6,
+  strokeWidth: 2.4,
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
   ...props,
