@@ -179,7 +179,7 @@ export const BotoxIcon = (p: IconProps) => (
   </svg>
 );
 
-export type DentalIconComponent = (p: IconProps) => React.ReactElement;
+export type DentalIconComponent = (p: IconProps) => ReactElement;
 
 export const DENTAL_ICONS: Record<string, DentalIconComponent> = {
   "dental-implants": ImplantIcon,
