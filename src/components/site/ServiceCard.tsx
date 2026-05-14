@@ -4,7 +4,7 @@ import type { ServiceItem } from "@/lib/site";
 import { detectLocale, localePath, t } from "@/lib/i18n";
 import { DENTAL_ICONS, ToothIcon } from "./DentalIcons";
 
-function ServiceIcon({ slug, size = 36 }: { slug: string; size?: number }) {
+function ServiceIcon({ slug, size = 44 }: { slug: string; size?: number }) {
   const Icon = DENTAL_ICONS[slug] ?? ToothIcon;
   return <Icon className="text-primary" width={size} height={size} />;
 }
