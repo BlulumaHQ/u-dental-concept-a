@@ -187,8 +187,8 @@ export function AboutPage() {
               <h3 className="mt-3 text-3xl lg:text-4xl font-extrabold leading-tight">{t("about.behindHeading", locale)}</h3>
               <p className="mt-5 text-white/80 leading-relaxed">{t("about.behindSub", locale)}</p>
             </div>
-            <div className="lg:col-span-3 min-h-[260px]">
-              <img src="/about/team-wide.jpg" alt="The U-Dental clinical and support team" className="w-full h-full object-cover" />
+            <div className="lg:col-span-3 lg:min-h-[260px]">
+              <img src="/about/team-wide.jpg" alt="The U-Dental clinical and support team" className="w-full h-auto lg:h-full object-contain lg:object-cover" />
             </div>
           </div>
         </div>
