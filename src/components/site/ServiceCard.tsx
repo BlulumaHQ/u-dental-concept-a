@@ -1,37 +1,12 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import {
-  ArrowRight, Stethoscope, Sparkles, Smile, Layers, Crosshair, Scissors,
-  Crown, AlertTriangle, Wrench, Syringe, Gem, ScanLine,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { ServiceItem } from "@/lib/site";
 import { detectLocale, localePath, t } from "@/lib/i18n";
-
-import type { LucideProps } from "lucide-react";
-
-const ICONS: Record<string, React.ComponentType<LucideProps>> = {
-  "dental-implants": Layers,
-  "all-on-4": Layers,
-  "invisalign": Smile,
-  "orthodontics": Smile,
-  "x-guide-real-time-3d-guidance-surgery": Crosshair,
-  "oral-surgery": Scissors,
-  "wisdom-tooth-extraction": Scissors,
-  "cosmetics-and-comprehensive-dentistry": Sparkles,
-  "dental-cleaning": Sparkles,
-  "emergency": AlertTriangle,
-  "restorations": Wrench,
-  "crown-and-bridges": Crown,
-  "root-canal-treatment": ScanLine,
-  "denture": Gem,
-  "botox": Syringe,
-  "microscopic-dentistry": ScanLine,
-  "bioclear": Sparkles,
-  "galvosurge-for-peri-implantitis-treatment": Wrench,
-};
+import { DENTAL_ICONS, ToothIcon } from "./DentalIcons";
 
 function ServiceIcon({ slug, size = 36 }: { slug: string; size?: number }) {
-  const Icon = ICONS[slug] ?? Stethoscope;
-  return <Icon className="text-primary" strokeWidth={1.75} size={size} />;
+  const Icon = DENTAL_ICONS[slug] ?? ToothIcon;
+  return <Icon className="text-primary" width={size} height={size} />;
 }
 
 export function ServiceCard({ service, variant = "horizontal" }: { service: ServiceItem; variant?: "horizontal" | "stacked" }) {
