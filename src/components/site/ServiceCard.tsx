@@ -63,7 +63,7 @@ export function ServiceCard({ service, variant = "horizontal" }: { service: Serv
           {service.image ? (
             <img src={service.image} alt={service.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-500" />
           ) : (
-            <ServiceIcon slug={service.slug} size={72} />
+            <ServiceIcon slug={service.slug} size={56} />
           )}
         </div>
         <div className="p-6 flex-1 flex flex-col">
