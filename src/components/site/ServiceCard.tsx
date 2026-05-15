@@ -1,12 +1,54 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  Anchor,
+  Layers,
+  AlignJustify,
+  Grip,
+  Crosshair,
+  Scissors,
+  Sparkles,
+  Smile,
+  Brush,
+  Siren,
+  Wrench,
+  Crown,
+  Activity,
+  Shield,
+  Microscope,
+  Droplet,
+  Zap,
+  Syringe,
+  Stethoscope,
+  type LucideIcon,
+} from "lucide-react";
 import type { ServiceItem } from "@/lib/site";
 import { detectLocale, localePath, t } from "@/lib/i18n";
-import { DENTAL_ICONS, ToothIcon } from "./DentalIcons";
 
-function ServiceIcon({ slug, size = 44 }: { slug: string; size?: number }) {
-  const Icon = DENTAL_ICONS[slug] ?? ToothIcon;
-  return <Icon className="text-primary" width={size} height={size} />;
+const SERVICE_ICONS: Record<string, LucideIcon> = {
+  "dental-implants": Anchor,
+  "all-on-4": Layers,
+  "invisalign": AlignJustify,
+  "orthodontics": Grip,
+  "x-guide-real-time-3d-guidance-surgery": Crosshair,
+  "oral-surgery": Scissors,
+  "wisdom-tooth-extraction": Scissors,
+  "cosmetics-and-comprehensive-dentistry": Sparkles,
+  "dental-cleaning": Brush,
+  "emergency": Siren,
+  "restorations": Wrench,
+  "crown-and-bridges": Crown,
+  "root-canal-treatment": Activity,
+  "denture": Smile,
+  "microscopic-dentistry": Microscope,
+  "bioclear": Droplet,
+  "galvosurge-for-peri-implantitis-treatment": Zap,
+  "botox": Syringe,
+};
+
+function ServiceIcon({ slug, size = 36 }: { slug: string; size?: number }) {
+  const Icon = SERVICE_ICONS[slug] ?? Stethoscope;
+  return <Icon className="text-primary" size={size} strokeWidth={1.6} />;
 }
 
 export function ServiceCard({ service, variant = "horizontal" }: { service: ServiceItem; variant?: "horizontal" | "stacked" }) {
