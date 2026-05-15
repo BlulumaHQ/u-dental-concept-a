@@ -80,7 +80,7 @@ export function ServiceCard({ service, variant = "horizontal" }: { service: Serv
   return (
     <Link to={to} className="group rounded-2xl bg-card border border-border p-5 hover:border-primary hover:shadow-elevated transition flex gap-4 items-start">
       <div className="h-20 w-20 rounded-xl bg-primary/10 grid place-items-center shrink-0">
-        <ServiceIcon slug={service.slug} size={68} />
+        <ServiceIcon slug={service.slug} size={36} />
       </div>
       <div className="min-w-0 flex-1">
         <h3 className="font-bold text-base leading-tight group-hover:text-primary">{service.name}</h3>
