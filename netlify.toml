@@ -1,0 +1,7 @@
+[build]
+  command = "npm run build:static"
+  publish = "dist"
+
+[[edge_functions]]
+  function = "hostname-noindex"
+  path = "/*"
