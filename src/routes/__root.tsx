@@ -80,8 +80,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Premium Digital Dentistry in Kitsilano Vancouver | U-Dental Clinic" },
       { name: "twitter:description", content: "U-Dental Clinic provides advanced dental care in Kitsilano Vancouver with English and Mandarin-speaking dentists, digital dentistry, implant technology, orthodontics, and comprehensive dental services." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c167c1b2-9957-4d1a-8f8d-96733cb4480a/id-preview-03a05e83--99c19a71-60e2-4d27-83d3-24c5ec78bcc3.lovable.app-1778205991704.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c167c1b2-9957-4d1a-8f8d-96733cb4480a/id-preview-03a05e83--99c19a71-60e2-4d27-83d3-24c5ec78bcc3.lovable.app-1778205991704.png" },
+      { property: "og:image", content: "/og-image.jpg" },
+      { name: "twitter:image", content: "/og-image.jpg" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
